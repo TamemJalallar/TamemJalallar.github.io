@@ -39,47 +39,27 @@ jobs:
             exit 1
           fi
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          static_site_generator: next
-
-      - name: Install dependencies
+          - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      - name: Build with Next.js (static export)
+      - name: Build
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
-      # 🔍 Print what exists after build (this makes debugging obvious)
-      - name: Debug - list repo root after build
-        run: |
-          echo "Root directory:"
-          ls -la
-          echo "If out/ exists, list it:"
-          ls -la out || true
+      - name: Export static site
+        run: ${{ steps.detect-package-manager.outputs.runner }} next export
 
-      # ✅ Fail fast if Next didn't generate out/
-      - name: Verify static export output exists
+      - name: Verify export output exists
         run: |
           if [ ! -d "out" ]; then
-            echo "❌ Static export failed: out/ directory not found."
-            echo "This means Next did not produce a static export."
+            echo "❌ out/ directory not found after next export"
             exit 1
           fi
           if [ ! -f "out/index.html" ]; then
-            echo "❌ Static export failed: out/index.html not found."
-            echo "Contents of out/:"
+            echo "❌ out/index.html not found after next export"
             ls -la out || true
             exit 1
           fi
 
-      # ✅ Prevent GitHub Pages Jekyll processing from breaking _next paths
       - name: Disable Jekyll
         run: touch out/.nojekyll
 
