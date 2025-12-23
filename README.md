@@ -1,6 +1,6 @@
 # Hi, I’m Tamem (Tom) Jalallar
 
-**Senior IT Systems Administrator | Technical Lead | Automation & Endpoint Management**
+**Senior IT Systems Administrator** | **Technical Lead** | **Automation & Endpoint Management**
 
 Parsippany, NJ  
 [LinkedIn](https://www.linkedin.com/in/TamemJalallar) · [GitHub](https://github.com/TamemJalallar)
