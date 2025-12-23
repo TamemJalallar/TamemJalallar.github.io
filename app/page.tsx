@@ -1,7 +1,8 @@
 import HomePageClient from "./HomePageClient";
+import data from "../data.json";
 
-export const dynamic = "error"; // forces static; if something is dynamic, build will fail (good)
+export const dynamic = "error";
 
 export default function Page() {
-  return <HomePageClient />;
+  return <HomePageClient data={data} />;
 }
