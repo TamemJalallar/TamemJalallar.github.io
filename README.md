@@ -30,7 +30,8 @@ I specialize in modern endpoint management, identity & access control, and autom
 ## Professional Experience
 
 ### **WPP**  
-**Senior IT Systems Administrator**  
+**Senior IT Systems Administrator**
+
 *September 2018 – Present*
 
 - Serve as primary escalation lead for executive-level and enterprise IT issues
@@ -42,6 +43,7 @@ I specialize in modern endpoint management, identity & access control, and autom
 
 ## **Ogilvy**
 **AV & VIP Support**
+
 *September 2018 – Present*
 
 - Provide dedicated IT and AV/VIP support for Ogilvy leadership and agency teams
@@ -55,6 +57,7 @@ I specialize in modern endpoint management, identity & access control, and autom
 
 ### **Apple Spice Junction**  
 **Sales Manager**  
+
 *September 2017 – July 2018*
 
 - Managed a customer database of 10,000+ records  
