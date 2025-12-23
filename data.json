@@ -121,29 +121,28 @@
       "duration": ""
     }
   ],
-"experiences": [
-  {
-    "company": "WPP",
-    "position": "Senior IT Systems Administrator",
-    "startDate": "Sep 2018",
-    "endDate": "Present",
-    "desc": [
-      "Primary escalation lead for executive-level and enterprise incidents; trusted for high-impact issues.",
-      "Administer identity and endpoint platforms across large user populations (Okta, Entra ID, Intune, Kandji, Jamf, ABM).",
-      "Build PowerShell automation and repeatable workflows to improve compliance, reliability, and support efficiency."
-    ]
-  },
-  {
-    "company": "Ogilvy",
-    "position": "AV & VIP Support",
-    "startDate": "Sep 2018",
-    "endDate": "Present",
-    "desc": [
-      "Dedicated IT and AV/VIP support for leadership and agency teams in high-visibility environments.",
-      "End-to-end AV production for town halls, leadership sessions, and client-facing events.",
-      "Contribute to documentation, process improvements, and cross-team troubleshooting standards."
-    ]
-  }
-]
-
-} ̰
+  "experiences": [
+    {
+      "company": "WPP",
+      "position": "Senior IT Systems Administrator",
+      "startDate": "Sep 2018",
+      "endDate": "Present",
+      "desc": [
+        "Primary escalation lead for executive-level and enterprise incidents; trusted for high-impact issues.",
+        "Administer identity and endpoint platforms across large user populations (Okta, Entra ID, Intune, Kandji, Jamf, ABM).",
+        "Build PowerShell automation and repeatable workflows to improve compliance, reliability, and support efficiency."
+      ]
+    },
+    {
+      "company": "Ogilvy",
+      "position": "AV & VIP Support",
+      "startDate": "Sep 2018",
+      "endDate": "Present",
+      "desc": [
+        "Dedicated IT and AV/VIP support for leadership and agency teams in high-visibility environments.",
+        "End-to-end AV production for town halls, leadership sessions, and client-facing events.",
+        "Contribute to documentation, process improvements, and cross-team troubleshooting standards."
+      ]
+    }
+  ]
+}
