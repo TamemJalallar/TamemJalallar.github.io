@@ -11,9 +11,9 @@ const nextConfig = {
       "raw.githubusercontent.com",
       "i.imgur.com",
       "img.freepik.com",
-      "media.geeksforgeeks.org"
-    ]
-  }
+      "media.geeksforgeeks.org",
+    ],
+  },
 };
 
 module.exports = nextConfig;
