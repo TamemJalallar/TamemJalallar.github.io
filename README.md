@@ -9,21 +9,23 @@ Parsippany, NJ
 
 ## About Me
 
-I’m a Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, automating workflows, and managing large-scale identity, endpoint, and infrastructure environments.
+Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, automating workflows, and managing large-scale identity, endpoint, and infrastructure environments.
 
-I specialize in modern endpoint management, identity & access control, and automation across Windows and macOS ecosystems, with a strong focus on reliability, security, compliance, and user experience. I’m known as a trusted escalation point, a mentor, and someone who turns complex problems into scalable, repeatable solutions.
+I specialize in modern endpoint management, identity & access control, and automation across Windows and macOS ecosystems. My work focuses on security, reliability, compliance, and user experience, and I’m frequently relied upon as a primary escalation point, mentor, and problem-solver for complex technical challenges.
+
+I enjoy turning fragmented processes into scalable, repeatable systems that reduce operational friction and improve outcomes for both users and IT teams.
 
 ---
 
 ## Core Skills & Focus Areas
 
-- Identity & Access Management (IAM) — Okta, Entra ID / Azure AD
-- Endpoint & Device Management — Intune, Kandji, Jamf, Apple Business Manager (ABM)
-- Automation & Scripting — PowerShell
-- Windows & macOS Enterprise Support
-- ServiceNow Administration & Escalation Management
-- AV Production for Executive & Corporate Events
-- Onboarding, Access Provisioning & Compliance Workflows
+- Identity & Access Management (IAM): Okta, Entra ID / Azure AD
+- Endpoint & Device Management: Intune, Kandji, Jamf, Apple Business Manager (ABM)
+- Automation & Scripting: PowerShell
+- Enterprise Support: Windows & macOS
+- ITSM & Operations: ServiceNow administration, escalations, resolver groups
+- AV & Executive Support: Corporate events, leadership sessions, VIP support
+- Onboarding & Compliance: Access provisioning, audits, workflow automation
 
 ---
 
@@ -34,11 +36,11 @@ I specialize in modern endpoint management, identity & access control, and autom
 
 *September 2018 – Present*
 
-- Serve as primary escalation lead for executive-level and enterprise IT issues
+- Serve as primary escalation lead for executive-level and enterprise IT incidents
 - Administer Okta, Entra ID / Azure AD, Intune, Kandji, Jamf, and ABM across large user populations
 - Design and own onboarding, access provisioning, and compliance workflows
-- Build PowerShell automation to reduce manual workload and improve operational consistency
-- Manage ServiceNow queues, resolver groups, and incident escalation paths 
+- Develop PowerShell automation to reduce manual effort and improve operational consistency
+- Manage ServiceNow queues, resolver groups, and escalation paths
 - Mentor junior engineers and help standardize troubleshooting and support practices
 
 ### **Ogilvy**
@@ -51,7 +53,7 @@ I specialize in modern endpoint management, identity & access control, and autom
 - Deliver end-to-end AV production for agency town halls, leadership sessions, and client-facing events
 - Support identity, device management, and access control within shared WPP infrastructure
 - Collaborate cross-functionally with WPP technology teams to ensure seamless service delivery
-- Contribute to documentation, process improvements, and knowledge sharing across teams
+- Contribute to documentation, process improvements, and cross-team collaboration
 
 
 ### **Apple Spice Junction**  
@@ -82,17 +84,52 @@ I specialize in modern endpoint management, identity & access control, and autom
 
 ---
 
-## Education & Certifications
+## **Education**
 
 **Dual Bachelor’s Degree – Economics & Marketing**  
 Seton Hall University
 
-**Certifications**
-- AWS (Cybersecurity, Developer)
-- Okta Administrator
-- Microsoft O365 Administrator
-- Bloomberg Terminal
+---
 
+## **Certifications**
+
+- **Amazon Web Services**
+  - Certified Cloud Practitioner
+  - SysOps Administrator - Associate
+
+- **Okta**
+  - Certified Administrator
+  - Certified Professional
+    
+- **Microsoft**
+  - O365 Fundamentals (MS-900)
+  - Azure Fundamentals (AZ-900)
+  
+- **Health**
+  - CPR
+  - AED
+  - First Aid
+
+ 
+## **Trainings**
+- **AWS Skill Builder**
+  - Cloud Foundations 
+  - Security Essentials 
+  - Identity & Access Management
+    
+- **Microsoft Learn**
+  - Identity & Access Management 
+  - Endpoint Security & Compliance
+    
+- **Apple**
+  - Device Support
+  - Deployment & Management
+  - Business/Enterprise Support
+
+- **ServiceNow**
+  - ITSM & Incident Management
+
+  
 ---
 
 ## Let’s Connect
