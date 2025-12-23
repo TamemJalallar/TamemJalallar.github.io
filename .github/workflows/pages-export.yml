@@ -38,16 +38,15 @@ jobs:
 
       - name: Verify export output exists
         run: |
-          echo "Listing repo root:"
-          ls -la
-          echo "Listing out/:"
-          ls -la out || true
-          if [ ! -d "out" ]; then
-            echo "❌ out/ directory not found after next export"
-            exit 1
-          fi
+          echo "HTML files in out/:"
+          find out -maxdepth 2 -type f -name "*.html" -print
+          echo "Root out/ listing:"
+          ls -la out
+          echo "Check for _next:"
+          test -d out/_next
+
           if [ ! -f "out/index.html" ]; then
-            echo "❌ out/index.html not found after next export"
+            echo "❌ out/index.html not found. Printing likely route output..."
             exit 1
           fi
 
