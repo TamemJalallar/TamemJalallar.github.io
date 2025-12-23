@@ -41,7 +41,7 @@ I specialize in modern endpoint management, identity & access control, and autom
 - Manage ServiceNow queues, resolver groups, and incident escalation paths 
 - Mentor junior engineers and help standardize troubleshooting and support practices
 
-## **Ogilvy**
+### **Ogilvy**
 **AV & VIP Support**
 
 *September 2018 – Present*
