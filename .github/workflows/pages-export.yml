@@ -1,0 +1,71 @@
+name: Pages Export (Next.js)
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npx --no-install next build
+
+      - name: Export static site
+        run: npx --no-install next export
+
+      - name: Verify export output exists
+        run: |
+          echo "Listing repo root:"
+          ls -la
+          echo "Listing out/:"
+          ls -la out || true
+          if [ ! -d "out" ]; then
+            echo "❌ out/ directory not found after next export"
+            exit 1
+          fi
+          if [ ! -f "out/index.html" ]; then
+            echo "❌ out/index.html not found after next export"
+            exit 1
+          fi
+
+      - name: Disable Jekyll
+        run: touch out/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
