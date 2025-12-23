@@ -1,4 +1,3 @@
-# Deploy a Next.js static export (out/) to GitHub Pages
 name: Deploy Next.js site to Pages
 
 on:
@@ -49,17 +48,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
-          # Works with Next.js static export as long as next.config.js includes output:"export"
           static_site_generator: next
-
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
@@ -67,15 +56,24 @@ jobs:
       - name: Build with Next.js (static export)
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
-      # ✅ Fail fast if out/ wasn't generated (prevents broken deployments)
+      # 🔍 Print what exists after build (this makes debugging obvious)
+      - name: Debug - list repo root after build
+        run: |
+          echo "Root directory:"
+          ls -la
+          echo "If out/ exists, list it:"
+          ls -la out || true
+
+      # ✅ Fail fast if Next didn't generate out/
       - name: Verify static export output exists
         run: |
           if [ ! -d "out" ]; then
-            echo "❌ Static export failed: out/ directory not found"
+            echo "❌ Static export failed: out/ directory not found."
+            echo "This means Next did not produce a static export."
             exit 1
           fi
           if [ ! -f "out/index.html" ]; then
-            echo "❌ Static export failed: out/index.html not found"
+            echo "❌ Static export failed: out/index.html not found."
             echo "Contents of out/:"
             ls -la out || true
             exit 1
