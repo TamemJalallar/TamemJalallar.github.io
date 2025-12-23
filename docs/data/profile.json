@@ -1,0 +1,65 @@
+{
+  "name": "Tamem \u201cTom\u201d Jalallar",
+  "title": "Senior IT Systems Administrator | Technical Lead | AV & VIP Support",
+  "location": "Parsippany, NJ",
+  "phone": "646-578-1418",
+  "email": "tjalallar@att.net",
+  "summary": "Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, driving automation, and leading high-impact infrastructure and AV initiatives. Proven mentor with a track record of streamlining operations and improving reliability, security, and user satisfaction.",
+  "skills": [
+    "Technical Leadership & Mentorship",
+    "Identity & Access Management (Okta, Entra, Azure AD)",
+    "Endpoint Management (Intune, Kandji, Jamf, ABM)",
+    "PowerShell Automation & Scripting",
+    "macOS & Windows Enterprise Support",
+    "AV Production (Town Halls, Events, Recording)",
+    "ServiceNow Administration & Escalation Management",
+    "Server Provisioning & Enterprise Integration"
+  ],
+  "experience": [
+    {
+      "company": "WPP / Ogilvy",
+      "role": "Senior IT Systems Administrator / AV & VIP Support",
+      "dates": "Sept 2018 \u2013 Present",
+      "bullets": [
+        "Executive-level and VIP support; serve as escalation point for high-priority incidents.",
+        "Lead AV production for town halls and leadership events (recording, audio/video, live operations).",
+        "Administer IAM and endpoint platforms: Okta, Entra/Azure AD, Intune, Kandji, Jamf, ABM.",
+        "Build and maintain PowerShell automation to reduce manual workload and improve consistency.",
+        "Provision and deploy Macs/PCs; manage onboarding, access, and compliance workflows.",
+        "Manage ServiceNow queues and resolver groups; drive ticket hygiene and operational follow-through."
+      ]
+    },
+    {
+      "company": "Apple Spice Junction",
+      "role": "Sales Manager",
+      "dates": "Sept 2017 \u2013 July 2018",
+      "bullets": [
+        "Grew eCommerce traffic and orders through marketing operations and weekly newsletters.",
+        "Maintained a customer database of 10,000+ entries and supported customer engagement."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Seton Hall University",
+      "degree": "Dual Bachelor\u2019s Degree \u2013 Economics & Marketing",
+      "dates": "May 2018"
+    }
+  ],
+  "certifications": [
+    "AWS Certifications (Cybersecurity, Developer)",
+    "Okta Administrator",
+    "Microsoft O365 Administrator",
+    "Bloomberg Terminal"
+  ],
+  "links": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/YOUR-LINKEDIN"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/YOUR-GITHUB"
+    }
+  ]
+}
