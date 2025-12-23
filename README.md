@@ -53,7 +53,6 @@ I specialize in modern endpoint management, identity & access control, and autom
 - Collaborate cross-functionally with WPP technology teams to ensure seamless service delivery
 - Contribute to documentation, process improvements, and knowledge sharing across teams
 
----
 
 ### **Apple Spice Junction**  
 **Sales Manager**  
@@ -103,5 +102,3 @@ Seton Hall University
 - Email: tjalallar@att.net  
 
 ---
-
-⭐ *This profile is actively maintained as I continue building automation tools, compliance solutions, and scalable IT systems.*
