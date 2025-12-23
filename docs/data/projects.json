@@ -1,0 +1,44 @@
+[
+  {
+    "name": "TimeCompliance macOS Kiosk App",
+    "tagline": "Full-screen compliance kiosk app concept for workforce time entry (Apple Silicon).",
+    "stack": [
+      "SwiftUI",
+      "macOS",
+      "MDM"
+    ],
+    "highlights": [
+      "Designed for full-screen kiosk workflow with guided actions and reminders.",
+      "Built for compliance-friendly logging and repeatable execution."
+    ],
+    "repo": "https://github.com/YOUR-GITHUB/timecompliance-kiosk"
+  },
+  {
+    "name": "AD / Finance User Cross-Check",
+    "tagline": "Automation concept to reconcile finance platform users against inactive AD accounts.",
+    "stack": [
+      "PowerShell",
+      "Active Directory",
+      "Excel"
+    ],
+    "highlights": [
+      "Compares multiple data sources and generates action-ready reporting.",
+      "Designed for auditability and simple re-runs."
+    ],
+    "repo": "https://github.com/YOUR-GITHUB/ad-finance-audit"
+  },
+  {
+    "name": "Fantasy Football Draft Overlay Toolkit",
+    "tagline": "OBS-friendly overlays driven by Sheets for draft analytics and hype visuals.",
+    "stack": [
+      "Python",
+      "Next.js",
+      "Google Sheets"
+    ],
+    "highlights": [
+      "Turns live spreadsheet data into stream-ready visuals.",
+      "Automates updates and formatting for draft day."
+    ],
+    "repo": "https://github.com/YOUR-GITHUB/ff-overlay-toolkit"
+  }
+]

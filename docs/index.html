@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Resume | Portfolio</title>
+  <meta name="description" content="Resume and project portfolio"/>
+  <link rel="stylesheet" href="./assets/style.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="h-left">
+        <h1 id="name">Your Name</h1>
+        <div class="title" id="title">Your Title</div>
+        <div class="small" id="meta">Location · Phone · Email</div>
+        <div class="pills" id="pills"></div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="mailto:YOUR_EMAIL">Email</a>
+        <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/YOUR-GITHUB" target="_blank" rel="noreferrer">GitHub</a>
+        <!-- Optional: put your resume pdf at docs/assets/resume.pdf -->
+        <!-- <a class="btn" href="./assets/resume.pdf" target="_blank" rel="noreferrer">Resume PDF</a> -->
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Summary</h2>
+        <p id="summary"></p>
+
+        <h2 style="margin-top:16px">Experience</h2>
+        <div id="experience"></div>
+      </div>
+
+      <div class="card">
+        <h2>Links</h2>
+        <div id="links" class="small"></div>
+
+        <h2 style="margin-top:16px">Education</h2>
+        <div id="education"></div>
+
+        <h2 style="margin-top:16px">Certifications</h2>
+        <div id="certs"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>Projects</h2>
+      <div id="projects" style="display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px"></div>
+      <div class="footer">Tip: edit <code>docs/data/profile.json</code> and <code>docs/data/projects.json</code> to update this site.</div>
+      <div id="error" class="footer" style="display:none">Could not load data files. If viewing locally, use a simple local server or open via GitHub Pages.</div>
+    </div>
+  </div>
+
+  <script src="./assets/script.js"></script>
+</body>
+</html>
+
