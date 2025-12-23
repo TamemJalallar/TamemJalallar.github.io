@@ -41,8 +41,8 @@ I specialize in modern endpoint management, identity & access control, and autom
 - Mentor junior engineers and help standardize troubleshooting and support practices
 
 ## **Ogilvy**
-AV & VIP Support
-September 2018 – Present
+**AV & VIP Support**
+*September 2018 – Present*
 
 - Provide dedicated IT and AV/VIP support for Ogilvy leadership and agency teams
 - Act as a primary escalation point for high-impact incidents and executive support needs
