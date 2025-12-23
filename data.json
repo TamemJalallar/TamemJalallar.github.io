@@ -25,17 +25,17 @@
   },
   "socials": [
     {
-      "name": "LinkedIn"
+      "name": "LinkedIn",
       "icon": "FaLinkedin",
       "link": "https://www.linkedin.com/in/TamemJalallar"
     },
     {
-      "name": "GitHub"
+      "name": "GitHub",
       "icon": "FaGithub",
       "link": "https://github.com/TamemJalallar"
     },
     {
-      "name": "E-Mail"
+      "name": "E-Mail",
       "icon": "FaEnvelope",
       "link": "mailto:tjalallar@att.net"
     }
