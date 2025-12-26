@@ -23,23 +23,12 @@
     "callUrl": "mailto:tjalallar@att.net",
     "resumeUrl": "/Tamem-Jalallar-Resume.pdf"
   },
-  "socials": [
-    {
-      "name": "LinkedIn",
-      "icon": "FaLinkedin",
-      "link": "https://www.linkedin.com/in/TamemJalallar"
-    },
-    {
-      "name": "GitHub",
-      "icon": "FaGithub",
-      "link": "https://github.com/TamemJalallar"
-    },
-    {
-      "name": "E-Mail",
-      "icon": "FaEnvelope",
-      "link": "mailto:tjalallar@att.net"
-    }
-  ],
+"socials": [
+  { "name": "LinkedIn", "icon": "FaLinkedin", "link": "https://www.linkedin.com/in/TamemJalallar" },
+  { "name": "GitHub", "icon": "FaGithub", "link": "https://github.com/TamemJalallar" },
+  { "name": "Email", "icon": "FaEnvelope", "link": "mailto:tjalallar@att.net" }
+],
+
   "skills": [
     {
       "name": "Okta",
