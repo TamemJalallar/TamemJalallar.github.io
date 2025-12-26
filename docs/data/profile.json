@@ -1,29 +1,150 @@
 {
-  "name": "Tamem \u201cTom\u201d Jalallar",
-  "title": "Senior IT Systems Administrator | Technical Lead | AV & VIP Support",
-  "location": "Parsippany, NJ",
-  "phone": "646-578-1418",
-  "email": "tjalallar@att.net",
-  "summary": "Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, driving automation, and leading high-impact infrastructure and AV initiatives. Proven mentor with a track record of streamlining operations and improving reliability, security, and user satisfaction.",
-  "skills": [
-    "Technical Leadership & Mentorship",
-    "Identity & Access Management (Okta, Entra, Azure AD)",
-    "Endpoint Management (Intune, Kandji, Jamf, ABM)",
-    "PowerShell Automation & Scripting",
-    "macOS & Windows Enterprise Support",
-    "AV Production (Town Halls, Events, Recording)",
-    "ServiceNow Administration & Escalation Management",
-    "Server Provisioning & Enterprise Integration"
+  "main": {
+    "name": "Tamem (Tom) Jalallar",
+    "shortDesc": "Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, driving automation, and improving reliability across Windows/macOS environments. Strong focus on identity, endpoint management, and operational tooling.",
+    "titles": [
+      "Identity & Access Management (Okta / Entra ID)",
+      "Endpoint Management (Intune / Kandji / Jamf / ABM)",
+      "Automation & Operational Tooling (PowerShell)"
+    ],
+    "heroImage": "Public/tom.png",
+    "techStackImages": [
+      "https://img.icons8.com/color/144/000000/microsoft.png",
+      "https://img.icons8.com/color/144/000000/mac-os.png",
+      "https://img.icons8.com/color/144/000000/windows-10.png",
+      "https://img.icons8.com/color/144/000000/powershell.png"
+    ]
+  },
+  "about": {
+    "aboutImage": "Public/tom.png",
+    "aboutImageCaption": "< I build reliable systems ⚙️/>",
+    "title": "Senior IT Systems Administrator / Technical Lead",
+    "about": "Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, driving automation, and leading high-impact infrastructure and AV initiatives. Proven mentor with a track record of streamlining operations and improving reliability, security, and user satisfaction. Due to confidentiality, detailed case studies are available upon request.",
+    "callUrl": "mailto:tjalallar@att.net",
+    "resumeUrl": "/Tamem-Jalallar-Resume.pdf"
+  },
+  "socials": [
+    {
+      "name": "LinkedIn",
+      "icon": "FaLinkedin",
+      "link": "https://www.linkedin.com/in/TamemJalallar"
+    },
+    {
+      "name": "GitHub",
+      "icon": "FaGithub",
+      "link": "https://github.com/TamemJalallar"
+    },
+    {
+      "name": "Email",
+      "icon": "FaEnvelope",
+      "link": "mailto:tjalallar@att.net"
+    }
   ],
-  "experience": [
+  "skills": [
+    {
+      "name": "Technical Leadership & Mentorship",
+      "image": "https://img.icons8.com/color/144/000000/leadership.png",
+      "category": "Leadership"
+    },
+    {
+      "name": "Okta",
+      "image": "https://img.icons8.com/color/144/000000/okta.png",
+      "category": "Identity"
+    },
+    {
+      "name": "Microsoft Entra ID (Azure AD)",
+      "image": "https://img.icons8.com/color/144/000000/azure-1.png",
+      "category": "Identity"
+    },
+    {
+      "name": "Microsoft Intune",
+      "image": "https://img.icons8.com/color/144/000000/microsoft-intune.png",
+      "category": "Endpoint"
+    },
+    {
+      "name": "Kandji",
+      "image": "https://img.icons8.com/color/144/000000/mac-os.png",
+      "category": "Endpoint"
+    },
+    {
+      "name": "Jamf",
+      "image": "https://img.icons8.com/color/144/000000/mac-os.png",
+      "category": "Endpoint"
+    },
+    {
+      "name": "Apple Business Manager (ABM)",
+      "image": "https://img.icons8.com/color/144/000000/apple-logo.png",
+      "category": "Endpoint"
+    },
+    {
+      "name": "PowerShell Automation & Scripting",
+      "image": "https://img.icons8.com/color/144/000000/powershell.png",
+      "category": "Automation"
+    },
+    {
+      "name": "ServiceNow (ITSM / Incident Management)",
+      "image": "https://img.icons8.com/color/144/000000/service-now.png",
+      "category": "Operations"
+    },
+    {
+      "name": "AV Production (Town Halls / Events / Recording)",
+      "image": "https://img.icons8.com/color/144/000000/video-camera.png",
+      "category": "AV / Events"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Compliance Kiosk App (macOS)",
+      "techstack": "macOS, SwiftUI, Workflow Automation",
+      "category": "Endpoint / Compliance",
+      "image": "",
+      "links": {
+        "code": "",
+        "video": "",
+        "visit": ""
+      }
+    },
+    {
+      "name": "Access & User Audit Automation",
+      "techstack": "PowerShell, Active Directory, Reporting",
+      "category": "IAM / Auditing",
+      "image": "",
+      "links": {
+        "code": "",
+        "video": "",
+        "visit": ""
+      }
+    },
+    {
+      "name": "Fantasy Football Draft Analytics Toolkit (Personal)",
+      "techstack": "Data Processing, Visualization, Automation",
+      "category": "Analytics",
+      "image": "",
+      "links": {
+        "code": "",
+        "video": "",
+        "visit": ""
+      }
+    }
+  ],
+  "educations": [
+    {
+      "institute": "Seton Hall University",
+      "degree": "Dual Bachelor’s Degree — Economics & Marketing",
+      "duration": "May 2018",
+      "desc": []
+    }
+  ],
+  "experiences": [
     {
       "company": "WPP / Ogilvy",
-      "role": "Senior IT Systems Administrator / AV & VIP Support",
-      "dates": "Sept 2018 \u2013 Present",
-      "bullets": [
+      "position": "Senior IT Systems Administrator / AV & VIP Support",
+      "startDate": "Sep 2018",
+      "endDate": "Present",
+      "desc": [
         "Executive-level and VIP support; serve as escalation point for high-priority incidents.",
         "Lead AV production for town halls and leadership events (recording, audio/video, live operations).",
-        "Administer IAM and endpoint platforms: Okta, Entra/Azure AD, Intune, Kandji, Jamf, ABM.",
+        "Administer IAM and endpoint platforms across enterprise environments: Okta, Entra/Azure AD, Intune, Kandji, Jamf, ABM.",
         "Build and maintain PowerShell automation to reduce manual workload and improve consistency.",
         "Provision and deploy Macs/PCs; manage onboarding, access, and compliance workflows.",
         "Manage ServiceNow queues and resolver groups; drive ticket hygiene and operational follow-through."
@@ -31,35 +152,13 @@
     },
     {
       "company": "Apple Spice Junction",
-      "role": "Sales Manager",
-      "dates": "Sept 2017 \u2013 July 2018",
-      "bullets": [
+      "position": "Sales Manager",
+      "startDate": "Sep 2017",
+      "endDate": "Jul 2018",
+      "desc": [
         "Grew eCommerce traffic and orders through marketing operations and weekly newsletters.",
         "Maintained a customer database of 10,000+ entries and supported customer engagement."
       ]
-    }
-  ],
-  "education": [
-    {
-      "school": "Seton Hall University",
-      "degree": "Dual Bachelor\u2019s Degree \u2013 Economics & Marketing",
-      "dates": "May 2018"
-    }
-  ],
-  "certifications": [
-    "AWS Certifications (Cybersecurity, Developer)",
-    "Okta Administrator",
-    "Microsoft O365 Administrator",
-    "Bloomberg Terminal"
-  ],
-  "links": [
-    {
-      "label": "LinkedIn",
-      "url": "https://www.linkedin.com/in/YOUR-LINKEDIN"
-    },
-    {
-      "label": "GitHub",
-      "url": "https://github.com/YOUR-GITHUB"
     }
   ]
 }

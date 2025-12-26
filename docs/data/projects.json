@@ -11,7 +11,7 @@
       "Designed for full-screen kiosk workflow with guided actions and reminders.",
       "Built for compliance-friendly logging and repeatable execution."
     ],
-    "repo": "https://github.com/YOUR-GITHUB/timecompliance-kiosk"
+    "repo": ""
   },
   {
     "name": "AD / Finance User Cross-Check",
@@ -25,7 +25,7 @@
       "Compares multiple data sources and generates action-ready reporting.",
       "Designed for auditability and simple re-runs."
     ],
-    "repo": "https://github.com/YOUR-GITHUB/ad-finance-audit"
+    "repo": ""
   },
   {
     "name": "Fantasy Football Draft Overlay Toolkit",
@@ -39,6 +39,6 @@
       "Turns live spreadsheet data into stream-ready visuals.",
       "Automates updates and formatting for draft day."
     ],
-    "repo": "https://github.com/YOUR-GITHUB/ff-overlay-toolkit"
+    "repo": ""
   }
 ]
