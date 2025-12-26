@@ -16,10 +16,10 @@
     ]
   },
   "about": {
-    "aboutImage": "/headshot.png",
+    "aboutImage": "/tom.png",
     "aboutImageCaption": "Motivated IT Person",
     "title": "Senior IT Systems Administrator / Technical Lead",
-    "about": "I’m a Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, improving reliability, and building repeatable systems. I specialize in identity & access management, modern endpoint management, and automation across Windows and macOS. I care about secure-by-default solutions, clean user experiences, and operational consistency. Detailed case studies are available upon request due to confidentiality.",
+    "about": "I'm a Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, improving reliability, and building repeatable systems. I specialize in identity & access management, modern endpoint management, and automation across Windows and macOS. I care about secure-by-default solutions, clean user experiences, and operational consistency. Detailed case studies are available upon request due to confidentiality.",
     "callUrl": "mailto:tjalallar@att.net",
     "resumeUrl": "/Tamem-Jalallar-Resume.pdf"
   },
@@ -120,7 +120,7 @@
   "educations": [
     {
       "institute": "Seton Hall University",
-      "degree": "Dual Bachelor’s Degree — Economics & Marketing",
+      "degree": "Dual Bachelor's Degree — Economics & Marketing",
       "startDate": "Aug 2015",
       "endDate": "May 2018"
     }
