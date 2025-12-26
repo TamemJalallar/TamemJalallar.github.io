@@ -22,9 +22,10 @@ const Hero = ({ mainData }: HeroProps) => {
         theme === "dark" ? "bg-grey-900" : "bg-white"
       }`}
     >
-      {/* Subtle background glow + optional pattern */}
+      {/* Background: subtle + contained (won’t “take over” the whole site) */}
       <div className="absolute inset-0 -z-10 bg-glow" />
-      <div className="absolute inset-0 -z-10 opacity-20 dark:opacity-15 bg-heropattern bg-cover bg-center" />
+      {/* Make pattern way more subtle (or delete this div if you want it gone) */}
+      <div className="absolute inset-0 -z-10 opacity-[0.06] dark:opacity-[0.05] bg-heropattern bg-cover bg-center" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-transparent to-white dark:to-grey-900" />
 
       <div className="container min-h-[92vh] py-14 sm:py-20 flex items-center">
@@ -102,7 +103,6 @@ const Hero = ({ mainData }: HeroProps) => {
                 <IoIosArrowForward />
               </ScrollLink>
 
-              {/* If you have resumeUrl in data.json use that instead */}
               <a
                 href="/Tamem-Jalallar-Resume.pdf"
                 className="w-fit text-sm md:text-base py-3 px-5 inline-flex items-center gap-2 rounded-2xl bg-white/70 dark:bg-white/5 shadow-soft dark:shadow-ring"
@@ -166,20 +166,28 @@ const Hero = ({ mainData }: HeroProps) => {
                 ))}
               </div>
 
-              {/* Tech stack mini row (keeps your icons but modern) */}
+              {/* ✅ Tech stack row (RESIZED + cleaner) */}
               <div className="mt-6 flex flex-wrap gap-3">
                 {techStackImages?.slice(0, 4).map((src, idx) => (
                   <span
                     key={`${src}-${idx}`}
-                    className="inline-flex items-center justify-center rounded-2xl bg-white/70 dark:bg-white/5 shadow-soft dark:shadow-ring h-12 w-12"
+                    className="
+                      inline-flex items-center justify-center
+                      rounded-2xl
+                      bg-white/80 dark:bg-white/5
+                      shadow-sm hover:shadow-md
+                      transition
+                      h-10 w-10 md:h-11 md:w-11 lg:h-12 lg:w-12
+                      hover:scale-[1.03]
+                    "
                     title="Tech"
                   >
                     <Image
                       alt="tech"
                       src={src}
-                      width={28}
-                      height={28}
-                      className="h-7 w-7"
+                      width={22}
+                      height={22}
+                      className="w-5 h-5 md:w-[22px] md:h-[22px] lg:w-6 lg:h-6 object-contain"
                       unoptimized
                     />
                   </span>
