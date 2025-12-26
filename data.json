@@ -7,7 +7,7 @@
       "Endpoint Management (Intune / Kandji / Jamf / ABM)",
       "Automation & Operational Tooling (PowerShell)"
     ],
-    "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
+    "heroImage": "/tom.png",
     "techStackImages": [
       "https://img.icons8.com/color/144/000000/microsoft.png",
       "https://img.icons8.com/color/144/000000/mac-os.png",
@@ -16,8 +16,8 @@
     ]
   },
   "about": {
-    "aboutImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
-    "aboutImageCaption": "< I build reliable systems ⚙️/>",
+    "aboutImage": "/headshot.png",
+    "aboutImageCaption": "Motivated IT Person",
     "title": "Senior IT Systems Administrator / Technical Lead",
     "about": "I’m a Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, improving reliability, and building repeatable systems. I specialize in identity & access management, modern endpoint management, and automation across Windows and macOS. I care about secure-by-default solutions, clean user experiences, and operational consistency. Detailed case studies are available upon request due to confidentiality.",
     "callUrl": "mailto:tjalallar@att.net",
