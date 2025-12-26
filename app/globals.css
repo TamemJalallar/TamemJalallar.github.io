@@ -34,3 +34,22 @@ html {
 .scroll-hide::-webkit-scrollbar {
   display: none;
 }
+html { scroll-behavior: smooth; }
+
+::selection {
+  background: rgba(254, 222, 0, 0.35);
+}
+
+body {
+  text-rendering: geometricPrecision;
+}
+
+/* Smooth card edges + nicer text */
+.card-surface {
+  border-radius: 1.25rem;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.dark .card-surface {
+  border-color: rgba(255,255,255,0.08);
+}
