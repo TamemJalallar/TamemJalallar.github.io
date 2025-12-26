@@ -30,8 +30,20 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Build (static export -> out/)
+      - name: Build
         run: npm run build
+
+      - name: Export static site (creates out/)
+        run: npx --no-install next export
+        
+      - name: Debug out folder
+        run: |
+              echo "Repo root:"
+              ls -la
+              echo "Out folder:"
+              ls -la out || true
+              find out -maxdepth 2 -type f -name "index.html" -o -name "404.html" || true
+
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
