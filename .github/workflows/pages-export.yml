@@ -32,6 +32,17 @@ jobs:
 
       - name: Build
         run: npx --no-install next build
+        
+      - name: Debug - show pages folder
+        run: |
+          echo "Repo root:"
+          ls -la
+          echo "Pages dir:"
+          ls -la pages || true
+          echo "Src pages dir:"
+          ls -la src/pages || true
+          echo "Find index files:"
+          find . -maxdepth 4 -type f \( -name "index.tsx" -o -name "index.jsx" -o -name "index.js" -o -name "index.ts" \) -print
 
       - name: Export static site
         run: npx --no-install next export
