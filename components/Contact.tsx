@@ -1,81 +1,79 @@
-import axios from "axios";
-import { useState } from "react";
-import { BiLoaderAlt } from "react-icons/bi";
-import SectionWrapper from "./SectionWrapper"
-import Image from "next/image";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+"use client";
 
-const Contact = () => {
+import SectionWrapper from "./SectionWrapper";
 
-    const [values, setValues] = useState({
-        name: "",
-        email: "",
-        message: "",
-    });
-    const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
+export default function Contact() {
+  const bookingsUrl =
+    "https://outlook.office.com/book/ScheduleTimewithTom@omgww.onmicrosoft.com/";
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+  return (
+    <SectionWrapper id="contact" className="py-10 md:py-16">
+      <div className="mx-4 md:mx-6 lg:mx-auto lg:w-5/6 2xl:w-3/4">
+        <h2 className="text-2xl md:text-3xl font-semibold text-center">
+          Contact
+        </h2>
+        <p className="mt-3 text-center text-black/70 dark:text-white/70">
+          The fastest way to reach me is to book time directly on my calendar.
+        </p>
 
-        if (!values.name.trim() || !values.email.trim() || !values.message.trim()) {
-            toast.warning("Empty Fields!")
-            return false;
-        }
+        <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:items-stretch">
+          {/* Left: Booking card */}
+          <div className="rounded-3xl bg-white/70 dark:bg-white/5 p-6 md:p-8 shadow-lift border border-black/10 dark:border-white/10">
+            <h3 className="text-lg md:text-xl font-semibold">
+              Schedule time with me
+            </h3>
+            <p className="mt-2 text-sm md:text-base text-black/70 dark:text-white/70">
+              Choose a time that works for you and get an instant confirmation.
+            </p>
 
-        setLoading(true);
-        axios.post("/api/mail", {
-            name: values.name,
-            email: values.email,
-            message: values.message,
-        }).then((res) => {
-            if (res.status === 200) {
-                setValues({ name: "", email: "", message: "" });
-                setLoading(false);
-                setSuccess(true);
-                toast.success(res.data.message)
-            } else {
-                setLoading(false);
-                toast.error(res.data.message)
-            }
-        }).catch((err) => {
-            setLoading(false);
-            toast.error(err.message)
-        });
-    };
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={bookingsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm md:text-base bg-violet-600 hover:bg-violet-700 text-white transition shadow-soft"
+              >
+                Book a meeting
+              </a>
 
-    const handleChange = (e: | React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-        setValues((prevInput) => ({
-            ...prevInput,
-            [e.target.name]: e.target.value,
-        }));
-    };
-
-    return (
-        <SectionWrapper id="contact" className="mb-16 mx-4 lg:mx-0">
-            <h2 className="text-center text-4xl">Contact Me</h2>
-            <ToastContainer />
-
-            <div className="w-full lg:w-5/6 2xl:w-3/4 mt-10 md:mt-16 mx-auto flex justify-between rounded-xl">
-                {/* blurDataURL="https://i.imgur.com/owZdhjA.png" */}
-                <Image unoptimized={true} quality={100} alt="contact" src="/contact.png" className="hidden md:block w-1/2 h-full object-cover" width={1000} height={1000} />
-                <div className="flex-1">
-                    <h3 className="text-2xl">Get in touch</h3>
-                    <p className="text-gray-400 mb-4 text-sm md:text-base">My inbox is always open! 💌 Whether you&apos;ve got a burning question or want to drop a friendly &quot;hello&quot;, I&apos;m all ears!👂 Let&apos;s chat! 🎉</p>
-
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-xl">
-                        <input onChange={handleChange} required value={values.name} name="name" type="text" placeholder='Full Name *' className="outline-none bg-gray-100 dark:bg-grey-800 placeholder-gray-400 rounded-lg py-3 px-4" />
-                        <input onChange={handleChange} required value={values.email} name="email" type="email" placeholder='Email *' className="outline-none bg-gray-100 dark:bg-grey-800 placeholder-gray-400 rounded-lg py-3 px-4" />
-                        <textarea onChange={handleChange} required value={values.message} name="message" rows={4} placeholder='Message *' className="outline-none resize-none bg-gray-100 dark:bg-grey-800 placeholder-gray-400 rounded-lg py-3 px-4" />
-                        <button disabled={loading} className="px-4 py-2 bg-violet-600 hover:bg-violet-700 transition-colors text-white rounded-lg disabled:cursor-not-allowed self-end">
-                            {loading ? <span className="flex items-center gap-2">Say Hello <BiLoaderAlt className="animate-spin" /></span> : "Say Hello 👋"}
-                        </button>
-                    </form>
-                </div>
+              <a
+                href="mailto:tjalallar@att.net"
+                className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm md:text-base bg-white/70 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-white/90 dark:hover:bg-white/10 transition"
+              >
+                Email instead
+              </a>
             </div>
-        </SectionWrapper >
-    )
-}
 
-export default Contact
+            <div className="mt-6 text-sm text-black/60 dark:text-white/60">
+              <div className="flex flex-col gap-1">
+                <span>
+                  <span className="font-medium">Email:</span> tjalallar@att.net
+                </span>
+                <span>
+                  <span className="font-medium">Location:</span> Parsippany, NJ
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Quick note / expectations */}
+          <div className="rounded-3xl bg-white/70 dark:bg-white/5 p-6 md:p-8 shadow-lift border border-black/10 dark:border-white/10">
+            <h3 className="text-lg md:text-xl font-semibold">What to expect</h3>
+            <ul className="mt-3 space-y-2 text-sm md:text-base text-black/70 dark:text-white/70 list-disc pl-5">
+              <li>15-30 minute intro call (or longer if needed)</li>
+              <li>IT Systems / Endpoint / IAM / Automation focus</li>
+              <li>Happy to discuss enterprise roles and contract work</li>
+            </ul>
+
+            <div className="mt-6 rounded-2xl bg-black/5 dark:bg-white/5 p-4">
+              <p className="text-sm text-black/70 dark:text-white/70">
+                Prefer async? Email me a quick summary of what you’re looking for
+                and I'll respond ASAP.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </SectionWrapper>
+  );
+}
