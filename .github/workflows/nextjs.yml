@@ -30,20 +30,14 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Build (creates out/)
+      - name: Build
         run: npm run build
 
-      - name: Add .nojekyll
-        run: |
-          test -d out || (echo "❌ out/ not found" && ls -la && exit 1)
-          touch out/.nojekyll
+      - name: Export (creates out/)
+        run: npm run export
 
-      - name: Debug out/
-        run: |
-          echo "out/ contents:"
-          ls -la out
-          echo "out/ html files:"
-          find out -maxdepth 2 -name "index.html" -o -name "*.html"
+      - name: Add .nojekyll
+        run: touch out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
