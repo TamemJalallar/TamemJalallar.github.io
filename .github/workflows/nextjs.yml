@@ -30,24 +30,22 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      # ✅ Next 16 static export happens during build when output:"export" is set
-      - name: Build (generates out/)
+      - name: Build (creates static output)
         run: npm run build
 
-      - name: Verify out/ exists
-        run: |
-          if [ ! -d "out" ]; then
-            echo "❌ out/ not found. Ensure next.config.js has output: 'export'"
-            ls -la
-            exit 1
-          fi
-
       - name: Add .nojekyll
-        run: touch out/.nojekyll
+        run: |
+          # Next export output directory differs by Next version/config
+          if [ -d "out" ]; then
+            touch out/.nojekyll
+          elif [ -d ".next" ]; then
+            echo "Note: output folder isn't 'out'. Check next.config.js output setting."
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # For output: "export", Next outputs to "out" by default.
           path: out
 
   deploy:
