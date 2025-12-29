@@ -1,58 +1,75 @@
-import { education, experience } from "@/types/main"
-import { useState } from "react"
-import { ViewAll } from "../projects/Projects"
-import SectionWrapper from "../SectionWrapper"
-import ExperienceCard from "./ExperienceCard"
+"use client";
 
-interface Props {
-    experienceData: experience[]
-    educationData: education[]
+import { useState } from "react";
+import type { education, experience } from "@/types/main";
+import SectionWrapper from "../SectionWrapper";
+import ExperienceCard from "./ExperienceCard";
+
+interface ExperiencesProps {
+  experienceData: experience[];
+  educationData: education[];
 }
 
-const Experiences = ({ experienceData, educationData }: Props) => {
+const Experiences = ({ experienceData, educationData }: ExperiencesProps) => {
+  const [viewAll, setViewAll] = useState(false);
 
-    const [show, setShow] = useState("Experience")
-    const [viewAll, setViewAll] = useState(false)
+  const visibleExperiences = viewAll ? experienceData : experienceData.slice(0, 4);
+  const visibleEducation = viewAll ? educationData : educationData.slice(0, 2);
 
-    const [experiences, setExperiences] = useState([...experienceData].reverse() as experience[])
-    const [educations, setEducations] = useState([...educationData].reverse() as education[])
+  return (
+    <SectionWrapper id="experience" className="scroll-mt-24">
+      <div className="mx-4 md:mx-6 lg:mx-auto lg:w-5/6 2xl:w-3/4 py-10 md:py-16">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-2xl md:text-3xl font-semibold">Experience</h2>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300">
+            Roles, impact, and education highlights.
+          </p>
+        </div>
 
-    return (
-        <SectionWrapper id="experience" className="min-h-screen">
-            <h2 className="text-4xl text-center">Experience</h2>
+        <div className="mt-8">
+          <div className="flex flex-col">
+            {visibleExperiences.map((e, i) => (
+              <ExperienceCard
+                key={`${e.company}-${e.position}-${i}`}
+                index={i}
+                company={e.company}
+                position={e.position}
+                desc={e.desc}
+                institute={""}
+                degree={""}
+                duration={`${e.startDate} - ${e.endDate}`}
+              />
+            ))}
 
-            <div className="w-fit mx-auto mt-6 p-2 bg-white dark:bg-grey-800 rounded-md flex gap-2 items-center">
-                {['Experience', 'Education'].map((e, i) => (
-                    <button key={i} onClick={() => setShow(e)} className={`py-2 px-4 rounded-md transition-colors ${show === e ? 'bg-violet-600 text-white' : 'hover:bg-gray-100 hover:dark:bg-grey-900 text-black dark:text-white'}`}>{e}</button>
-                ))
-                }
+            {visibleEducation.map((ed, i) => (
+              <ExperienceCard
+                key={`${ed.institute}-${ed.degree}-${i}`}
+                index={visibleExperiences.length + i}
+                company={""}
+                position={""}
+                desc={[]}
+                institute={ed.institute}
+                degree={ed.degree}
+                duration={""} // <-- education type has no duration
+              />
+            ))}
+          </div>
+
+          {(experienceData.length > 4 || educationData.length > 2) && (
+            <div className="mt-8 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setViewAll((v) => !v)}
+                className="px-5 py-3 rounded-xl bg-white dark:bg-grey-800 shadow-soft dark:shadow-ring text-sm font-medium hover:opacity-90 transition"
+              >
+                {viewAll ? "Show less" : "View all"}
+              </button>
             </div>
+          )}
+        </div>
+      </div>
+    </SectionWrapper>
+  );
+};
 
-            <div className="lg:container sm:mx-4 lg:mx-auto lg:w-5/6 2xl:w-3/4">
-                <div className="relative wrap overflow-hidden p-4 md:py-10 md:px-0">
-                    <div className="left-6 md:left-1/2 absolute border-opacity-20 border-gray-400 dark:border-grey-800 h-full border"></div>
-
-                    {viewAll ?
-                        (show === "Experience" ? experiences : educations).map((e, i) => (
-                            // @ts-ignore
-                            <ExperienceCard key={i} {...e} index={i} />
-                        ))
-                        :
-                        (show === "Experience" ? experiences : educations).slice(0, 2).map((e, i) => (
-                            // @ts-ignore
-                            <ExperienceCard key={i} {...e} index={i} />
-                        ))
-                    }
-
-                </div>
-            </div>
-
-            {(show === "Experience" ? experiences : educations).length > 2 &&
-                <ViewAll scrollTo='experience' title={viewAll ? 'Okay, I got it' : 'View All'} handleClick={() => setViewAll(!viewAll)} />
-            }
-
-        </SectionWrapper>
-    )
-}
-
-export default Experiences
+export default Experiences;

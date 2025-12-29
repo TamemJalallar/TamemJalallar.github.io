@@ -4,7 +4,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 import SectionWrapper from "./SectionWrapper"
 import Image from "next/image";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
 
