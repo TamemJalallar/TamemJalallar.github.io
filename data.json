@@ -1,25 +1,29 @@
 {
   "main": {
     "name": "Tamem (Tom) Jalallar",
-    "shortDesc": "Senior IT Systems Administrator & Technical Lead focused on identity, endpoint management, and automation across Windows and macOS in enterprise environments.",
+    "shortDesc": "IT Systems Administrator & Technical Lead focused on identity, endpoint management, and automation across Windows and macOS in enterprise environments.",
     "titles": [
       "Identity & Access Management (Okta / Entra ID)",
       "Endpoint Management (Intune / Kandji / Jamf / ABM)",
       "Automation & Operational Tooling (PowerShell)"
     ],
-    "heroImage": "/tom.png",
+    "heroImage": "/Hero.png",
     "techStackImages": [
       "https://img.icons8.com/color/144/000000/microsoft.png",
       "https://img.icons8.com/color/144/000000/mac-os.png",
-      "https://img.icons8.com/color/144/000000/windows-10.png",
-      "https://img.icons8.com/color/144/000000/powershell.png"
+      "https://img.icons8.com/color/144/000000/powershell.png",
+      "https://img.icons8.com/color/144/000000/service-now.png",
+      "AD.png",
+      "/kandji.png",
+      "/jamf.jpg",
+      "/abm2.png"
     ]
   },
   "about": {
     "aboutImage": "/tom.png",
     "aboutImageCaption": "Motivated IT Person",
-    "title": "Senior IT Systems Administrator / Technical Lead",
-    "about": "I'm a Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, improving reliability, and building repeatable systems. I specialize in identity & access management, modern endpoint management, and automation across Windows and macOS. I care about secure-by-default solutions, clean user experiences, and operational consistency. Detailed case studies are available upon request due to confidentiality.",
+    "title": "IT Systems Administrator / Technical Lead",
+    "about": "I'm a IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, improving reliability, and building repeatable systems. I specialize in identity & access management, modern endpoint management, and automation across Windows and macOS. I care about secure-by-default solutions, clean user experiences, and operational consistency. Detailed case studies are available upon request due to confidentiality.",
     "callUrl": "mailto:tjalallar@att.net",
     "resumeUrl": "/Resume.pdf"
   },
@@ -117,7 +121,7 @@
   "experiences": [
     {
       "company": "WPP",
-      "position": "Senior IT Systems Administrator",
+      "position": "IT Systems Administrator",
       "startDate": "Sep 2018",
       "endDate": "Present",
       "desc": [
