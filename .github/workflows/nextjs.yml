@@ -30,27 +30,20 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Build (output: export generates out/)
+      # ✅ Next 16 static export happens during build when output:"export" is set
+      - name: Build (generates out/)
         run: npm run build
 
       - name: Verify out/ exists
         run: |
           if [ ! -d "out" ]; then
             echo "❌ out/ not found. Ensure next.config.js has output: 'export'"
-            echo "Repo root:"
             ls -la
             exit 1
           fi
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
-
-      - name: Debug out/
-        run: |
-          echo "Out folder:"
-          ls -la out
-          echo "HTML files:"
-          find out -maxdepth 3 -type f \( -name "index.html" -o -name "404.html" \) -print
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
