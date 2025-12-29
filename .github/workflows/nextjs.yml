@@ -33,19 +33,19 @@ jobs:
       - name: Build (output: export generates out/)
         run: npm run build
 
-      - name: Debug
+      - name: Debug out/
         run: |
           echo "Repo root:"
           ls -la
-          echo "out folder:"
+          echo "Out folder:"
           ls -la out || true
-          echo "Find HTML:"
+          echo "HTML files:"
           find out -maxdepth 2 -type f -name "index.html" -o -name "404.html" || true
 
       - name: Ensure out exists
         run: |
           if [ ! -d "out" ]; then
-            echo "❌ out/ not found. output: export did not generate static site."
+            echo "❌ out/ not found. Make sure next.config.js has: output: 'export'"
             exit 1
           fi
 
