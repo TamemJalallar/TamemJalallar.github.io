@@ -86,7 +86,9 @@ I enjoy turning fragmented processes into scalable, repeatable systems that redu
 
 ## **Education**
 
-**Dual Bachelor’s Degree – Economics & Marketing**  
+**Dual Bachelor’s Degree** 
+**Economics (College of Arts & Sciences)**
+**Marketing (Stillman School of Business)**  
 Seton Hall University
 
 ---
