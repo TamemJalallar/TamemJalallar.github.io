@@ -30,11 +30,24 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Build
+      - name: Build (output: export generates out/)
         run: npm run build
 
-      - name: Export (creates out/)
-        run: npm run export
+      - name: Debug
+        run: |
+          echo "Repo root:"
+          ls -la
+          echo "out folder:"
+          ls -la out || true
+          echo "Find HTML:"
+          find out -maxdepth 2 -type f -name "index.html" -o -name "404.html" || true
+
+      - name: Ensure out exists
+        run: |
+          if [ ! -d "out" ]; then
+            echo "❌ out/ not found. output: export did not generate static site."
+            exit 1
+          fi
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
