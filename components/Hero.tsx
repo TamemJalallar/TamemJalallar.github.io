@@ -105,7 +105,7 @@ const Hero = ({ mainData }: HeroProps) => {
               </ScrollLink>
 
               <a
-                href="/Public/Resume.pdf"
+                href="/Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-fit text-sm md:text-base py-3 px-5 inline-flex items-center gap-2 rounded-2xl bg-white/70 dark:bg-white/5 shadow-soft"
