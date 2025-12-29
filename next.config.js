@@ -1,26 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // GitHub Pages static export
   output: "export",
   trailingSlash: true,
 
   images: {
     unoptimized: true,
-    domains: [
-      "res.cloudinary.com",
-      "firebasestorage.googleapis.com",
-      "img.icons8.com",
-      "raw.githubusercontent.com",
-      "i.imgur.com",
-      "img.freepik.com",
-      "media.geeksforgeeks.org",
-      "images.unsplash.com",
+    remotePatterns: [
+      { protocol: "https", hostname: "res.cloudinary.com" },
+      { protocol: "https", hostname: "firebasestorage.googleapis.com" },
+      { protocol: "https", hostname: "img.icons8.com" },
+      { protocol: "https", hostname: "raw.githubusercontent.com" },
+      { protocol: "https", hostname: "i.imgur.com" },
+      { protocol: "https", hostname: "img.freepik.com" },
+      { protocol: "https", hostname: "media.geeksforgeeks.org" },
+      { protocol: "https", hostname: "images.unsplash.com" },
     ],
-  },
-
-  // Only needed if your Next version complains about app/ being experimental
-  experimental: {
-    appDir: true,
   },
 };
 
