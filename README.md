@@ -86,10 +86,17 @@ I enjoy turning fragmented processes into scalable, repeatable systems that redu
 
 ## **Education**
 
-**Dual Bachelor’s Degree** 
-**Economics (College of Arts & Sciences)**
-**Marketing (Stillman School of Business)**  
-Seton Hall University
+**Bachelor’s Degree** 
+
+**Seton Hall University**
+ Graduated: May 2018 - GPA: 3.1
+
+
+  **Economics** (College of Arts & Sciences)
+
+  **Marketing** (Stillman School of Business)
+
+
 
 ---
 
