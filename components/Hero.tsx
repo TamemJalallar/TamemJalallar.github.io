@@ -151,6 +151,8 @@ const Hero = ({ mainData }: HeroProps) => {
                   { k: "Focus", v: "Identity, endpoint, automation" },
                   { k: "Platforms", v: "Okta, Entra ID, Intune, Kandji, Jamf" },
                   { k: "Style", v: "Secure-by-default & scalable workflows" },
+                  { k: "Impact", v: "Automated onboarding + compliance; reduced manual effort" },
+                  { k: "Strengths", v: "VIP support, incident leadership, AV production" },
                 ].map((row) => (
                   <div
                     key={row.k}
@@ -166,20 +168,26 @@ const Hero = ({ mainData }: HeroProps) => {
                 ))}
               </div>
 
-              {/* Tech icons sized properly */}
+              {/* Tech icons sized properly (with fallback if a URL breaks) */}
               <div className="mt-6 flex flex-wrap gap-3">
-                {techStackImages?.slice(0, 4).map((src, idx) => (
+                {techStackImages?.slice(0, 8).map((src, idx) => (
                   <span
                     key={`${src}-${idx}`}
                     className="inline-flex items-center justify-center rounded-2xl bg-white/70 dark:bg-white/5 shadow-md h-12 w-12"
+                    title={typeof src === "string" ? src : "Tech"}
                   >
                     <Image
                       alt="tech"
                       src={src}
                       width={28}
                       height={28}
-                      className="h-7 w-7"
+                      className="h-7 w-7 object-contain"
                       unoptimized
+                      onError={(e) => {
+                        // swap to local fallback icon if remote fails
+                        const img = e.currentTarget as HTMLImageElement;
+                        img.src = "/icons/tool.svg"; // <- create this file (see below)
+                      }}
                     />
                   </span>
                 ))}

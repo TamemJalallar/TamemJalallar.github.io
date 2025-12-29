@@ -13,7 +13,7 @@
       "https://img.icons8.com/color/144/000000/mac-os.png",
       "https://img.icons8.com/color/144/000000/powershell.png",
       "https://img.icons8.com/color/144/000000/service-now.png",
-      "AD.png",
+      "/AD.png",
       "/kandji.png",
       "/jamf.jpg",
       "/abm2.png"
@@ -51,17 +51,17 @@
     },
     {
       "name": "Kandji",
-      "image": "https://img.icons8.com/color/144/000000/mac-os.png",
+      "image": "/kandji.png",
       "category": "Endpoint"
     },
     {
       "name": "Jamf",
-      "image": "https://img.icons8.com/color/144/000000/mac-os.png",
+      "image": "/jamf.jpg",
       "category": "Endpoint"
     },
     {
       "name": "Apple Business Manager (ABM)",
-      "image": "https://img.icons8.com/color/144/000000/apple-logo.png",
+      "image": "/abm2.png",
       "category": "Endpoint"
     },
     {
