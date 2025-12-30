@@ -42,7 +42,7 @@ const Hero = ({ mainData }: HeroProps) => {
             <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm bg-white/70 dark:bg-white/5 shadow-md">
               <Image unoptimized alt="waving hand" width={18} height={18} src={wavingHand} />
               <span className="text-black/70 dark:text-white/70">
-                Hey — I’m available for new opportunities
+                Hey — I'm available for new opportunities
               </span>
             </div>
 
@@ -76,10 +76,10 @@ const Hero = ({ mainData }: HeroProps) => {
             {/* Proof badges */}
             <div className="mt-7 flex flex-wrap gap-3">
               {[
-                "6+ years enterprise",
-                "Executive/VIP support",
+                "6+ Years Enterprise",
+                "Executive/VIP Support",
                 "Okta • Entra • Intune",
-                "Automation-first ops",
+                "Automation-first Operations",
               ].map((t) => (
                 <span
                   key={t}

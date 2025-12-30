@@ -67,7 +67,7 @@ export default function Contact() {
 
             <div className="mt-6 rounded-2xl bg-black/5 dark:bg-white/5 p-4">
               <p className="text-sm text-black/70 dark:text-white/70">
-                Prefer async? Email me a quick summary of what you’re looking for
+                Prefer async? Email me a quick summary of what you're looking for
                 and I'll respond ASAP.
               </p>
             </div>
