@@ -139,7 +139,7 @@ const Hero = ({ mainData }: HeroProps) => {
                 </div>
 
                 <div>
-                  <p className="font-semibold text-lg">Senior IT Systems Admin</p>
+                  <p className="font-semibold text-lg">IT Systems Admin</p>
                   <p className="text-sm text-black/60 dark:text-white/60">
                     Parsippany, NJ • Windows + macOS Enterprise
                   </p>

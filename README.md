@@ -1,6 +1,6 @@
 # Hi, I’m Tamem (Tom) Jalallar
 
-**Senior IT Systems Administrator** | **Technical Lead** | **Automation & Endpoint Management**
+**IT Systems Administrator** | **Technical Leader** | **Automation & Endpoint Management**
 
 Parsippany, NJ  
 [LinkedIn](https://www.linkedin.com/in/TamemJalallar) · [GitHub](https://github.com/TamemJalallar)
@@ -9,7 +9,7 @@ Parsippany, NJ
 
 ## About Me
 
-Senior IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, automating workflows, and managing large-scale identity, endpoint, and infrastructure environments.
+IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, automating workflows, and managing large-scale identity, endpoint, and infrastructure environments.
 
 I specialize in modern endpoint management, identity & access control, and automation across Windows and macOS ecosystems. My work focuses on security, reliability, compliance, and user experience, and I’m frequently relied upon as a primary escalation point, mentor, and problem-solver for complex technical challenges.
 
@@ -32,7 +32,7 @@ I enjoy turning fragmented processes into scalable, repeatable systems that redu
 ## Professional Experience
 
 ### **WPP**  
-**Senior IT Systems Administrator**
+**IT Systems Administrator**
 
 *September 2018 – Present*
 
