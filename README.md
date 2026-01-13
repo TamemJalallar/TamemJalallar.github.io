@@ -65,6 +65,22 @@ I enjoy turning fragmented processes into scalable, repeatable systems that redu
 - Increased eCommerce traffic and sales through marketing initiatives  
 - Ran weekly email campaigns and customer engagement efforts  
 
+### **Best Buy**
+**AT&T Expert**
+
+*October 2016 - November 2017*
+
+- Top AT&T Sales Representative 2017 Q1, 2017 Q2, & 2017 Q3
+- Highest Grossing AT&T Indirect Sales Store & Representative 
+- 80% Attachment Rate
+
+### **Dish Network**
+**Inside Sales Associate**
+
+*Jun 2016 - Sept 2017*
+
+- 85% Hopper Attachment Rate, 8% Satilitte 
+
 ---
 
 ## Featured Projects

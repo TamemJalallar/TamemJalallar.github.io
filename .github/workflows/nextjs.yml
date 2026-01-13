@@ -30,22 +30,17 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Build (creates static output)
+      - name: Build (output: export -> creates out/)
         run: npm run build
 
-      - name: Add .nojekyll
+      - name: Ensure .nojekyll
         run: |
-          # Next export output directory differs by Next version/config
-          if [ -d "out" ]; then
-            touch out/.nojekyll
-          elif [ -d ".next" ]; then
-            echo "Note: output folder isn't 'out'. Check next.config.js output setting."
-          fi
+          test -d out
+          touch out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # For output: "export", Next outputs to "out" by default.
           path: out
 
   deploy:

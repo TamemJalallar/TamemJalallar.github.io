@@ -21,7 +21,7 @@
   },
   "about": {
     "aboutImage": "/tom.png",
-    "aboutImageCaption": "Motivated IT Person",
+    "aboutImageCaption": "Motivated IT Leader",
     "title": "IT Systems Administrator / Technical Lead",
     "about": "I'm a IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, improving reliability, and building repeatable systems. I specialize in identity & access management, modern endpoint management, and automation across Windows and macOS. I care about secure-by-default solutions, clean user experiences, and operational consistency. Detailed case studies are available upon request due to confidentiality.",
     "callUrl": "mailto:tjalallar@att.net",
@@ -135,6 +135,7 @@
       "position": "AV & VIP Support",
       "startDate": "Sep 2018",
       "endDate": "Present",
+      "logo":\Public\Ogilvy_logo.png
       "desc": [
         "Dedicated IT and AV/VIP support for leadership and agency teams in high-visibility environments.",
         "End-to-end AV production for town halls, leadership sessions, and client-facing events.",
