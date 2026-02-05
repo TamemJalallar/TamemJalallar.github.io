@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { TOOL_META } from "./tools.data";
-import { FiArrowUpRight, FiSearch } from "react-icons/fi";
+import { FiArrowUpRight, FiChevronDown, FiSearch } from "react-icons/fi";
 
 type SortMode = "title" | "category" | "random" | "grouped";
 
@@ -53,15 +53,14 @@ function stableShuffle<T>(arr: T[], seed: number) {
   return out;
 }
 
-type Row =
-  | { kind: "header"; key: GroupKey; label: string }
-  | { kind: "tool"; tool: (typeof TOOL_META)[number] };
-
 export default function ToolsPageClient() {
   const [q, setQ] = useState("");
   const [tag, setTag] = useState<string>("all");
   const [sortMode, setSortMode] = useState<SortMode>("grouped");
   const [shuffleSeed, setShuffleSeed] = useState<number>(() => Date.now());
+  const [collapsedGroups, setCollapsedGroups] = useState<Record<GroupKey, boolean>>({});
+
+  const groupKeys = useMemo<GroupKey[]>(() => [...GROUP_ORDER, "other"], []);
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
@@ -112,10 +111,9 @@ export default function ToolsPageClient() {
     return base;
   }, [filtered, sortMode, shuffleSeed]);
 
-  const groupedRows = useMemo<Row[]>(() => {
+  const grouped = useMemo(() => {
     if (sortMode !== "grouped") return [];
 
-    // bucket tools by group
     const buckets = new Map<GroupKey, typeof filtered>();
     for (const t of filtered) {
       const g = pickGroup(t.tags);
@@ -124,37 +122,48 @@ export default function ToolsPageClient() {
       buckets.set(g, arr);
     }
 
-    // Build rows in GROUP_ORDER
-    const rows: Row[] = [];
+    const groups: { key: GroupKey; label: string; tools: typeof filtered }[] = [];
+
     for (const g of GROUP_ORDER) {
       const tools = buckets.get(g);
       if (!tools?.length) continue;
-
-      rows.push({ kind: "header", key: g, label: labelForGroup(g) });
-      tools
-        .sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" }))
-        .forEach((tool) => rows.push({ kind: "tool", tool }));
+      groups.push({
+        key: g,
+        label: labelForGroup(g),
+        tools: tools.sort((a, b) =>
+          a.title.localeCompare(b.title, undefined, { sensitivity: "base" }),
+        ),
+      });
     }
 
-    // "other" at the end
     const other = buckets.get("other");
     if (other?.length) {
-      rows.push({ kind: "header", key: "other", label: labelForGroup("other") });
-      other
-        .sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" }))
-        .forEach((tool) => rows.push({ kind: "tool", tool }));
+      groups.push({
+        key: "other",
+        label: labelForGroup("other"),
+        tools: other.sort((a, b) =>
+          a.title.localeCompare(b.title, undefined, { sensitivity: "base" }),
+        ),
+      });
     }
 
-    return rows;
+    return groups;
   }, [filtered, sortMode]);
 
   const shuffle = () => setShuffleSeed(Date.now());
+  const toggleGroup = (key: GroupKey) => {
+    setCollapsedGroups((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
-  // Render either grouped rows or the flat list
-  const rowsToRender: Row[] =
-    sortMode === "grouped"
-      ? groupedRows
-      : flatSorted.map((t) => ({ kind: "tool", tool: t }));
+  const setAllCollapsed = (value: boolean) => {
+    setCollapsedGroups(() => {
+      const next: Record<GroupKey, boolean> = {};
+      groupKeys.forEach((key) => {
+        next[key] = value;
+      });
+      return next;
+    });
+  };
 
   return (
     <div>
@@ -203,61 +212,119 @@ export default function ToolsPageClient() {
                 Shuffle
               </button>
             ) : null}
+
+            {sortMode === "grouped" ? (
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setAllCollapsed(true)}
+                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm transition-colors hover:bg-white/10"
+                >
+                  Collapse all
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setAllCollapsed(false)}
+                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm transition-colors hover:bg-white/10"
+                >
+                  Expand all
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {rowsToRender.map((row, idx) => {
-          if (row.kind === "header") {
-            // span full width across grid
-            return (
-              <div
-                key={`hdr-${row.key}-${idx}`}
-                className="sm:col-span-2 lg:col-span-3"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="text-xs tracking-widest text-white/50 font-semibold uppercase">
-                    {row.label}
-                  </div>
-                  <div className="h-px flex-1 bg-white/10" />
-                </div>
-              </div>
-            );
-          }
-
-          const t = row.tool;
-          return (
-            <Link
-              key={t.slug}
-              href={`/tools/${t.slug}`}
-              className="group rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <div className="text-lg font-semibold">{t.title}</div>
-                  <div className="mt-2 text-sm text-white/70">{t.description}</div>
-                </div>
-                <FiArrowUpRight className="mt-1 opacity-50 transition-opacity group-hover:opacity-100" />
-              </div>
-
-              {t.tags?.length ? (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {t.tags.map((x) => (
-                    <span
-                      key={x}
-                      className="rounded-full border border-white/10 bg-black/20 px-2 py-0.5 text-xs text-white/70"
+        {sortMode === "grouped"
+          ? grouped.map((group) => {
+              const isCollapsed = collapsedGroups[group.key];
+              return (
+                <div key={group.key} className="contents">
+                  <div className="sm:col-span-2 lg:col-span-3">
+                    <button
+                      type="button"
+                      onClick={() => toggleGroup(group.key)}
+                      className="flex w-full items-center gap-3 text-left"
                     >
-                      {x}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
-            </Link>
-          );
-        })}
+                      <FiChevronDown
+                        className={`text-white/60 transition-transform ${
+                          isCollapsed ? "-rotate-90" : "rotate-0"
+                        }`}
+                      />
+                      <div className="text-xs font-semibold uppercase tracking-widest text-white/50">
+                        {group.label}
+                      </div>
+                      <div className="text-xs text-white/40">{group.tools.length}</div>
+                      <div className="h-px flex-1 bg-white/10" />
+                    </button>
+                  </div>
 
-        {rowsToRender.length === 0 ? (
+                  {!isCollapsed
+                    ? group.tools.map((t) => (
+                        <Link
+                          key={t.slug}
+                          href={`/tools/${t.slug}`}
+                          className="group rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div>
+                              <div className="text-lg font-semibold">{t.title}</div>
+                              <div className="mt-2 text-sm text-white/70">
+                                {t.description}
+                              </div>
+                            </div>
+                            <FiArrowUpRight className="mt-1 opacity-50 transition-opacity group-hover:opacity-100" />
+                          </div>
+
+                          {t.tags?.length ? (
+                            <div className="mt-4 flex flex-wrap gap-2">
+                              {t.tags.map((x) => (
+                                <span
+                                  key={x}
+                                  className="rounded-full border border-white/10 bg-black/20 px-2 py-0.5 text-xs text-white/70"
+                                >
+                                  {x}
+                                </span>
+                              ))}
+                            </div>
+                          ) : null}
+                        </Link>
+                      ))
+                    : null}
+                </div>
+              );
+            })
+          : flatSorted.map((t) => (
+              <Link
+                key={t.slug}
+                href={`/tools/${t.slug}`}
+                className="group rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="text-lg font-semibold">{t.title}</div>
+                    <div className="mt-2 text-sm text-white/70">{t.description}</div>
+                  </div>
+                  <FiArrowUpRight className="mt-1 opacity-50 transition-opacity group-hover:opacity-100" />
+                </div>
+
+                {t.tags?.length ? (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {t.tags.map((x) => (
+                      <span
+                        key={x}
+                        className="rounded-full border border-white/10 bg-black/20 px-2 py-0.5 text-xs text-white/70"
+                      >
+                        {x}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
+              </Link>
+            ))}
+
+        {(sortMode === "grouped" ? grouped.length === 0 : flatSorted.length === 0) ? (
           <div className="text-white/70">No tools match your search.</div>
         ) : null}
       </div>
