@@ -1,126 +1,115 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import ToolShell from "./_ToolShell";
+import { useEffect, useState } from "react";
 
-function fmt(ms: number) {
-  const s = Math.max(0, Math.floor(ms / 1000));
-  const mm = Math.floor(s / 60);
-  const ss = s % 60;
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return `${pad(mm)}:${pad(ss)}`;
+function formatTime(totalSeconds: number) {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
+type Mode = "work" | "break";
+
 export default function PomodoroTimer() {
-  const [workMin, setWorkMin] = useState(25);
-  const [breakMin, setBreakMin] = useState(5);
-  const [mode, setMode] = useState<"work" | "break">("work");
+  const [workMinutes, setWorkMinutes] = useState(25);
+  const [breakMinutes, setBreakMinutes] = useState(5);
+  const [mode, setMode] = useState<Mode>("work");
+  const [remaining, setRemaining] = useState(25 * 60);
   const [running, setRunning] = useState(false);
-  const [remainingMs, setRemainingMs] = useState(workMin * 60 * 1000);
-
-  const endAtRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    // when not running, update remaining when durations change
-    if (running) return;
-    setRemainingMs((mode === "work" ? workMin : breakMin) * 60 * 1000);
-  }, [workMin, breakMin, mode, running]);
 
   useEffect(() => {
     if (!running) return;
 
-    const tick = () => {
-      if (endAtRef.current == null) return;
-      const ms = endAtRef.current - Date.now();
-      setRemainingMs(ms);
+    const interval = window.setInterval(() => {
+      setRemaining((prev) => {
+        if (prev <= 1) {
+          const nextMode = mode === "work" ? "break" : "work";
+          setMode(nextMode);
+          return (nextMode === "work" ? workMinutes : breakMinutes) * 60;
+        }
+        return prev - 1;
+      });
+    }, 1000);
 
-      if (ms <= 0) {
-        const nextMode = mode === "work" ? "break" : "work";
-        setMode(nextMode);
-        const nextMs = (nextMode === "work" ? workMin : breakMin) * 60 * 1000;
-        endAtRef.current = Date.now() + nextMs;
-        setRemainingMs(nextMs);
-      }
-    };
+    return () => window.clearInterval(interval);
+  }, [running, mode, workMinutes, breakMinutes]);
 
-    tick();
-    const id = window.setInterval(tick, 250);
-    return () => window.clearInterval(id);
-  }, [running, mode, workMin, breakMin]);
-
-  const start = () => {
-    endAtRef.current = Date.now() + remainingMs;
-    setRunning(true);
-  };
-
-  const pause = () => {
+  function applyDurations() {
+    const base = (mode === "work" ? workMinutes : breakMinutes) * 60;
+    setRemaining(base);
     setRunning(false);
-    endAtRef.current = null;
-  };
-
-  const reset = () => {
-    setRunning(false);
-    endAtRef.current = null;
-    setMode("work");
-    setRemainingMs(workMin * 60 * 1000);
-  };
-
-  const switchMode = () => {
-    const next = mode === "work" ? "break" : "work";
-    setMode(next);
-    setRunning(false);
-    endAtRef.current = null;
-    setRemainingMs((next === "work" ? workMin : breakMin) * 60 * 1000);
-  };
-
-  const label = useMemo(() => (mode === "work" ? "Work" : "Break"), [mode]);
+  }
 
   return (
-    <ToolShell title="Pomodoro Timer" description="Work/break timer with adjustable durations.">
-      <div className="grid gap-3 sm:grid-cols-2">
-        <div>
-          <label className="text-sm text-white/70">Work minutes</label>
-          <input
-            type="number"
-            min={1}
-            value={workMin}
-            onChange={(e) => setWorkMin(Math.max(1, Number(e.target.value)))}
-            className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm outline-none"
-            disabled={running}
-          />
-        </div>
-        <div>
-          <label className="text-sm text-white/70">Break minutes</label>
-          <input
-            type="number"
-            min={1}
-            value={breakMin}
-            onChange={(e) => setBreakMin(Math.max(1, Number(e.target.value)))}
-            className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm outline-none"
-            disabled={running}
-          />
-        </div>
-      </div>
+    <div className="rounded-2xl border border-gray-200/70 bg-white/70 p-6 dark:border-white/10 dark:bg-grey-900/60">
+      <h2 className="text-lg font-semibold">Pomodoro Timer</h2>
+      <p className="mt-1 text-xs text-black/60 dark:text-white/60">
+        Mode: {mode === "work" ? "Focus" : "Break"}
+      </p>
 
-      <div className="mt-4 rounded-xl border border-white/10 bg-black/20 p-4 text-center">
-        <div className="text-sm text-white/70">{label}</div>
-        <div className="mt-1 text-4xl font-mono">{fmt(remainingMs)}</div>
-      </div>
+      <div className="mt-4 text-4xl font-semibold tabular-nums">{formatTime(remaining)}</div>
 
-      <div className="mt-4 flex gap-2">
+      <div className="mt-4 flex flex-wrap gap-2">
         <button
-          onClick={running ? pause : start}
-          className="rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10"
+          type="button"
+          onClick={() => setRunning(true)}
+          disabled={running}
+          className="rounded-lg bg-black px-3 py-2 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black"
         >
-          {running ? "Pause" : "Start"}
+          Start
         </button>
-        <button onClick={switchMode} className="rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10">
-          Switch
+        <button
+          type="button"
+          onClick={() => setRunning(false)}
+          disabled={!running}
+          className="rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/20 dark:hover:bg-white/10"
+        >
+          Pause
         </button>
-        <button onClick={reset} className="rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10">
+        <button
+          type="button"
+          onClick={() => {
+            setMode("work");
+            setRemaining(workMinutes * 60);
+            setRunning(false);
+          }}
+          className="rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 dark:border-white/20 dark:hover:bg-white/10"
+        >
           Reset
         </button>
       </div>
-    </ToolShell>
+
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <label className="text-xs text-black/60 dark:text-white/60">
+          Work minutes
+          <input
+            type="number"
+            min={5}
+            value={workMinutes}
+            onChange={(event) => setWorkMinutes(Math.max(5, Number(event.target.value) || 5))}
+            className="mt-1 w-full rounded-lg border border-gray-300/70 bg-white px-2 py-2 text-sm dark:border-white/20 dark:bg-grey-900"
+          />
+        </label>
+
+        <label className="text-xs text-black/60 dark:text-white/60">
+          Break minutes
+          <input
+            type="number"
+            min={1}
+            value={breakMinutes}
+            onChange={(event) => setBreakMinutes(Math.max(1, Number(event.target.value) || 1))}
+            className="mt-1 w-full rounded-lg border border-gray-300/70 bg-white px-2 py-2 text-sm dark:border-white/20 dark:bg-grey-900"
+          />
+        </label>
+      </div>
+
+      <button
+        type="button"
+        onClick={applyDurations}
+        className="mt-3 rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 dark:border-white/20 dark:hover:bg-white/10"
+      >
+        Apply durations
+      </button>
+    </div>
   );
 }

@@ -61,8 +61,8 @@ export default function ToolDetailClient({ slug }: { slug: string }) {
 
         <div className="mt-6">
           <h1 className="flex items-center gap-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span aria-hidden="true" className="text-3xl">
-              {tool.icon}
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-base font-semibold">
+              {tool.title.slice(0, 1).toUpperCase()}
             </span>
             <span>{tool.title}</span>
           </h1>
@@ -71,12 +71,22 @@ export default function ToolDetailClient({ slug }: { slug: string }) {
             Runs locally in your browser. Nothing is uploaded or stored.
           </p>
 
-          <p className="mt-1 text-base text-black/70 dark:text-white/70">{tool.desc}</p>
+          <p className="mt-1 text-base text-black/70 dark:text-white/70">
+            {tool.description}
+          </p>
 
-          <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-gray-200/70 bg-white/60 px-3 py-1 text-xs text-black/70 dark:border-white/10 dark:bg-grey-900/40 dark:text-white/70">
-            <span>{tool.category}</span>
-            <span aria-hidden="true">•</span>
-            <span className="font-mono">/tools/{tool.slug}</span>
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-black/70 dark:text-white/70">
+            <span className="rounded-full border border-gray-200/70 bg-white/60 px-3 py-1 font-mono dark:border-white/10 dark:bg-grey-900/40">
+              /tools/{tool.slug}
+            </span>
+            {(tool.tags ?? []).map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-gray-200/70 bg-white/60 px-3 py-1 dark:border-white/10 dark:bg-grey-900/40"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
 

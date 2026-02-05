@@ -325,6 +325,10 @@ img, video {
   top: 0;
 }
 
+.top-\[-6px\] {
+  top: -6px;
+}
+
 .-z-10 {
   z-index: -10;
 }
@@ -449,6 +453,10 @@ img, video {
   margin-top: auto;
 }
 
+.mr-auto {
+  margin-right: auto;
+}
+
 .block {
   display: block;
 }
@@ -529,6 +537,10 @@ img, video {
   height: 1px;
 }
 
+.h-0 {
+  height: 0;
+}
+
 .max-h-64 {
   max-height: 16rem;
 }
@@ -573,8 +585,24 @@ img, video {
   min-height: 100vh;
 }
 
+.min-h-48 {
+  min-height: 12rem;
+}
+
+.min-h-24 {
+  min-height: 6rem;
+}
+
+.min-h-40 {
+  min-height: 10rem;
+}
+
 .w-1\/4 {
   width: 25%;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .w-12 {
@@ -633,6 +661,10 @@ img, video {
   width: 100vw;
 }
 
+.w-0 {
+  width: 0;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -653,6 +685,10 @@ img, video {
   max-width: 36rem;
 }
 
+.max-w-none {
+  max-width: none;
+}
+
 .flex-1 {
   flex: 1;
 }
@@ -663,6 +699,10 @@ img, video {
 
 .-translate-x-1\/2 {
   --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -780,6 +820,12 @@ img, video {
   margin-bottom: calc(.5rem * var(--tw-space-y-reverse));
 }
 
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(.75rem * var(--tw-space-y-reverse));
+}
+
 .self-end {
   align-self: flex-end;
 }
@@ -856,6 +902,18 @@ img, video {
   border-bottom-width: 0;
 }
 
+.border-b-\[14px\] {
+  border-bottom-width: 14px;
+}
+
+.border-l-8 {
+  border-left-width: 8px;
+}
+
+.border-r-8 {
+  border-right-width: 8px;
+}
+
 .border-black\/10 {
   border-color: #0000001a;
 }
@@ -887,6 +945,19 @@ img, video {
 
 .border-white\/10 {
   border-color: #ffffff1a;
+}
+
+.border-b-black {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
+}
+
+.border-l-transparent {
+  border-left-color: #0000;
+}
+
+.border-r-transparent {
+  border-right-color: #0000;
 }
 
 .bg-black {
@@ -991,6 +1062,21 @@ img, video {
 
 .bg-yellow-400\/30 {
   background-color: #fede004d;
+}
+
+.bg-amber-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 230 138 / var(--tw-bg-opacity, 1));
+}
+
+.bg-blue-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity, 1));
+}
+
+.bg-rose-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 205 211 / var(--tw-bg-opacity, 1));
 }
 
 .bg-gradient-to-b {
@@ -1137,6 +1223,11 @@ img, video {
   padding-bottom: 1rem;
 }
 
+.px-0\.5 {
+  padding-left: .125rem;
+  padding-right: .125rem;
+}
+
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -1239,6 +1330,11 @@ img, video {
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.tabular-nums {
+  --tw-numeric-spacing: tabular-nums;
+  font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
 }
 
 .leading-relaxed {
@@ -1359,6 +1455,30 @@ img, video {
 .text-yellow-400 {
   --tw-text-opacity: 1;
   color: rgb(254 222 0 / var(--tw-text-opacity, 1));
+}
+
+.text-black\/80 {
+  color: #000c;
+}
+
+.text-emerald-700 {
+  --tw-text-opacity: 1;
+  color: rgb(4 120 87 / var(--tw-text-opacity, 1));
+}
+
+.text-amber-900 {
+  --tw-text-opacity: 1;
+  color: rgb(120 53 15 / var(--tw-text-opacity, 1));
+}
+
+.text-blue-900 {
+  --tw-text-opacity: 1;
+  color: rgb(30 58 138 / var(--tw-text-opacity, 1));
+}
+
+.text-rose-900 {
+  --tw-text-opacity: 1;
+  color: rgb(136 19 55 / var(--tw-text-opacity, 1));
 }
 
 .opacity-30 {
@@ -1779,6 +1899,15 @@ body {
 
 .dark\:text-white\/70:is(.dark *) {
   color: #ffffffb3;
+}
+
+.dark\:text-emerald-300:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(110 231 183 / var(--tw-text-opacity, 1));
+}
+
+.dark\:text-white\/80:is(.dark *) {
+  color: #fffc;
 }
 
 .dark\:opacity-\[0\.05\]:is(.dark *) {

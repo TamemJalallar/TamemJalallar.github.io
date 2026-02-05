@@ -27,6 +27,24 @@ import ColorPicker from "@/components/tools/ColorPicker";
 import ContrastChecker from "@/components/tools/ContrastChecker";
 
 import UnitConverter from "@/components/tools/UnitConverter";
+import PasswordGenerator from "@/components/tools/PasswordGenerator";
+import MarkdownToHtml from "@/components/tools/MarkdownToHtml";
+import HtmlToMarkdown from "@/components/tools/HtmlToMarkdown";
+import CsvToJson from "@/components/tools/CsvToJson";
+import JsonToCsv from "@/components/tools/JsonToCsv";
+import QrCodeGenerator from "@/components/tools/QrCodeGenerator";
+import QrCodeScanner from "@/components/tools/QrCodeScanner";
+import BarcodeGenerator from "@/components/tools/BarcodeGenerator";
+import TextDiffChecker from "@/components/tools/TextDiffChecker";
+import TimeZoneConverter from "@/components/tools/TimeZoneConverter";
+import CountdownTimer from "@/components/tools/CountdownTimer";
+import Stopwatch from "@/components/tools/Stopwatch";
+import PomodoroTimer from "@/components/tools/PomodoroTimer";
+import RandomPicker from "@/components/tools/RandomPicker";
+import WheelSpinner from "@/components/tools/WheelSpinner";
+import LiDistinctionTester from "@/components/tools/LiDistinctionTester";
+import FileCorrupter from "@/components/tools/FileCorrupter";
+import AsciiArtGenerator from "@/components/tools/AsciiArtGenerator";
 
 export type ToolDefinition = ToolMeta & { component: ReactNode };
 
@@ -53,6 +71,26 @@ const componentBySlug: Record<string, ReactNode> = {
   "contrast-checker": <ContrastChecker />,
 
   "unit-converter": <UnitConverter />,
+
+  "password-generator": <PasswordGenerator />,
+  "markdown-to-html": <MarkdownToHtml />,
+  "html-to-markdown": <HtmlToMarkdown />,
+  "csv-to-json": <CsvToJson />,
+  "json-to-csv": <JsonToCsv />,
+  "qr-code-generator": <QrCodeGenerator />,
+  "qr-code-scanner": <QrCodeScanner />,
+  "barcode-generator": <BarcodeGenerator />,
+  "text-diff-checker": <TextDiffChecker />,
+
+  "time-zone-converter": <TimeZoneConverter />,
+  "countdown-timer": <CountdownTimer />,
+  "stopwatch": <Stopwatch />,
+  "pomodoro-timer": <PomodoroTimer />,
+  "random-picker": <RandomPicker />,
+  "wheel-spinner": <WheelSpinner />,
+  "li-distinction-tester": <LiDistinctionTester />,
+  "file-corrupter": <FileCorrupter />,
+  "ascii-art-generator": <AsciiArtGenerator />,
 };
 
 export const TOOLS: ToolDefinition[] = TOOL_META.map((t) => ({

@@ -1,46 +1,78 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
-import ToolShell from "./_ToolShell";
+import { useMemo, useState } from "react";
+import { copyToClipboard } from "./tool-utils";
 
-function securePick<T>(arr: T[]): T | null {
-  if (!arr.length) return null;
-  const u = new Uint32Array(1);
-  crypto.getRandomValues(u);
-  return arr[u[0] % arr.length];
+function parseItems(value: string) {
+  return value
+    .split(/[\n,]/)
+    .map((item) => item.trim())
+    .filter(Boolean);
 }
 
 export default function RandomPicker() {
-  const [input, setInput] = useState("Tom\nYassie\nAman\nUzbek Mafia\nBijan");
-  const [picked, setPicked] = useState<string | null>(null);
+  const [input, setInput] = useState("Apple\nBanana\nCherry");
+  const [winner, setWinner] = useState("");
+  const [history, setHistory] = useState<string[]>([]);
+  const [copied, setCopied] = useState(false);
 
-  const items = useMemo(() => {
-    return input
-      .split("\n")
-      .map((s) => s.trim())
-      .filter(Boolean);
-  }, [input]);
+  const items = useMemo(() => parseItems(input), [input]);
 
-  const pick = () => setPicked(securePick(items));
+  function pick() {
+    if (!items.length) return;
+    const choice = items[Math.floor(Math.random() * items.length)] || "";
+    setWinner(choice);
+    setHistory((prev) => [choice, ...prev].slice(0, 5));
+  }
+
+  async function copy() {
+    if (!winner) return;
+    const ok = await copyToClipboard(winner);
+    if (!ok) return;
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1200);
+  }
 
   return (
-    <ToolShell title="Random Picker" description="Paste a list, pick a random item.">
+    <div className="rounded-2xl border border-gray-200/70 bg-white/70 p-6 dark:border-white/10 dark:bg-grey-900/60">
+      <h2 className="text-lg font-semibold">Random Picker</h2>
+
       <textarea
         value={input}
-        onChange={(e) => setInput(e.target.value)}
-        className="min-h-[240px] w-full rounded-xl border border-white/10 bg-black/20 p-3 text-sm outline-none"
-        placeholder="One item per line…"
+        onChange={(event) => setInput(event.target.value)}
+        className="mt-4 min-h-28 w-full rounded-xl border border-gray-300/70 bg-white px-3 py-2 text-sm dark:border-white/20 dark:bg-grey-900"
       />
 
-      <div className="mt-4 rounded-xl border border-white/10 bg-black/20 p-4 text-center">
-        <div className="text-sm text-white/70">Result</div>
-        <div className="mt-2 text-2xl font-semibold">{picked ?? "—"}</div>
-        <div className="mt-2 text-xs text-white/50">{items.length} item(s)</div>
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          onClick={pick}
+          disabled={!items.length}
+          className="rounded-lg bg-black px-4 py-2 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black"
+        >
+          Pick random
+        </button>
+        <button
+          type="button"
+          onClick={() => void copy()}
+          disabled={!winner}
+          className="rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/20 dark:hover:bg-white/10"
+        >
+          {copied ? "Copied" : "Copy winner"}
+        </button>
       </div>
 
-      <button onClick={pick} className="mt-4 rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10">
-        Pick Random
-      </button>
-    </ToolShell>
+      {winner ? (
+        <div className="mt-4 rounded-xl border border-gray-200/80 bg-white/80 px-4 py-3 text-lg font-semibold dark:border-white/10 dark:bg-grey-900/70">
+          {winner}
+        </div>
+      ) : null}
+
+      {history.length ? (
+        <div className="mt-4 text-xs text-black/60 dark:text-white/60">
+          Recent picks: {history.join(", ")}
+        </div>
+      ) : null}
+    </div>
   );
 }

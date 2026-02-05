@@ -1,5 +1,7 @@
 import ToolsPageClient from "./tools-page-client";
 
+export const dynamic = "force-static";
+
 export default function ToolsPage() {
   return (
     <div className="p-6">

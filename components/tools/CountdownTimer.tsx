@@ -1,138 +1,105 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import ToolShell from "./_ToolShell";
+import { useEffect, useState } from "react";
 
-function formatMs(ms: number) {
-  const t = Math.max(0, ms);
-  const s = Math.floor(t / 1000);
-  const hh = Math.floor(s / 3600);
-  const mm = Math.floor((s % 3600) / 60);
-  const ss = s % 60;
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return `${pad(hh)}:${pad(mm)}:${pad(ss)}`;
+function formatTime(totalSeconds: number) {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
 export default function CountdownTimer() {
-  const [hours, setHours] = useState(0);
-  const [mins, setMins] = useState(10);
-  const [secs, setSecs] = useState(0);
-
+  const [minutes, setMinutes] = useState(5);
+  const [seconds, setSeconds] = useState(0);
+  const [remaining, setRemaining] = useState(300);
   const [running, setRunning] = useState(false);
-  const [remainingMs, setRemainingMs] = useState(0);
-
-  const endAtRef = useRef<number | null>(null);
-
-  const initialMs = useMemo(
-    () => (hours * 3600 + mins * 60 + secs) * 1000,
-    [hours, mins, secs]
-  );
 
   useEffect(() => {
     if (!running) return;
 
-    const tick = () => {
-      if (endAtRef.current == null) return;
-      const ms = endAtRef.current - Date.now();
-      setRemainingMs(ms);
+    const interval = window.setInterval(() => {
+      setRemaining((prev) => {
+        if (prev <= 1) {
+          setRunning(false);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
 
-      if (ms <= 0) {
-        setRunning(false);
-        endAtRef.current = null;
-        setRemainingMs(0);
-      }
-    };
-
-    tick();
-    const id = window.setInterval(tick, 200);
-    return () => window.clearInterval(id);
+    return () => window.clearInterval(interval);
   }, [running]);
 
-  const start = () => {
-    const ms = remainingMs > 0 ? remainingMs : initialMs;
-    if (ms <= 0) return;
-    endAtRef.current = Date.now() + ms;
-    setRemainingMs(ms);
-    setRunning(true);
-  };
-
-  const pause = () => {
+  function applyDuration() {
+    const total = minutes * 60 + seconds;
+    setRemaining(total);
     setRunning(false);
-    endAtRef.current = null;
-  };
-
-  const reset = () => {
-    setRunning(false);
-    endAtRef.current = null;
-    setRemainingMs(0);
-  };
-
-  const display = running || remainingMs > 0 ? formatMs(remainingMs) : formatMs(initialMs);
+  }
 
   return (
-    <ToolShell title="Countdown Timer" description="Simple countdown timer with start/pause/reset.">
-      <div className="grid gap-3 sm:grid-cols-3">
-        <div>
-          <label className="text-sm text-white/70">Hours</label>
-          <input
-            type="number"
-            min={0}
-            value={hours}
-            onChange={(e) => setHours(Math.max(0, Number(e.target.value)))}
-            className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm outline-none"
-            disabled={running}
-          />
-        </div>
-        <div>
-          <label className="text-sm text-white/70">Minutes</label>
-          <input
-            type="number"
-            min={0}
-            value={mins}
-            onChange={(e) => setMins(Math.max(0, Number(e.target.value)))}
-            className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm outline-none"
-            disabled={running}
-          />
-        </div>
-        <div>
-          <label className="text-sm text-white/70">Seconds</label>
-          <input
-            type="number"
-            min={0}
-            value={secs}
-            onChange={(e) => setSecs(Math.max(0, Number(e.target.value)))}
-            className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm outline-none"
-            disabled={running}
-          />
+    <div className="rounded-2xl border border-gray-200/70 bg-white/70 p-6 dark:border-white/10 dark:bg-grey-900/60">
+      <h2 className="text-lg font-semibold">Countdown Timer</h2>
+
+      <div className="mt-4 flex items-center gap-4">
+        <div className="text-4xl font-semibold tabular-nums">{formatTime(remaining)}</div>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => setRunning(true)}
+            disabled={running || remaining === 0}
+            className="rounded-lg bg-black px-3 py-2 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black"
+          >
+            Start
+          </button>
+          <button
+            type="button"
+            onClick={() => setRunning(false)}
+            disabled={!running}
+            className="rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/20 dark:hover:bg-white/10"
+          >
+            Pause
+          </button>
+          <button
+            type="button"
+            onClick={() => setRemaining(minutes * 60 + seconds)}
+            className="rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 dark:border-white/20 dark:hover:bg-white/10"
+          >
+            Reset
+          </button>
         </div>
       </div>
 
-      <div className="mt-4 rounded-xl border border-white/10 bg-black/20 p-4 text-center">
-        <div className="text-3xl font-mono">{display}</div>
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <label className="text-xs text-black/60 dark:text-white/60">
+          Minutes
+          <input
+            type="number"
+            min={0}
+            value={minutes}
+            onChange={(event) => setMinutes(Math.max(0, Number(event.target.value) || 0))}
+            className="mt-1 w-full rounded-lg border border-gray-300/70 bg-white px-2 py-2 text-sm dark:border-white/20 dark:bg-grey-900"
+          />
+        </label>
+        <label className="text-xs text-black/60 dark:text-white/60">
+          Seconds
+          <input
+            type="number"
+            min={0}
+            max={59}
+            value={seconds}
+            onChange={(event) => setSeconds(Math.max(0, Math.min(59, Number(event.target.value) || 0)))}
+            className="mt-1 w-full rounded-lg border border-gray-300/70 bg-white px-2 py-2 text-sm dark:border-white/20 dark:bg-grey-900"
+          />
+        </label>
       </div>
 
-      <div className="mt-4 flex gap-2">
-        <button
-          onClick={start}
-          disabled={running}
-          className="rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10 disabled:opacity-40"
-        >
-          Start
-        </button>
-        <button
-          onClick={pause}
-          disabled={!running}
-          className="rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10 disabled:opacity-40"
-        >
-          Pause
-        </button>
-        <button
-          onClick={reset}
-          className="rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10"
-        >
-          Reset
-        </button>
-      </div>
-    </ToolShell>
+      <button
+        type="button"
+        onClick={applyDuration}
+        className="mt-3 rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 dark:border-white/20 dark:hover:bg-white/10"
+      >
+        Apply duration
+      </button>
+    </div>
   );
 }

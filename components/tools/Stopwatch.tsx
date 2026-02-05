@@ -1,94 +1,113 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import ToolShell from "./_ToolShell";
+import { useEffect, useRef, useState } from "react";
 
-function formatMs(ms: number) {
-  const t = Math.max(0, ms);
-  const totalSeconds = Math.floor(t / 1000);
+function formatTime(ms: number) {
+  const totalSeconds = Math.floor(ms / 1000);
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
-  const millis = Math.floor((t % 1000) / 10);
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return `${pad(minutes)}:${pad(seconds)}.${pad(millis)}`;
+  const millis = Math.floor((ms % 1000) / 10);
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}.${String(millis).padStart(2, "0")}`;
 }
 
 export default function Stopwatch() {
   const [running, setRunning] = useState(false);
-  const [elapsedMs, setElapsedMs] = useState(0);
+  const [elapsed, setElapsed] = useState(0);
   const [laps, setLaps] = useState<number[]>([]);
-  const startAtRef = useRef<number | null>(null);
+  const startRef = useRef<number | null>(null);
+  const accumulatedRef = useRef(0);
 
   useEffect(() => {
     if (!running) return;
 
-    const tick = () => {
-      if (startAtRef.current == null) return;
-      setElapsedMs(Date.now() - startAtRef.current);
-    };
+    startRef.current = performance.now();
 
-    tick();
-    const id = window.setInterval(tick, 50);
-    return () => window.clearInterval(id);
+    const interval = window.setInterval(() => {
+      if (startRef.current === null) return;
+      const delta = performance.now() - startRef.current;
+      setElapsed(accumulatedRef.current + delta);
+    }, 50);
+
+    return () => window.clearInterval(interval);
   }, [running]);
 
-  const start = () => {
-    startAtRef.current = Date.now() - elapsedMs;
+  function start() {
+    if (running) return;
     setRunning(true);
-  };
+  }
 
-  const pause = () => setRunning(false);
-
-  const reset = () => {
-    setRunning(false);
-    setElapsedMs(0);
-    setLaps([]);
-    startAtRef.current = null;
-  };
-
-  const lap = () => {
+  function pause() {
     if (!running) return;
-    setLaps((prev) => [elapsedMs, ...prev]);
-  };
+    accumulatedRef.current = elapsed;
+    setRunning(false);
+  }
+
+  function reset() {
+    setRunning(false);
+    setElapsed(0);
+    setLaps([]);
+    accumulatedRef.current = 0;
+    startRef.current = null;
+  }
+
+  function addLap() {
+    if (!running) return;
+    setLaps((prev) => [elapsed, ...prev]);
+  }
 
   return (
-    <ToolShell title="Stopwatch" description="Stopwatch with laps.">
-      <div className="mt-1 rounded-xl border border-white/10 bg-black/20 p-4 text-center">
-        <div className="text-4xl font-mono">{formatMs(elapsedMs)}</div>
-      </div>
+    <div className="rounded-2xl border border-gray-200/70 bg-white/70 p-6 dark:border-white/10 dark:bg-grey-900/60">
+      <h2 className="text-lg font-semibold">Stopwatch</h2>
 
-      <div className="mt-4 flex gap-2">
+      <div className="mt-4 text-4xl font-semibold tabular-nums">{formatTime(elapsed)}</div>
+
+      <div className="mt-4 flex flex-wrap gap-2">
         <button
-          onClick={running ? pause : start}
-          className="rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10"
+          type="button"
+          onClick={start}
+          disabled={running}
+          className="rounded-lg bg-black px-3 py-2 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black"
         >
-          {running ? "Pause" : "Start"}
+          Start
         </button>
         <button
-          onClick={lap}
+          type="button"
+          onClick={pause}
           disabled={!running}
-          className="rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10 disabled:opacity-40"
+          className="rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/20 dark:hover:bg-white/10"
+        >
+          Pause
+        </button>
+        <button
+          type="button"
+          onClick={reset}
+          className="rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 dark:border-white/20 dark:hover:bg-white/10"
+        >
+          Reset
+        </button>
+        <button
+          type="button"
+          onClick={addLap}
+          disabled={!running}
+          className="rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/20 dark:hover:bg-white/10"
         >
           Lap
         </button>
-        <button onClick={reset} className="rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10">
-          Reset
-        </button>
       </div>
 
-      {laps.length > 0 ? (
-        <div className="mt-4 rounded-xl border border-white/10 bg-black/20 p-3 text-sm">
-          <div className="mb-2 text-white/70">Laps</div>
-          <ul className="space-y-1 font-mono">
-            {laps.map((ms, idx) => (
-              <li key={idx} className="flex justify-between text-white/70">
-                <span>#{laps.length - idx}</span>
-                <span>{formatMs(ms)}</span>
+      {laps.length ? (
+        <div className="mt-4 rounded-xl border border-gray-200/80 bg-white/80 p-3 text-sm dark:border-white/10 dark:bg-grey-900/70">
+          <p className="text-xs text-black/60 dark:text-white/60">Laps</p>
+          <ol className="mt-2 space-y-1">
+            {laps.map((lap, idx) => (
+              <li key={`${lap}-${idx}`} className="flex justify-between">
+                <span>Lap {laps.length - idx}</span>
+                <span className="font-mono">{formatTime(lap)}</span>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
       ) : null}
-    </ToolShell>
+    </div>
   );
 }

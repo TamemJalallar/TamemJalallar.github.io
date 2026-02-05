@@ -1,74 +1,98 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import ToolShell from "./_ToolShell";
-import QRCode from "qrcode";
+import { useState } from "react";
+import { copyToClipboard, downloadUrl, loadScript } from "./tool-utils";
+
+const QR_URL = "https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js";
+
+declare global {
+  interface Window {
+    QRCode?: {
+      toDataURL: (text: string, options?: { width?: number; margin?: number }) => Promise<string>;
+    };
+  }
+}
 
 export default function QrCodeGenerator() {
-  const [text, setText] = useState("https://tomfromit.com");
-  const [size, setSize] = useState(256);
-  const [src, setSrc] = useState<string>("");
+  const [text, setText] = useState("https://example.com");
+  const [size, setSize] = useState(240);
+  const [dataUrl, setDataUrl] = useState("");
+  const [error, setError] = useState("");
+  const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    let alive = true;
+  async function generate() {
+    setError("");
+    setDataUrl("");
+    try {
+      await loadScript(QR_URL);
+      if (!window.QRCode) throw new Error("QR generator failed to load.");
+      const url = await window.QRCode.toDataURL(text, { width: size, margin: 1 });
+      setDataUrl(url);
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "Failed to generate QR code.");
+    }
+  }
 
-    QRCode.toDataURL(text || " ", { width: size, margin: 1 })
-      .then((url) => {
-        if (alive) setSrc(url);
-      })
-      .catch(() => {
-        if (alive) setSrc("");
-      });
-
-    return () => {
-      alive = false;
-    };
-  }, [text, size]);
-
-  const download = () => {
-    if (!src) return;
-    const a = document.createElement("a");
-    a.href = src;
-    a.download = "qr.png";
-    a.click();
-  };
+  async function copy() {
+    const ok = await copyToClipboard(text);
+    if (!ok) return;
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1200);
+  }
 
   return (
-    <ToolShell title="QR Code Generator" description="Generate a QR code PNG from text or a URL.">
-      <div className="grid gap-3 sm:grid-cols-2">
-        <div>
-          <label className="text-sm text-white/70">Text / URL</label>
-          <input
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm outline-none"
-          />
-        </div>
+    <div className="rounded-2xl border border-gray-200/70 bg-white/70 p-6 dark:border-white/10 dark:bg-grey-900/60">
+      <h2 className="text-lg font-semibold">QR Code Generator</h2>
 
-        <div>
-          <label className="text-sm text-white/70">Size</label>
+      <label className="mt-4 block text-xs text-black/60 dark:text-white/60">Text or URL</label>
+      <textarea
+        value={text}
+        onChange={(event) => setText(event.target.value)}
+        className="mt-1 min-h-24 w-full rounded-xl border border-gray-300/70 bg-white px-3 py-2 text-sm dark:border-white/20 dark:bg-grey-900"
+      />
+
+      <div className="mt-3 flex flex-wrap items-center gap-3 text-xs">
+        <label>
+          Size
           <input
             type="number"
-            min={128}
-            max={1024}
+            min={120}
+            max={800}
             value={size}
-            onChange={(e) => setSize(Number(e.target.value))}
-            className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm outline-none"
+            onChange={(event) => setSize(Math.max(120, Number(event.target.value) || 120))}
+            className="ml-2 w-20 rounded-lg border border-gray-300/70 bg-white px-2 py-1 text-xs dark:border-white/20 dark:bg-grey-900"
           />
+        </label>
+        <button
+          type="button"
+          onClick={() => void generate()}
+          className="rounded-lg bg-black px-3 py-2 text-sm text-white dark:bg-white dark:text-black"
+        >
+          Generate
+        </button>
+        <button
+          type="button"
+          onClick={() => void copy()}
+          className="rounded-lg border border-gray-300/80 px-3 py-2 text-sm hover:bg-gray-100 dark:border-white/20 dark:hover:bg-white/10"
+        >
+          {copied ? "Copied" : "Copy text"}
+        </button>
+      </div>
+
+      {dataUrl ? (
+        <div className="mt-4 space-y-3">
+          <img src={dataUrl} alt="QR code" className="h-48 w-48 rounded-xl border border-gray-200/80" />
+          <button
+            type="button"
+            onClick={() => downloadUrl(dataUrl, "qr-code.png")}
+            className="rounded-lg border border-gray-300/80 px-4 py-2 text-sm hover:bg-gray-100 dark:border-white/20 dark:hover:bg-white/10"
+          >
+            Download PNG
+          </button>
         </div>
-      </div>
+      ) : null}
 
-      <div className="mt-4 rounded-xl border border-white/10 bg-black/20 p-4 flex justify-center">
-        {src ? <img src={src} alt="QR code" className="h-auto max-w-full" /> : <div className="text-sm text-white/70">Enter text to generate.</div>}
-      </div>
-
-      <button
-        onClick={download}
-        disabled={!src}
-        className="mt-4 rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10 disabled:opacity-40"
-      >
-        Download PNG
-      </button>
-    </ToolShell>
+      {error ? <p className="mt-3 text-xs text-red-600 dark:text-red-300">{error}</p> : null}
+    </div>
   );
 }

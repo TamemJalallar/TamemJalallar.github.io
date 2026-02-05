@@ -1,92 +1,106 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
-import ToolShell from "./_ToolShell";
+import { useMemo, useState } from "react";
+import { downloadBlob, formatBytes, readFileAsArrayBuffer, sanitizeFilename } from "./tool-utils";
 
-function corruptBytes(bytes: Uint8Array, pct: number) {
-  const out = new Uint8Array(bytes);
-  const flips = Math.max(1, Math.floor((out.length * pct) / 100));
-  for (let i = 0; i < flips; i++) {
-    const idxArr = new Uint32Array(1);
-    crypto.getRandomValues(idxArr);
-    const idx = idxArr[0] % out.length;
-
-    const valArr = new Uint8Array(1);
-    crypto.getRandomValues(valArr);
-    out[idx] = valArr[0];
-  }
-  return out;
+function secureRandomInt(max: number) {
+  if (max <= 0) return 0;
+  const array = new Uint32Array(1);
+  window.crypto.getRandomValues(array);
+  return array[0] % max;
 }
 
 export default function FileCorrupter() {
   const [file, setFile] = useState<File | null>(null);
-  const [pct, setPct] = useState(1);
+  const [percent, setPercent] = useState(1);
+  const [result, setResult] = useState<Blob | null>(null);
+  const [error, setError] = useState("");
 
-  const info = useMemo(() => {
-    if (!file) return null;
-    return { name: file.name, size: file.size, type: file.type || "unknown" };
-  }, [file]);
+  const totalBytes = file?.size ?? 0;
+  const bytesToCorrupt = useMemo(() => {
+    if (!totalBytes) return 0;
+    return Math.max(1, Math.floor((percent / 100) * totalBytes));
+  }, [percent, totalBytes]);
 
-  const corruptAndDownload = async () => {
-    if (!file) return;
-    const bytes = new Uint8Array(await file.arrayBuffer());
-    const out = corruptBytes(bytes, pct);
-    const blob = new Blob([out], { type: file.type || "application/octet-stream" });
+  async function corrupt() {
+    if (!file || !file.size) return;
+    setError("");
 
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `corrupted_${file.name}`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 800);
-  };
+    try {
+      const buffer = await readFileAsArrayBuffer(file);
+      const data = new Uint8Array(buffer);
+
+      for (let i = 0; i < bytesToCorrupt; i += 1) {
+        const idx = secureRandomInt(data.length);
+        data[idx] = secureRandomInt(256);
+      }
+
+      setResult(new Blob([data], { type: file.type || "application/octet-stream" }));
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "Failed to corrupt file.");
+    }
+  }
 
   return (
-    <ToolShell
-      title="File Corrupter"
-      description="Corrupt a file for QA/testing (changes random bytes). This is destructive—use copies."
-    >
+    <div className="rounded-2xl border border-gray-200/70 bg-white/70 p-6 dark:border-white/10 dark:bg-grey-900/60">
+      <h2 className="text-lg font-semibold">File Corrupter</h2>
+      <p className="mt-1 text-xs text-black/60 dark:text-white/60">
+        Mutates random bytes for QA testing. Keep backups of important files.
+      </p>
+
       <input
         type="file"
-        onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-        className="block text-sm"
+        onChange={(event) => {
+          setFile(event.target.files?.[0] || null);
+          setResult(null);
+          setError("");
+        }}
+        className="mt-4 block w-full text-xs"
       />
 
-      {info ? (
-        <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3 text-sm text-white/70">
-          <div><span className="text-white/80">File:</span> {info.name}</div>
-          <div><span className="text-white/80">Size:</span> {info.size.toLocaleString()} bytes</div>
-          <div><span className="text-white/80">Type:</span> {info.type}</div>
+      {file ? (
+        <div className="mt-3 text-xs text-black/60 dark:text-white/60">
+          {file.name} ({formatBytes(file.size)})
         </div>
-      ) : (
-        <div className="mt-3 text-sm text-white/70">Choose a file to corrupt.</div>
-      )}
+      ) : null}
 
-      <div className="mt-4">
-        <label className="text-sm text-white/70">
-          Corruption %
-          <span className="ml-2 text-white/80">{pct}%</span>
-        </label>
+      <label className="mt-4 block text-xs text-black/60 dark:text-white/60">
+        Corrupt {percent}% (~{formatBytes(bytesToCorrupt)})
         <input
           type="range"
           min={1}
-          max={10}
-          value={pct}
-          onChange={(e) => setPct(Number(e.target.value))}
-          className="mt-2 w-full"
+          max={20}
+          value={percent}
+          onChange={(event) => setPercent(Number(event.target.value))}
+          className="mt-1 w-full"
         />
-        <div className="mt-1 text-xs text-white/50">
-          Tip: 1–2% usually breaks many formats without totally shredding the file.
-        </div>
-      </div>
+      </label>
 
       <button
-        onClick={corruptAndDownload}
+        type="button"
+        onClick={() => void corrupt()}
         disabled={!file}
-        className="mt-4 rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10 disabled:opacity-40"
+        className="mt-4 rounded-lg bg-black px-4 py-2 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black"
       >
-        Corrupt & Download
+        Corrupt file
       </button>
-    </ToolShell>
+
+      {result ? (
+        <button
+          type="button"
+          onClick={() =>
+            downloadBlob(
+              result,
+              `${sanitizeFilename(file?.name || "file")}-corrupt.${file?.name.split(".").pop() || "bin"}`,
+            )
+          }
+          className="ml-3 mt-4 rounded-lg border border-gray-300/80 px-4 py-2 text-sm hover:bg-gray-100 dark:border-white/20 dark:hover:bg-white/10"
+        >
+          Download corrupted file
+        </button>
+      ) : null}
+
+      {error ? <p className="mt-3 text-xs text-red-600 dark:text-red-300">{error}</p> : null}
+    </div>
   );
 }
