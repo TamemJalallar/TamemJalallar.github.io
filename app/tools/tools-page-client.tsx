@@ -58,7 +58,7 @@ export default function ToolsPageClient() {
   const [tag, setTag] = useState<string>("all");
   const [sortMode, setSortMode] = useState<SortMode>("grouped");
   const [shuffleSeed, setShuffleSeed] = useState<number>(() => Date.now());
-  const [collapsedGroups, setCollapsedGroups] = useState<Record<GroupKey, boolean>>({});
+  const [collapsedGroups, setCollapsedGroups] = useState<Partial<Record<GroupKey, boolean>>>({});
 
   const groupKeys = useMemo<GroupKey[]>(() => [...GROUP_ORDER, "other"], []);
 
