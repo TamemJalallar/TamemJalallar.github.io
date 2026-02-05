@@ -15,7 +15,9 @@ function toHex(buf: ArrayBuffer) {
 function toBase64(buf: ArrayBuffer) {
   const bytes = new Uint8Array(buf);
   let bin = "";
-  for (const b of bytes) bin += String.fromCharCode(b);
+  for (let i = 0; i < bytes.length; i += 1) {
+    bin += String.fromCharCode(bytes[i] ?? 0);
+  }
   return btoa(bin);
 }
 
