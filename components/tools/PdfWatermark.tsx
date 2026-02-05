@@ -34,7 +34,7 @@ export default function PdfWatermark() {
       const font = await doc.embedFont(window.PDFLib.StandardFonts.Helvetica);
       const pages = doc.getPages();
 
-      pages.forEach((page) => {
+      pages.forEach((page: any) => {
         const { width, height } = page.getSize();
         const textWidth = font.widthOfTextAtSize(text, size);
         const x = Math.max(12, (width - textWidth) / 2);

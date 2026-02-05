@@ -92,7 +92,7 @@ export default function RemovePdfPages() {
       if (!keepIndices.length) throw new Error("Cannot remove all pages.");
 
       const pages = await outDoc.copyPages(doc, keepIndices);
-      pages.forEach((page) => outDoc.addPage(page));
+      pages.forEach((page: any) => outDoc.addPage(page));
 
       const outBytes = await outDoc.save();
       const blob = new Blob([outBytes], { type: "application/pdf" });

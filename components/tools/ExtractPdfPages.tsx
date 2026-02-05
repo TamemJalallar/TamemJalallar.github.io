@@ -93,7 +93,7 @@ export default function ExtractPdfPages() {
 
       const outDoc = await window.PDFLib.PDFDocument.create();
       const pages = await outDoc.copyPages(doc, order.map((page) => page - 1));
-      pages.forEach((page) => outDoc.addPage(page));
+      pages.forEach((page: any) => outDoc.addPage(page));
 
       const outBytes = await outDoc.save();
       const blob = new Blob([outBytes], { type: "application/pdf" });

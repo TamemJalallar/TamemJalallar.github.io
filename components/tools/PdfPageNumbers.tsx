@@ -36,7 +36,7 @@ export default function PdfPageNumbers() {
       const font = await doc.embedFont(window.PDFLib.StandardFonts.Helvetica);
       const pages = doc.getPages();
 
-      pages.forEach((page, idx) => {
+      pages.forEach((page: any, idx: number) => {
         const { width } = page.getSize();
         const number = startNumber + idx;
         const label = includeTotal ? `${number} / ${pages.length}` : String(number);
