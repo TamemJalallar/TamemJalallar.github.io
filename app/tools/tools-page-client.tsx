@@ -157,7 +157,7 @@ export default function ToolsPageClient() {
 
   const setAllCollapsed = (value: boolean) => {
     setCollapsedGroups(() => {
-      const next: Record<GroupKey, boolean> = {};
+      const next: Partial<Record<GroupKey, boolean>> = {};
       groupKeys.forEach((key) => {
         next[key] = value;
       });
