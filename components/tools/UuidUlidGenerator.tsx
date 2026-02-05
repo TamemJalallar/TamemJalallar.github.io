@@ -19,8 +19,8 @@ function encodeRandom(bytes: Uint8Array) {
   let out = "";
   let buffer = 0;
   let bits = 0;
-  for (const byte of bytes) {
-    buffer = (buffer << 8) | byte;
+  for (let i = 0; i < bytes.length; i += 1) {
+    buffer = (buffer << 8) | (bytes[i] ?? 0);
     bits += 8;
     while (bits >= 5) {
       const index = (buffer >>> (bits - 5)) & 31;
