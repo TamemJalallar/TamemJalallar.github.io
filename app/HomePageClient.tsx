@@ -14,26 +14,40 @@ import Experiences from "@/components/experiences/Experiences";
 import Contact from "@/components/Contact";
 
 type Props = {
-  data: DataType;
+  data?: DataType;
 };
 
 export default function HomePageClient({ data }: Props) {
-  if (!data) return null;
+  if (!data?.main) return null;
 
   return (
     <>
       <Header logo={data.main.name} />
+
       <Hero mainData={data.main} />
-      <Socials socials={data.socials} />
-      <About aboutData={data.about} name={data.main.name} />
-      <Skills skillData={data.skills} />
-      <Projects projectsData={data.projects} />
-      <Experiences
-        experienceData={data.experiences}
-        educationData={data.educations}
-      />
+
+      {data.socials?.length ? <Socials socials={data.socials} /> : null}
+
+      {data.about ? (
+        <About aboutData={data.about} name={data.main.name} />
+      ) : null}
+
+      {data.skills?.length ? <Skills skillData={data.skills} /> : null}
+
+      {data.projects?.length ? (
+        <Projects projectsData={data.projects} />
+      ) : null}
+
+      {(data.experiences?.length || data.educations?.length) ? (
+        <Experiences
+          experienceData={data.experiences ?? []}
+          educationData={data.educations ?? []}
+        />
+      ) : null}
+
       <Contact />
-      <Footer socials={data.socials} name={data.main.name} />
+
+      <Footer socials={data.socials ?? []} name={data.main.name} />
     </>
   );
 }

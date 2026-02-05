@@ -1,37 +1,36 @@
+"use client";
+
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import { Link as ScrollLink } from "react-scroll";
 import Typewriter from "typewriter-effect";
 import { IoIosArrowForward } from "react-icons/io";
-import { FiDownload, FiMail } from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
 import wavingHand from "@/public/waving-hand.gif";
 import { main } from "@/types/main";
 
 interface HeroProps {
-  mainData: main;
+  mainData?: main;
 }
 
 const Hero = ({ mainData }: HeroProps) => {
-  const { theme } = useTheme();
-  const { name, titles, heroImage, shortDesc, techStackImages } = mainData;
+  if (!mainData) return null;
+
+  const {
+    name = "TomFromIT",
+    titles = [],
+    heroImage,
+    shortDesc = "",
+    techStackImages = [],
+  } = mainData;
+
+  const safeTitles = Array.isArray(titles) ? titles.filter(Boolean) : [];
 
   return (
-    <section
-      id="home"
-      className={`relative overflow-hidden ${
-        theme === "dark" ? "bg-grey-900" : "bg-white"
-      }`}
-    >
-      {/* Background layers (subtle, not overpowering) */}
+    <section id="home" className="relative overflow-hidden bg-white dark:bg-grey-900">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        {/* Soft glow */}
         <div className="absolute -top-24 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-yellow-400/20 blur-3xl" />
         <div className="absolute -bottom-24 right-10 h-[420px] w-[420px] rounded-full bg-violet-600/15 blur-3xl" />
-
-        {/* Pattern image, scaled down + low opacity */}
         <div className="absolute inset-0 opacity-[0.06] dark:opacity-[0.05] bg-heropattern bg-[length:900px_900px] bg-center" />
-
-        {/* Fade to page background */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white dark:to-grey-900" />
       </div>
 
@@ -55,25 +54,32 @@ const Hero = ({ mainData }: HeroProps) => {
                 I build
               </span>
 
-              <Typewriter
-                options={{
-                  strings: titles,
-                  autoStart: true,
-                  loop: true,
-                  deleteSpeed: 35,
-                  delay: 35,
-                  wrapperClassName:
-                    "text-base sm:text-lg font-medium text-yellow-400",
-                  cursorClassName: "text-base sm:text-lg text-yellow-400",
-                }}
-              />
+              {safeTitles.length ? (
+                <Typewriter
+                  options={{
+                    strings: safeTitles,
+                    autoStart: true,
+                    loop: true,
+                    deleteSpeed: 35,
+                    delay: 35,
+                    wrapperClassName:
+                      "text-base sm:text-lg font-medium text-yellow-400",
+                    cursorClassName: "text-base sm:text-lg text-yellow-400",
+                  }}
+                />
+              ) : (
+                <span className="text-base sm:text-lg font-medium text-yellow-400">
+                  secure systems
+                </span>
+              )}
             </div>
 
-            <p className="mt-5 text-base leading-relaxed text-black/70 dark:text-white/70">
-              {shortDesc}
-            </p>
+            {shortDesc ? (
+              <p className="mt-5 text-base leading-relaxed text-black/70 dark:text-white/70">
+                {shortDesc}
+              </p>
+            ) : null}
 
-            {/* Proof badges */}
             <div className="mt-7 flex flex-wrap gap-3">
               {[
                 "6+ Years Enterprise",
@@ -90,11 +96,10 @@ const Hero = ({ mainData }: HeroProps) => {
               ))}
             </div>
 
-            {/* CTAs */}
             <div className="mt-8 flex flex-wrap gap-3">
               <ScrollLink
                 className="w-fit text-sm md:text-base py-3 px-5 cursor-pointer inline-flex items-center gap-2 rounded-2xl bg-black text-white dark:bg-white dark:text-black shadow-lg"
-                to={"about"}
+                to="about"
                 offset={-60}
                 smooth
                 duration={500}
@@ -108,7 +113,7 @@ const Hero = ({ mainData }: HeroProps) => {
                 href="/Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-fit text-sm md:text-base py-3 px-5 inline-flex items-center gap-2 rounded-2xl bg-white/70 dark:bg-white/5 shadow-soft"
+                className="w-fit text-sm md:text-base py-3 px-5 inline-flex items-center gap-2 rounded-2xl bg-white/70 dark:bg-white/5 shadow-md"
               >
                 Resume
               </a>
@@ -128,14 +133,16 @@ const Hero = ({ mainData }: HeroProps) => {
             <div className="relative rounded-[2rem] border border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-xl p-6 sm:p-8 backdrop-blur">
               <div className="flex items-center gap-4">
                 <div className="h-20 w-20 rounded-3xl overflow-hidden bg-black/5 dark:bg-white/10">
-                  <Image
-                    alt="Tom Jalallar"
-                    src={heroImage}   // set this to "/tom.png" in data.json
-                    width={320}
-                    height={320}
-                    className="h-full w-full object-cover"
-                    unoptimized
-                  />
+                  {heroImage?.trim() ? (
+                    <Image
+                      alt={name}
+                      src={heroImage}
+                      width={320}
+                      height={320}
+                      className="h-full w-full object-cover"
+                      unoptimized
+                    />
+                  ) : null}
                 </div>
 
                 <div>
@@ -158,39 +165,33 @@ const Hero = ({ mainData }: HeroProps) => {
                     key={row.k}
                     className="flex items-start justify-between gap-6 rounded-2xl bg-white/60 dark:bg-black/20 p-4"
                   >
-                    <span className="text-sm text-black/60 dark:text-white/60">
-                      {row.k}
-                    </span>
-                    <span className="text-sm font-medium text-right">
-                      {row.v}
-                    </span>
+                    <span className="text-sm text-black/60 dark:text-white/60">{row.k}</span>
+                    <span className="text-sm font-medium text-right">{row.v}</span>
                   </div>
                 ))}
               </div>
 
-              {/* Tech icons sized properly (with fallback if a URL breaks) */}
               <div className="mt-6 flex flex-wrap gap-3">
-                {techStackImages?.slice(0, 8).map((src, idx) => (
-                  <span
-                    key={`${src}-${idx}`}
-                    className="inline-flex items-center justify-center rounded-2xl bg-white/70 dark:bg-white/5 shadow-md h-12 w-12"
-                    title={typeof src === "string" ? src : "Tech"}
-                  >
-                    <Image
-                      alt="tech"
-                      src={src}
-                      width={28}
-                      height={28}
-                      className="h-7 w-7 object-contain"
-                      unoptimized
-                      onError={(e) => {
-                        // swap to local fallback icon if remote fails
-                        const img = e.currentTarget as HTMLImageElement;
-                        img.src = "/icons/tool.svg"; // <- create this file (see below)
-                      }}
-                    />
-                  </span>
-                ))}
+                {Array.isArray(techStackImages) &&
+                  techStackImages
+                    .filter((s) => typeof s === "string" && s.trim())
+                    .slice(0, 8)
+                    .map((src, idx) => (
+                      <span
+                        key={`${src}-${idx}`}
+                        className="inline-flex items-center justify-center rounded-2xl bg-white/70 dark:bg-white/5 shadow-md h-12 w-12"
+                        title={src}
+                      >
+                        <Image
+                          alt="tech"
+                          src={src}
+                          width={28}
+                          height={28}
+                          className="h-7 w-7 object-contain"
+                          unoptimized
+                        />
+                      </span>
+                    ))}
               </div>
             </div>
 

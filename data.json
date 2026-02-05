@@ -28,8 +28,8 @@
     "resumeUrl": "/Resume.pdf"
   },
 "socials": [
-  { "name": "LinkedIn", "icon": "FaLinkedin", "link": "https://www.linkedin.com/in/TamemJalallar" },
   { "name": "GitHub", "icon": "FaGithub", "link": "https://github.com/TamemJalallar" },
+  { "name": "LinkedIn", "icon": "FaLinkedin", "link": "https://linkedin.com/in/TamemJalallar" },
   { "name": "Email", "icon": "FaEnvelope", "link": "mailto:tjalallar@att.net" }
 ],
 
@@ -124,6 +124,7 @@
       "position": "IT Systems Administrator",
       "startDate": "Sep 2018",
       "endDate": "Present",
+      "logo":"/Public/WPP_logo.png",
       "desc": [
         "Primary escalation lead for executive-level and enterprise incidents; trusted for high-impact issues.",
         "Administer identity and endpoint platforms across large user populations (Okta, Entra ID, Intune, Kandji, Jamf, ABM).",
@@ -135,7 +136,7 @@
       "position": "AV & VIP Support",
       "startDate": "Sep 2018",
       "endDate": "Present",
-      "logo":\Public\Ogilvy_logo.png
+      "logo":"/Public/Ogilvy_logo.png",
       "desc": [
         "Dedicated IT and AV/VIP support for leadership and agency teams in high-visibility environments.",
         "End-to-end AV production for town halls, leadership sessions, and client-facing events.",

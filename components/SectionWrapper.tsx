@@ -1,12 +1,18 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const sectionVariants = {
+const easeCurve: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: easeCurve },
+  },
 };
 
 export default function SectionWrapper({

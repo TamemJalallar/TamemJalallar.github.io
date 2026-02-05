@@ -1,0 +1,220 @@
+import type { ReactNode } from "react";
+
+/* ===============================
+   REAL TOOL COMPONENTS (ONLY)
+================================ */
+import CaseConverter from "@/components/tools/CaseConverter";
+import Base64Tool from "@/components/tools/Base64Tool";
+import UnitConverter from "@/components/tools/UnitConverter";
+import TimestampConverter from "@/components/tools/TimestampConverter";
+import ColorConverter from "@/components/tools/ColorConverter";
+import RandomTeamGenerator from "@/components/tools/RandomTeamGenerator";
+
+/* ===============================
+   TYPES
+================================ */
+export type ToolCategory =
+  | "Text"
+  | "Image"
+  | "Utility"
+  | "Developer"
+  | "Design"
+  | "PDF"
+  | "Fun"
+  | "Productivity";
+
+export type ToolDef = {
+  slug: string;
+  title: string;
+  desc: string;
+  icon: string;
+  category: ToolCategory;
+  component: ReactNode;
+};
+
+/* ===============================
+   PLACEHOLDER
+================================ */
+function ComingSoon(name: string) {
+  return (
+    <div className="rounded-2xl border border-gray-200/70 dark:border-white/10 bg-white/70 dark:bg-grey-900/60 p-6">
+      <p className="text-sm text-black/70 dark:text-white/70">
+        <span className="font-semibold">{name}</span> is coming soon.
+      </p>
+      <p className="mt-2 text-xs text-black/60 dark:text-white/60">
+        Runs fully in your browser. Nothing is uploaded.
+      </p>
+    </div>
+  );
+}
+
+/* ===============================
+   TOOL REGISTRY (ALL)
+================================ */
+export const TOOLS: ToolDef[] = [
+  /* ───────── TEXT ───────── */
+  {
+    slug: "word-character-counter",
+    title: "Word & Character Counter",
+    desc: "Count words, characters, lines, and paragraphs.",
+    icon: "🔢",
+    category: "Text",
+    component: ComingSoon("Word & Character Counter"),
+  },
+  {
+    slug: "text-case-converter",
+    title: "Text Case Converter",
+    desc: "Convert text casing formats.",
+    icon: "🔤",
+    category: "Text",
+    component: <CaseConverter />,
+  },
+  {
+    slug: "find-and-replace",
+    title: "Find & Replace",
+    desc: "Find text patterns and replace them.",
+    icon: "🔎",
+    category: "Text",
+    component: ComingSoon("Find & Replace"),
+  },
+  {
+    slug: "lorem-ipsum-generator",
+    title: "Lorem Ipsum Generator",
+    desc: "Generate placeholder text.",
+    icon: "📄",
+    category: "Text",
+    component: ComingSoon("Lorem Ipsum Generator"),
+  },
+
+  /* ───────── IMAGE ───────── */
+  {
+    slug: "image-compressor",
+    title: "Image Compressor",
+    desc: "Compress images locally in your browser.",
+    icon: "🗜️",
+    category: "Image",
+    component: ComingSoon("Image Compressor"),
+  },
+  {
+    slug: "image-resizer",
+    title: "Image Resizer",
+    desc: "Resize and crop images.",
+    icon: "✂️",
+    category: "Image",
+    component: ComingSoon("Image Resizer"),
+  },
+  {
+    slug: "jpg-to-png",
+    title: "JPG to PNG",
+    desc: "Convert JPG images to PNG.",
+    icon: "🖼️",
+    category: "Image",
+    component: ComingSoon("JPG to PNG"),
+  },
+  {
+    slug: "png-to-jpg",
+    title: "PNG to JPG",
+    desc: "Convert PNG images to JPG.",
+    icon: "🖼️",
+    category: "Image",
+    component: ComingSoon("PNG to JPG"),
+  },
+  {
+    slug: "favicon-generator",
+    title: "Favicon Generator",
+    desc: "Generate favicons from images.",
+    icon: "🧿",
+    category: "Image",
+    component: ComingSoon("Favicon Generator"),
+  },
+
+  /* ───────── UTILITY ───────── */
+  {
+    slug: "unit-converter",
+    title: "Unit Converter",
+    desc: "Convert common units.",
+    icon: "📏",
+    category: "Utility",
+    component: <UnitConverter />,
+  },
+  {
+    slug: "timestamp-converter",
+    title: "Timestamp Converter",
+    desc: "Unix ↔ human-readable dates.",
+    icon: "⏱️",
+    category: "Utility",
+    component: <TimestampConverter />,
+  },
+
+  /* ───────── DEVELOPER ───────── */
+  {
+    slug: "base64-encoder-decoder",
+    title: "Base64 Encoder / Decoder",
+    desc: "Encode or decode Base64 strings.",
+    icon: "🧷",
+    category: "Developer",
+    component: <Base64Tool />,
+  },
+  {
+    slug: "json-formatter",
+    title: "JSON Formatter",
+    desc: "Prettify, validate, and minify JSON.",
+    icon: "🧩",
+    category: "Developer",
+    component: ComingSoon("JSON Formatter"),
+  },
+  {
+    slug: "url-encoder-decoder",
+    title: "URL Encoder / Decoder",
+    desc: "Encode and decode URLs.",
+    icon: "🔗",
+    category: "Developer",
+    component: ComingSoon("URL Encoder / Decoder"),
+  },
+
+  /* ───────── DESIGN ───────── */
+  {
+    slug: "color-picker",
+    title: "Color Picker",
+    desc: "Pick and convert colors.",
+    icon: "🎨",
+    category: "Design",
+    component: <ColorConverter />,
+  },
+  {
+    slug: "contrast-checker",
+    title: "Contrast Checker",
+    desc: "Check color contrast ratios.",
+    icon: "🌓",
+    category: "Design",
+    component: ComingSoon("Contrast Checker"),
+  },
+
+  /* ───────── PDF ───────── */
+  {
+    slug: "merge-pdfs",
+    title: "Merge PDFs",
+    desc: "Merge multiple PDFs into one.",
+    icon: "📎",
+    category: "PDF",
+    component: ComingSoon("Merge PDFs"),
+  },
+  {
+    slug: "pdf-to-images",
+    title: "PDF to Images",
+    desc: "Convert PDFs to images.",
+    icon: "🧾",
+    category: "PDF",
+    component: ComingSoon("PDF to Images"),
+  },
+
+  /* ───────── FUN ───────── */
+  {
+    slug: "random-team-generator",
+    title: "Random Team Generator",
+    desc: "Split names into random teams.",
+    icon: "🎲",
+    category: "Fun",
+    component: <RandomTeamGenerator />,
+  },
+];
