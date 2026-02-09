@@ -37,7 +37,7 @@ html {
 html { scroll-behavior: smooth; }
 
 ::selection {
-  background: rgba(254, 222, 0, 0.35);
+  background: rgba(14, 165, 233, 0.3);
 }
 
 body {

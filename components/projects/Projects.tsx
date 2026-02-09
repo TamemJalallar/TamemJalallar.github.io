@@ -56,7 +56,7 @@ const Projects = ({ projectsData }: ProjectsProps) => {
                   className={[
                     "px-4 py-2 rounded-full text-sm font-medium transition",
                     active
-                      ? "bg-black text-white dark:bg-white dark:text-black"
+                      ? "bg-sky-600 text-white dark:bg-sky-500 dark:text-white"
                       : "bg-white/70 dark:bg-white/5 shadow-soft dark:shadow-ring hover:opacity-90",
                   ].join(" ")}
                 >

@@ -26,12 +26,12 @@ const Hero = ({ mainData }: HeroProps) => {
   const safeTitles = Array.isArray(titles) ? titles.filter(Boolean) : [];
 
   return (
-    <section id="home" className="relative overflow-hidden bg-white dark:bg-grey-900">
+    <section id="home" className="relative overflow-hidden bg-[#f3f7fb] dark:bg-[#0b1220]">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-yellow-400/20 blur-3xl" />
-        <div className="absolute -bottom-24 right-10 h-[420px] w-[420px] rounded-full bg-violet-600/15 blur-3xl" />
+        <div className="absolute -top-24 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-sky-400/25 blur-3xl" />
+        <div className="absolute -bottom-24 right-10 h-[420px] w-[420px] rounded-full bg-teal-500/20 blur-3xl" />
         <div className="absolute inset-0 opacity-[0.06] dark:opacity-[0.05] bg-heropattern bg-[length:900px_900px] bg-center" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white dark:to-grey-900" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f3f7fb] dark:to-[#0b1220]" />
       </div>
 
       <div className="mx-auto w-full max-w-6xl px-5 min-h-[92vh] py-14 sm:py-20 flex items-center">
@@ -63,12 +63,12 @@ const Hero = ({ mainData }: HeroProps) => {
                     deleteSpeed: 35,
                     delay: 35,
                     wrapperClassName:
-                      "text-base sm:text-lg font-medium text-yellow-400",
-                    cursorClassName: "text-base sm:text-lg text-yellow-400",
+                      "text-base sm:text-lg font-medium text-sky-500",
+                    cursorClassName: "text-base sm:text-lg text-sky-500",
                   }}
                 />
               ) : (
-                <span className="text-base sm:text-lg font-medium text-yellow-400">
+                <span className="text-base sm:text-lg font-medium text-sky-500">
                   secure systems
                 </span>
               )}
@@ -98,7 +98,7 @@ const Hero = ({ mainData }: HeroProps) => {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <ScrollLink
-                className="w-fit text-sm md:text-base py-3 px-5 cursor-pointer inline-flex items-center gap-2 rounded-2xl bg-black text-white dark:bg-white dark:text-black shadow-lg"
+                className="w-fit text-sm md:text-base py-3 px-5 cursor-pointer inline-flex items-center gap-2 rounded-2xl bg-sky-600 text-white hover:bg-sky-700 transition shadow-lg dark:bg-sky-500 dark:hover:bg-sky-400"
                 to="about"
                 offset={-60}
                 smooth
@@ -195,7 +195,7 @@ const Hero = ({ mainData }: HeroProps) => {
               </div>
             </div>
 
-            <div className="pointer-events-none absolute -inset-1 -z-10 rounded-[2rem] blur-2xl opacity-30 bg-yellow-400/30" />
+            <div className="pointer-events-none absolute -inset-1 -z-10 rounded-[2rem] blur-2xl opacity-30 bg-sky-500/30" />
           </div>
         </div>
       </div>

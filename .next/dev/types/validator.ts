@@ -36,10 +36,82 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
 }
 
 
+// Validate ../../../app/games/color-circuit/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/games/color-circuit">> = Specific
+  const handler = {} as typeof import("../../../app/games/color-circuit/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/games/echo-memory/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/games/echo-memory">> = Specific
+  const handler = {} as typeof import("../../../app/games/echo-memory/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/games/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/games">> = Specific
+  const handler = {} as typeof import("../../../app/games/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/games/pocket-golf/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/games/pocket-golf">> = Specific
+  const handler = {} as typeof import("../../../app/games/pocket-golf/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/games/signal-shift/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/games/signal-shift">> = Specific
+  const handler = {} as typeof import("../../../app/games/signal-shift/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/games/stack-logic/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/games/stack-logic">> = Specific
+  const handler = {} as typeof import("../../../app/games/stack-logic/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/games/wordle/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/games/wordle">> = Specific
+  const handler = {} as typeof import("../../../app/games/wordle/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/">> = Specific
   const handler = {} as typeof import("../../../app/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/stream/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/stream">> = Specific
+  const handler = {} as typeof import("../../../app/stream/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

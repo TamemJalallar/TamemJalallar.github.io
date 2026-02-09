@@ -833,6 +833,71 @@ const GROUP_ORDER = [
     "utility",
     "fun"
 ];
+const GROUP_STYLES = {
+    pdf: {
+        badge: "border-amber-500/40 bg-amber-500/15 text-amber-700 dark:text-amber-200",
+        dot: "bg-amber-400",
+        label: "text-amber-700 dark:text-amber-200",
+        count: "text-amber-600/80 dark:text-amber-200/70",
+        bar: "bg-amber-400/80"
+    },
+    dev: {
+        badge: "border-sky-500/40 bg-sky-500/15 text-sky-700 dark:text-sky-200",
+        dot: "bg-sky-400",
+        label: "text-sky-700 dark:text-sky-200",
+        count: "text-sky-600/80 dark:text-sky-200/70",
+        bar: "bg-sky-400/80"
+    },
+    text: {
+        badge: "border-indigo-500/40 bg-indigo-500/15 text-indigo-700 dark:text-indigo-200",
+        dot: "bg-indigo-400",
+        label: "text-indigo-700 dark:text-indigo-200",
+        count: "text-indigo-600/80 dark:text-indigo-200/70",
+        bar: "bg-indigo-400/80"
+    },
+    data: {
+        badge: "border-emerald-500/40 bg-emerald-500/15 text-emerald-700 dark:text-emerald-200",
+        dot: "bg-emerald-400",
+        label: "text-emerald-700 dark:text-emerald-200",
+        count: "text-emerald-600/80 dark:text-emerald-200/70",
+        bar: "bg-emerald-400/80"
+    },
+    image: {
+        badge: "border-cyan-500/40 bg-cyan-500/15 text-cyan-700 dark:text-cyan-200",
+        dot: "bg-cyan-400",
+        label: "text-cyan-700 dark:text-cyan-200",
+        count: "text-cyan-600/80 dark:text-cyan-200/70",
+        bar: "bg-cyan-400/80"
+    },
+    color: {
+        badge: "border-orange-500/40 bg-orange-500/15 text-orange-700 dark:text-orange-200",
+        dot: "bg-orange-400",
+        label: "text-orange-700 dark:text-orange-200",
+        count: "text-orange-600/80 dark:text-orange-200/70",
+        bar: "bg-orange-400/80"
+    },
+    utility: {
+        badge: "border-slate-500/40 bg-slate-500/15 text-slate-700 dark:text-slate-200",
+        dot: "bg-slate-400",
+        label: "text-slate-700 dark:text-slate-200",
+        count: "text-slate-600/80 dark:text-slate-200/70",
+        bar: "bg-slate-400/80"
+    },
+    fun: {
+        badge: "border-pink-500/40 bg-pink-500/15 text-pink-700 dark:text-pink-200",
+        dot: "bg-pink-400",
+        label: "text-pink-700 dark:text-pink-200",
+        count: "text-pink-600/80 dark:text-pink-200/70",
+        bar: "bg-pink-400/80"
+    },
+    other: {
+        badge: "border-gray-400/40 bg-gray-400/10 text-gray-600 dark:text-gray-300",
+        dot: "bg-gray-400",
+        label: "text-gray-600 dark:text-gray-300",
+        count: "text-gray-500/80 dark:text-gray-300/70",
+        bar: "bg-gray-400/70"
+    }
+};
 function pickGroup(tags) {
     if (!tags?.length) return "other";
     for (const g of GROUP_ORDER){
@@ -853,6 +918,12 @@ function labelForGroup(g) {
         other: "Other"
     };
     return map[g];
+}
+function styleForTag(tag) {
+    if (GROUP_ORDER.includes(tag)) {
+        return GROUP_STYLES[tag];
+    }
+    return GROUP_STYLES.other;
 }
 function stableShuffle(arr, seed) {
     const out = [
@@ -998,7 +1069,7 @@ function ToolsPageClient() {
                                 className: "opacity-60"
                             }, void 0, false, {
                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                lineNumber: 172,
+                                lineNumber: 248,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1008,13 +1079,13 @@ function ToolsPageClient() {
                                 className: "w-full bg-transparent text-sm outline-none placeholder:text-white/40"
                             }, void 0, false, {
                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                lineNumber: 173,
+                                lineNumber: 249,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                        lineNumber: 171,
+                        lineNumber: 247,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1029,12 +1100,12 @@ function ToolsPageClient() {
                                         children: t
                                     }, t, false, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 188,
+                                        lineNumber: 264,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                lineNumber: 182,
+                                lineNumber: 258,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1050,7 +1121,7 @@ function ToolsPageClient() {
                                                 children: "Sort: Grouped"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 200,
+                                                lineNumber: 276,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1058,7 +1129,7 @@ function ToolsPageClient() {
                                                 children: "Sort: Title"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 201,
+                                                lineNumber: 277,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1066,7 +1137,7 @@ function ToolsPageClient() {
                                                 children: "Sort: Category"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 202,
+                                                lineNumber: 278,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1074,13 +1145,13 @@ function ToolsPageClient() {
                                                 children: "Sort: Random"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 203,
+                                                lineNumber: 279,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 195,
+                                        lineNumber: 271,
                                         columnNumber: 13
                                     }, this),
                                     sortMode === "random" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1090,7 +1161,7 @@ function ToolsPageClient() {
                                         children: "Shuffle"
                                     }, void 0, false, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 207,
+                                        lineNumber: 283,
                                         columnNumber: 15
                                     }, this) : null,
                                     sortMode === "grouped" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1103,7 +1174,7 @@ function ToolsPageClient() {
                                                 children: "Collapse all"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 218,
+                                                lineNumber: 294,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1113,31 +1184,31 @@ function ToolsPageClient() {
                                                 children: "Expand all"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 225,
+                                                lineNumber: 301,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 217,
+                                        lineNumber: 293,
                                         columnNumber: 15
                                     }, this) : null
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                lineNumber: 194,
+                                lineNumber: 270,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                        lineNumber: 181,
+                        lineNumber: 257,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                lineNumber: 170,
+                lineNumber: 246,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1145,6 +1216,7 @@ function ToolsPageClient() {
                 children: [
                     sortMode === "grouped" ? grouped.map((group)=>{
                         const isCollapsed = collapsedGroups[group.key];
+                        const groupStyle = GROUP_STYLES[group.key] ?? GROUP_STYLES.other;
                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "contents",
                             children: [
@@ -1159,47 +1231,61 @@ function ToolsPageClient() {
                                                 className: `text-white/60 transition-transform ${isCollapsed ? "-rotate-90" : "rotate-0"}`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 250,
+                                                lineNumber: 327,
+                                                columnNumber: 23
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: `h-2 w-2 rounded-full ${groupStyle.dot}`
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/tools/tools-page-client.tsx",
+                                                lineNumber: 332,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "text-xs font-semibold uppercase tracking-widest text-white/50",
+                                                className: `text-xs font-semibold uppercase tracking-widest ${groupStyle.label}`,
                                                 children: group.label
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 255,
+                                                lineNumber: 333,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "text-xs text-white/40",
+                                                className: `text-xs ${groupStyle.count}`,
                                                 children: group.tools.length
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 258,
+                                                lineNumber: 338,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "h-px flex-1 bg-white/10"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 259,
+                                                lineNumber: 341,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 245,
+                                        lineNumber: 322,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                    lineNumber: 244,
+                                    lineNumber: 321,
                                     columnNumber: 19
                                 }, this),
                                 !isCollapsed ? group.tools.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                         href: `/tools/${t.slug}`,
-                                        className: "group rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10",
+                                        className: `group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 pl-6 transition-colors hover:bg-white/10`,
                                         children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: `absolute left-0 top-0 h-full w-1 ${GROUP_STYLES[pickGroup(t.tags)].bar}`
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/tools/tools-page-client.tsx",
+                                                lineNumber: 352,
+                                                columnNumber: 27
+                                            }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "flex items-start justify-between gap-3",
                                                 children: [
@@ -1210,7 +1296,7 @@ function ToolsPageClient() {
                                                                 children: t.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                                lineNumber: 272,
+                                                                lineNumber: 357,
                                                                 columnNumber: 31
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1218,59 +1304,69 @@ function ToolsPageClient() {
                                                                 children: t.description
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                                lineNumber: 273,
+                                                                lineNumber: 358,
                                                                 columnNumber: 31
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                        lineNumber: 271,
+                                                        lineNumber: 356,
                                                         columnNumber: 29
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fi$2f$index$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FiArrowUpRight"], {
                                                         className: "mt-1 opacity-50 transition-opacity group-hover:opacity-100"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                        lineNumber: 277,
+                                                        lineNumber: 362,
                                                         columnNumber: 29
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 270,
+                                                lineNumber: 355,
                                                 columnNumber: 27
                                             }, this),
                                             t.tags?.length ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "mt-4 flex flex-wrap gap-2",
-                                                children: t.tags.map((x)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "rounded-full border border-white/10 bg-black/20 px-2 py-0.5 text-xs text-white/70",
+                                                children: t.tags.map((x)=>{
+                                                    const style = styleForTag(x);
+                                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: `rounded-full border px-2 py-0.5 text-xs ${style.badge}`,
                                                         children: x
                                                     }, x, false, {
                                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                        lineNumber: 283,
-                                                        columnNumber: 33
-                                                    }, this))
+                                                        lineNumber: 370,
+                                                        columnNumber: 35
+                                                    }, this);
+                                                })
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 281,
+                                                lineNumber: 366,
                                                 columnNumber: 29
                                             }, this) : null
                                         ]
                                     }, t.slug, true, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 265,
+                                        lineNumber: 347,
                                         columnNumber: 25
                                     }, this)) : null
                             ]
                         }, group.key, true, {
                             fileName: "[project]/app/tools/tools-page-client.tsx",
-                            lineNumber: 243,
+                            lineNumber: 320,
                             columnNumber: 17
                         }, this);
                     }) : flatSorted.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: `/tools/${t.slug}`,
-                            className: "group rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10",
+                            className: "group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 pl-6 transition-colors hover:bg-white/10",
                             children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: `absolute left-0 top-0 h-full w-1 ${GROUP_STYLES[pickGroup(t.tags)].bar}`
+                                }, void 0, false, {
+                                    fileName: "[project]/app/tools/tools-page-client.tsx",
+                                    lineNumber: 392,
+                                    columnNumber: 17
+                                }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex items-start justify-between gap-3",
                                     children: [
@@ -1281,7 +1377,7 @@ function ToolsPageClient() {
                                                     children: t.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                    lineNumber: 306,
+                                                    lineNumber: 397,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1289,47 +1385,50 @@ function ToolsPageClient() {
                                                     children: t.description
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                    lineNumber: 307,
+                                                    lineNumber: 398,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/tools/tools-page-client.tsx",
-                                            lineNumber: 305,
+                                            lineNumber: 396,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fi$2f$index$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FiArrowUpRight"], {
                                             className: "mt-1 opacity-50 transition-opacity group-hover:opacity-100"
                                         }, void 0, false, {
                                             fileName: "[project]/app/tools/tools-page-client.tsx",
-                                            lineNumber: 309,
+                                            lineNumber: 400,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                    lineNumber: 304,
+                                    lineNumber: 395,
                                     columnNumber: 17
                                 }, this),
                                 t.tags?.length ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "mt-4 flex flex-wrap gap-2",
-                                    children: t.tags.map((x)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "rounded-full border border-white/10 bg-black/20 px-2 py-0.5 text-xs text-white/70",
+                                    children: t.tags.map((x)=>{
+                                        const style = styleForTag(x);
+                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: `rounded-full border px-2 py-0.5 text-xs ${style.badge}`,
                                             children: x
                                         }, x, false, {
                                             fileName: "[project]/app/tools/tools-page-client.tsx",
-                                            lineNumber: 315,
-                                            columnNumber: 23
-                                        }, this))
+                                            lineNumber: 408,
+                                            columnNumber: 25
+                                        }, this);
+                                    })
                                 }, void 0, false, {
                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                    lineNumber: 313,
+                                    lineNumber: 404,
                                     columnNumber: 19
                                 }, this) : null
                             ]
                         }, t.slug, true, {
                             fileName: "[project]/app/tools/tools-page-client.tsx",
-                            lineNumber: 299,
+                            lineNumber: 387,
                             columnNumber: 15
                         }, this)),
                     (sortMode === "grouped" ? grouped.length === 0 : flatSorted.length === 0) ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1337,19 +1436,19 @@ function ToolsPageClient() {
                         children: "No tools match your search."
                     }, void 0, false, {
                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                        lineNumber: 328,
+                        lineNumber: 422,
                         columnNumber: 11
                     }, this) : null
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                lineNumber: 238,
+                lineNumber: 314,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/tools/tools-page-client.tsx",
-        lineNumber: 169,
+        lineNumber: 245,
         columnNumber: 5
     }, this);
 }

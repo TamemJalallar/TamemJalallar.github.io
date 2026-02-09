@@ -50,7 +50,7 @@ export default function Header({ logo }: { logo?: string }) {
       <nav className="lg:w-11/12 2xl:w-4/5 w-full md:px-6 2xl:px-0 mx-auto py-4 hidden sm:flex items-center justify-between">
         <Link
           href="/"
-          className="2xl:ml-6 hover:text-violet-700 hover:dark:text-violet-500 transition-colors duration-300"
+          className="2xl:ml-6 hover:text-sky-700 hover:dark:text-sky-400 transition-colors duration-300"
         >
           {safeLogo === "Tamem Jalallar" ? (
             <FaNodeJs size={28} />
@@ -64,7 +64,7 @@ export default function Header({ logo }: { logo?: string }) {
             <li key={e}>
               {isHome ? (
                 <ScrollLink
-                  className="hover:text-violet-700 hover:dark:text-violet-500 transition-colors capitalize cursor-pointer"
+                  className="hover:text-sky-700 hover:dark:text-sky-400 transition-colors capitalize cursor-pointer"
                   to={e}
                   offset={-60}
                   smooth
@@ -76,7 +76,7 @@ export default function Header({ logo }: { logo?: string }) {
               ) : (
                 <Link
                   href={`/#${e}`}
-                  className="hover:text-violet-700 hover:dark:text-violet-500 transition-colors capitalize cursor-pointer"
+                  className="hover:text-sky-700 hover:dark:text-sky-400 transition-colors capitalize cursor-pointer"
                 >
                   {e}
                 </Link>
@@ -87,16 +87,24 @@ export default function Header({ logo }: { logo?: string }) {
           <li>
             <Link
               href="/tools/"
-              className="hover:text-violet-700 hover:dark:text-violet-500 transition-colors capitalize cursor-pointer"
+              className="hover:text-sky-700 hover:dark:text-sky-400 transition-colors capitalize cursor-pointer"
             >
               tools
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/games"
+              className="hover:text-sky-700 hover:dark:text-sky-400 transition-colors capitalize cursor-pointer"
+            >
+              games
             </Link>
           </li>
 
           <button
             type="button"
             onClick={toggleTheme}
-            className="hover:bg-gray-100 hover:dark:bg-violet-700 p-1.5 rounded-full cursor-pointer transition-colors"
+            className="hover:bg-gray-100 hover:dark:bg-sky-700 p-1.5 rounded-full cursor-pointer transition-colors"
             aria-label="Toggle theme"
           >
             {/* ✅ prevent hydration mismatch */}
@@ -109,7 +117,7 @@ export default function Header({ logo }: { logo?: string }) {
       <nav className="p-4 flex sm:hidden items-center justify-between">
         <Link
           href="/"
-          className="hover:text-violet-700 hover:dark:text-violet-500 transition-colors"
+          className="hover:text-sky-700 hover:dark:text-sky-400 transition-colors"
         >
           {safeLogo === "Tamem Jalallar" ? (
             <FaNodeJs size={28} />
@@ -122,7 +130,7 @@ export default function Header({ logo }: { logo?: string }) {
           <button
             type="button"
             onClick={toggleTheme}
-            className="bg-gray-100 dark:bg-violet-700 p-1.5 rounded-full cursor-pointer transition-colors"
+            className="bg-slate-100 dark:bg-sky-700 p-1.5 rounded-full cursor-pointer transition-colors"
             aria-label="Toggle theme"
           >
             {/* ✅ prevent hydration mismatch */}

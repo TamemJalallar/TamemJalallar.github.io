@@ -35,6 +35,7 @@ const Experiences = ({ experienceData, educationData }: ExperiencesProps) => {
                 company={e.company}
                 position={e.position}
                 desc={e.desc}
+                logo={e.logo}
                 institute={""}
                 degree={""}
                 duration={`${e.startDate} - ${e.endDate}`}
@@ -50,6 +51,7 @@ const Experiences = ({ experienceData, educationData }: ExperiencesProps) => {
                 desc={[]}
                 institute={ed.institute}
                 degree={ed.degree}
+                logo={ed.logo}
                 duration={""} // <-- education type has no duration
               />
             ))}

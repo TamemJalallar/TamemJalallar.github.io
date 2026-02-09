@@ -31,7 +31,7 @@ export default function Contact() {
                 href={bookingsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm md:text-base bg-violet-600 hover:bg-violet-700 text-white transition shadow-soft"
+                className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm md:text-base bg-sky-600 hover:bg-sky-700 text-white transition shadow-soft"
               >
                 Book a meeting
               </a>

@@ -1,4 +1,21 @@
+import type { Metadata } from "next";
 import ToolsPageClient from "./tools-page-client";
+
+export const metadata: Metadata = {
+  title: "Tools",
+  description: "A growing collection of browser-based utilities for everyday tasks.",
+  openGraph: {
+    title: "Tools | TomFromIT",
+    description: "A growing collection of browser-based utilities for everyday tasks.",
+    url: "/tools/",
+    images: ["/Hero.png"],
+  },
+  twitter: {
+    title: "Tools | TomFromIT",
+    description: "A growing collection of browser-based utilities for everyday tasks.",
+    images: ["/Hero.png"],
+  },
+};
 
 export const dynamic = "force-static";
 

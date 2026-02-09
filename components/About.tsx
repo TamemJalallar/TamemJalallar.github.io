@@ -26,7 +26,7 @@ const About = ({ aboutData, name }: Props) => {
   return (
     <SectionWrapper
       id="about"
-      className="min-h-[90vh] pt-12 bg-gradient-to-b from-white to-gray-100/20 dark:from-grey-900 dark:to-grey-900"
+      className="min-h-[90vh] pt-12 bg-gradient-to-b from-[#f3f7fb] to-sky-50/60 dark:from-[#0b1220] dark:to-[#0b1220]"
     >
       <h2 className="text-4xl text-center">About Me</h2>
 
@@ -50,7 +50,7 @@ const About = ({ aboutData, name }: Props) => {
         <div className="flex-1 text-left mx-4 md:p-6">
           <p className="text-3xl font-semibold">{name}</p>
           {title ? (
-            <p className="text-violet-800 w-fit rounded py-1 px-2 text-sm bg-violet-50 dark:bg-violet-900/10">
+            <p className="text-sky-700 w-fit rounded py-1 px-2 text-sm bg-sky-100 dark:bg-sky-500/10 dark:text-sky-300">
               {title}
             </p>
           ) : null}
@@ -67,7 +67,7 @@ const About = ({ aboutData, name }: Props) => {
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-violet-600 text-white rounded-md py-2 px-6"
+                className="bg-sky-600 hover:bg-sky-700 text-white rounded-md py-2 px-6 transition"
               >
                 Resume
               </Link>
@@ -78,7 +78,7 @@ const About = ({ aboutData, name }: Props) => {
                 href={callUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-violet-600 flex items-center gap-1"
+                className="text-sky-600 hover:text-sky-700 flex items-center gap-1 transition"
               >
                 Book a 1:1 call <BiLinkExternal />
               </Link>

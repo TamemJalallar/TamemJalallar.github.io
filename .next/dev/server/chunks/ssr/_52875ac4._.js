@@ -50,10 +50,59 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$providers$2e$tsx__$5b
 ;
 ;
 const metadata = {
-    title: "Tamem “Tom” Jalallar | IT Systems Administrator",
+    metadataBase: new URL("https://www.tomfromit.com"),
+    title: {
+        default: "Tamem “Tom” Jalallar | IT Systems Administrator",
+        template: "%s | TomFromIT"
+    },
     description: "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
+    keywords: [
+        "IT Systems Administrator",
+        "Identity and Access Management",
+        "Okta",
+        "Microsoft Entra ID",
+        "Endpoint Management",
+        "Intune",
+        "Kandji",
+        "Jamf",
+        "Automation",
+        "PowerShell",
+        "Executive Support"
+    ],
     icons: {
         icon: "/favicon.ico"
+    },
+    alternates: {
+        canonical: "/"
+    },
+    openGraph: {
+        type: "website",
+        url: "/",
+        title: "Tamem “Tom” Jalallar | IT Systems Administrator",
+        description: "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
+        siteName: "TomFromIT",
+        images: [
+            "/Hero.png"
+        ]
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Tamem “Tom” Jalallar | IT Systems Administrator",
+        description: "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
+        images: [
+            "/Hero.png"
+        ]
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1
+        }
     }
 };
 function RootLayout({ children }) {
@@ -61,22 +110,22 @@ function RootLayout({ children }) {
         lang: "en",
         suppressHydrationWarning: true,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("body", {
-            className: "bg-white text-black dark:bg-grey-900 dark:text-white",
+            className: "bg-[#f3f7fb] text-slate-900 dark:bg-[#0b1220] dark:text-slate-100",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$providers$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                 children: children
             }, void 0, false, {
                 fileName: "[project]/app/layout.tsx",
-                lineNumber: 20,
+                lineNumber: 65,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/layout.tsx",
-            lineNumber: 19,
+            lineNumber: 64,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/layout.tsx",
-        lineNumber: 18,
+        lineNumber: 63,
         columnNumber: 5
     }, this);
 }

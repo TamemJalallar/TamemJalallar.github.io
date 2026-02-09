@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MdSchool, MdWork } from "react-icons/md";
 import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -10,6 +11,7 @@ interface ExperienceProps {
   institute: string;
   degree: string;
   duration: string;
+  logo?: string;
 }
 
 const Experience = ({
@@ -20,11 +22,16 @@ const Experience = ({
   institute,
   degree,
   duration,
+  logo,
 }: ExperienceProps) => {
   const [ref, inView] = useInView({
     threshold: 0.5,
     triggerOnce: true,
   });
+  const isShu = Boolean(
+    (logo ?? "").toLowerCase().includes("shu") ||
+      (institute ?? "").toLowerCase().includes("seton hall")
+  );
 
   const cardVariants: Variants = {
     hidden: { x: -50, opacity: 0 },
@@ -45,12 +52,12 @@ const Experience = ({
     >
       <div className="order-1 md:w-5/12"></div>
 
-      <span className="z-20 flex items-center order-1 justify-center w-6 h-6 md:w-9 md:h-9 bg-violet-200 rounded-full ring-4 md:ring-8 ring-white dark:ring-grey-800 dark:bg-violet-900">
+      <span className="z-20 flex items-center order-1 justify-center w-6 h-6 md:w-9 md:h-9 bg-sky-200 rounded-full ring-4 md:ring-8 ring-white dark:ring-grey-800 dark:bg-sky-900">
         {company && (
-          <MdWork className="text-base md:text-xl text-violet-600 dark:text-violet-400" />
+          <MdWork className="text-base md:text-xl text-sky-600 dark:text-sky-300" />
         )}
         {institute && (
-          <MdSchool className="text-base md:text-xl text-violet-600 dark:text-violet-400" />
+          <MdSchool className="text-base md:text-xl text-sky-600 dark:text-sky-300" />
         )}
       </span>
 
@@ -61,12 +68,28 @@ const Experience = ({
         animate={inView ? "visible" : "hidden"}
         className="order-1 rounded-lg w-full ml-3 md:ml-0 bg-white dark:bg-grey-800 md:w-5/12 p-3 md:px-4 md:py-4"
       >
-        <h3 className="mb-2 font-medium text-lg md:text-xl">
-          {company || institute}
-        </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-          {position || degree} | {duration}
-        </p>
+        <div className="flex items-start gap-3">
+          {logo ? (
+            <div className="relative h-14 w-24 shrink-0 overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-soft ring-2 ring-sky-200/60 dark:border-white/30 dark:bg-white dark:ring-sky-400/40">
+              <Image
+                src={logo}
+                alt={`${company || institute} logo`}
+                fill
+                className={`object-contain p-3 ${isShu ? "scale-150" : ""}`}
+                unoptimized
+              />
+            </div>
+          ) : null}
+          <div>
+            <h3 className="mb-2 font-medium text-lg md:text-xl">
+              {company || institute}
+            </h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+              {position || degree}
+              {duration ? ` | ${duration}` : ""}
+            </p>
+          </div>
+        </div>
         <ul className="text-sm text-gray-400 mt-2 ml-4 list-disc">
           {desc?.map((d, i) => (
             <li key={i} className="mb-0.5">

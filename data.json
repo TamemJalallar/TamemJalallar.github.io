@@ -27,32 +27,153 @@
     "callUrl": "mailto:tjalallar@att.net",
     "resumeUrl": "/Resume.pdf"
   },
-"socials": [
-  { "name": "GitHub", "icon": "FaGithub", "link": "https://github.com/TamemJalallar" },
-  { "name": "LinkedIn", "icon": "FaLinkedin", "link": "https://linkedin.com/in/TamemJalallar" },
-  { "name": "Email", "icon": "FaEnvelope", "link": "mailto:tjalallar@att.net" }
-],
-
+  "socials": [
+    {
+      "name": "GitHub",
+      "icon": "FaGithub",
+      "link": "https://github.com/TamemJalallar"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "FaLinkedin",
+      "link": "https://linkedin.com/in/TamemJalallar"
+    },
+    {
+      "name": "Email",
+      "icon": "FaEnvelope",
+      "link": "mailto:tjalallar@att.net"
+    }
+  ],
   "skills": [
     {
-      "name": "Okta",
-      "image": "https://img.icons8.com/color/144/000000/okta.png",
+      "name": "Active Directory",
+      "image": "/MS-AD.png",
       "category": "Identity"
     },
     {
-      "name": "Microsoft Entra ID (Azure AD)",
-      "image": "https://img.icons8.com/color/144/000000/azure-1.png",
+      "name": "Adobe Acrobat",
+      "image": "/acrobat.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Adobe After Effects",
+      "image": "/Adobe_After_Effects.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Adobe Creative Cloud",
+      "image": "/Creative_Cloud.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Adobe Fonts",
+      "image": "/Adobe-Fonts.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Adobe Illustrator",
+      "image": "/illustrator.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Adobe InDesign",
+      "image": "/Adobe_InDesign.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Adobe Photoshop",
+      "image": "/photoshop.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Adobe Premiere Pro",
+      "image": "/Adobe_Premiere_Pro.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Adobe Suite Support",
+      "image": "/Adobe_Help.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Adobe XD",
+      "image": "/Adobe_XD.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Apple Business Manager (ABM)",
+      "image": "/Apple-Business.png",
+      "category": "Endpoint"
+    },
+    {
+      "name": "Auth0",
+      "image": "https://cdn.simpleicons.org/auth0/EB5424",
       "category": "Identity"
     },
     {
-      "name": "Microsoft Intune",
-      "image": "https://img.icons8.com/color/144/000000/microsoft-intune.png",
+      "name": "AWS",
+      "image": "/AWS.png",
+      "category": "Cloud"
+    },
+    {
+      "name": "Bash",
+      "image": "https://img.icons8.com/color/144/000000/bash.png",
+      "category": "Automation"
+    },
+    {
+      "name": "BitLocker",
+      "image": "https://img.icons8.com/color/144/000000/lock--v1.png",
       "category": "Endpoint"
     },
     {
-      "name": "Kandji",
-      "image": "/kandji.png",
+      "name": "Conditional Access",
+      "image": "https://img.icons8.com/color/144/000000/shield.png",
+      "category": "Security"
+    },
+    {
+      "name": "Confluence",
+      "image": "https://img.icons8.com/color/144/000000/confluence.png",
+      "category": "Operations"
+    },
+    {
+      "name": "ConnectFonts",
+      "image": "/connect-fonts.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Device Compliance",
+      "image": "https://img.icons8.com/color/144/000000/security-checked.png",
+      "category": "Security"
+    },
+    {
+      "name": "Figma",
+      "image": "/Figma.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "FileVault",
+      "image": "https://img.icons8.com/color/144/000000/privacy.png",
       "category": "Endpoint"
+    },
+    {
+      "name": "FontAgent",
+      "image": "/FontAgent.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "GitHub Actions",
+      "image": "https://cdn.simpleicons.org/githubactions/2088FF",
+      "category": "Automation"
+    },
+    {
+      "name": "Google Workspace",
+      "image": "/Wokspace.png",
+      "category": "Cloud"
+    },
+    {
+      "name": "Incident Response",
+      "image": "https://img.icons8.com/color/144/000000/siren.png",
+      "category": "Security"
     },
     {
       "name": "Jamf",
@@ -60,9 +181,79 @@
       "category": "Endpoint"
     },
     {
-      "name": "Apple Business Manager (ABM)",
-      "image": "/abm2.png",
+      "name": "Jira",
+      "image": "https://img.icons8.com/color/144/000000/jira.png",
+      "category": "Operations"
+    },
+    {
+      "name": "Kandji",
+      "image": "/kandji.png",
       "category": "Endpoint"
+    },
+    {
+      "name": "Keycloak",
+      "image": "https://cdn.simpleicons.org/keycloak/4D4D4D",
+      "category": "Identity"
+    },
+    {
+      "name": "Microsoft Azure",
+      "image": "https://img.icons8.com/color/144/000000/azure-1.png",
+      "category": "Cloud"
+    },
+    {
+      "name": "Microsoft Defender",
+      "image": "/MSDefender.png",
+      "category": "Endpoint"
+    },
+    {
+      "name": "Microsoft Entra ID (Azure AD)",
+      "image": "https://img.icons8.com/color/144/000000/azure-1.png",
+      "category": "Identity"
+    },
+    {
+      "name": "Microsoft Graph API",
+      "image": "/MS-Graph.png",
+      "category": "Automation"
+    },
+    {
+      "name": "Microsoft Intune",
+      "image": "https://img.icons8.com/color/144/000000/microsoft-intune.png",
+      "category": "Endpoint"
+    },
+    {
+      "name": "Miro",
+      "image": "https://cdn.simpleicons.org/miro/FFD02F",
+      "category": "Application Support"
+    },
+    {
+      "name": "Monotype Fonts",
+      "image": "/Monotype.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Multi-Factor Authentication (MFA)",
+      "image": "https://img.icons8.com/color/144/000000/fingerprint.png",
+      "category": "Security"
+    },
+    {
+      "name": "Notion",
+      "image": "/notion-white.png",
+      "category": "Operations"
+    },
+    {
+      "name": "Okta",
+      "image": "https://cdn.simpleicons.org/okta/007DC1",
+      "category": "Identity"
+    },
+    {
+      "name": "OneLogin",
+      "image": "/OneLogin.png",
+      "category": "Identity"
+    },
+    {
+      "name": "Power Automate",
+      "image": "/Microsoft_Power_Automate.png",
+      "category": "Automation"
     },
     {
       "name": "PowerShell",
@@ -70,8 +261,78 @@
       "category": "Automation"
     },
     {
+      "name": "Python",
+      "image": "https://img.icons8.com/color/144/000000/python--v1.png",
+      "category": "Automation"
+    },
+    {
+      "name": "REST API",
+      "image": "https://img.icons8.com/color/144/000000/api-settings.png",
+      "category": "Automation"
+    },
+    {
+      "name": "Security Baselines",
+      "image": "https://img.icons8.com/color/144/000000/checked-shield.png",
+      "category": "Security"
+    },
+    {
       "name": "ServiceNow (ITSM)",
-      "image": "https://img.icons8.com/color/144/000000/service-now.png",
+      "image": "/servicenow-white.png",
+      "category": "Operations"
+    },
+    {
+      "name": "Single Sign-On (SSO)",
+      "image": "https://img.icons8.com/color/144/000000/key.png",
+      "category": "Security"
+    },
+    {
+      "name": "Sketch",
+      "image": "https://cdn.simpleicons.org/sketch/F7B500",
+      "category": "Application Support"
+    },
+    {
+      "name": "Slack",
+      "image": "https://img.icons8.com/color/144/000000/slack-new.png",
+      "category": "Operations"
+    },
+    {
+      "name": "Squarespace",
+      "image": "https://cdn.simpleicons.org/squarespace/000000",
+      "category": "Application Support"
+    },
+    {
+      "name": "Suitcase Fusion",
+      "image": "/Suitcase-Fusion.webp",
+      "category": "Application Support"
+    },
+    {
+      "name": "TypeFace",
+      "image": "/typeface.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "VMware",
+      "image": "https://cdn.simpleicons.org/vmware/607078",
+      "category": "Cloud"
+    },
+    {
+      "name": "Windows Hello for Business",
+      "image": "https://img.icons8.com/color/144/000000/face-id.png",
+      "category": "Endpoint"
+    },
+    {
+      "name": "Wix",
+      "image": "https://cdn.simpleicons.org/wix/0C6EFC",
+      "category": "Application Support"
+    },
+    {
+      "name": "WordPress",
+      "image": "/Wordpress.png",
+      "category": "Application Support"
+    },
+    {
+      "name": "Zendesk",
+      "image": "https://cdn.simpleicons.org/zendesk/03363D",
       "category": "Operations"
     }
   ],
@@ -113,9 +374,10 @@
   "educations": [
     {
       "institute": "Seton Hall University",
-      "degree": "Dual Bachelor's Degree — Economics & Marketing",
+      "degree": "Dual Major (Marketing & Economics)",
       "startDate": "Aug 2015",
-      "endDate": "May 2018"
+      "endDate": "May 2018",
+      "logo": "/SHU.png"
     }
   ],
   "experiences": [
@@ -124,11 +386,18 @@
       "position": "IT Systems Administrator",
       "startDate": "Sep 2018",
       "endDate": "Present",
-      "logo":"/Public/WPP_logo.png",
+      "logo": "/wpp_logo.png",
       "desc": [
-        "Primary escalation lead for executive-level and enterprise incidents; trusted for high-impact issues.",
-        "Administer identity and endpoint platforms across large user populations (Okta, Entra ID, Intune, Kandji, Jamf, ABM).",
-        "Build PowerShell automation and repeatable workflows to improve compliance, reliability, and support efficiency."
+        "Networking \u2014 Maintain reliable connectivity across office and endpoint environments to support day-to-day operations.",
+        "Identity \u2014 Administer access systems and lifecycle workflows to keep accounts aligned with security standards.",
+        "Endpoint \u2014 Manage device provisioning, compliance, and updates to ensure stable performance.",
+        "Automation \u2014 Build lightweight scripts and repeatable workflows to reduce manual effort.",
+        "Operations \u2014 Coordinate incident response and escalations with clear stakeholder communication.",
+        "Documentation \u2014 Produce runbooks and checklists to keep processes consistent and scalable.",
+        "Monitoring \u2014 Track health and trends to proactively address recurring issues.",
+        "Executive Support \u2014 Provide 24/7 support for C-suite and executive members.",
+        "Project Delivery \u2014 Partner with cross-functional teams to plan and execute initiatives.",
+        "Security \u2014 Enforce policies and best practices that protect users and data."
       ]
     },
     {
@@ -136,11 +405,18 @@
       "position": "AV & VIP Support",
       "startDate": "Sep 2018",
       "endDate": "Present",
-      "logo":"/Public/Ogilvy_logo.png",
+      "logo": "/Ogilvy_logo.png",
       "desc": [
-        "Dedicated IT and AV/VIP support for leadership and agency teams in high-visibility environments.",
-        "End-to-end AV production for town halls, leadership sessions, and client-facing events.",
-        "Contribute to documentation, process improvements, and cross-team troubleshooting standards."
+        "Audio Visual \u2014 Deliver white-glove AV support for leadership and high-visibility events.",
+        "Live Events \u2014 Coordinate in-room and hybrid setups to ensure smooth execution.",
+        "Executive Support \u2014 Provide 24/7 support for C-suite and executive members.",
+        "Conference Rooms \u2014 Maintain room readiness, standards, and rapid turnaround.",
+        "Troubleshooting \u2014 Resolve time-sensitive issues with clear communication.",
+        "Vendor Coordination \u2014 Liaise with external partners for complex event needs.",
+        "Documentation \u2014 Create concise runbooks for recurring event workflows.",
+        "User Experience \u2014 Optimize meeting flows and presenter experience.",
+        "Equipment \u2014 Manage AV gear, testing, and readiness checks.",
+        "Collaboration \u2014 Partner with internal teams to improve AV processes."
       ]
     }
   ]

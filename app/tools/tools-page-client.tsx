@@ -12,6 +12,75 @@ const GROUP_ORDER = ["pdf", "dev", "text", "data", "image", "color", "utility", 
 
 type GroupKey = (typeof GROUP_ORDER)[number] | "other";
 
+const GROUP_STYLES: Record<
+  GroupKey,
+  { badge: string; dot: string; label: string; count: string; bar: string }
+> = {
+  pdf: {
+    badge: "border-amber-500/40 bg-amber-500/15 text-amber-700 dark:text-amber-200",
+    dot: "bg-amber-400",
+    label: "text-amber-700 dark:text-amber-200",
+    count: "text-amber-600/80 dark:text-amber-200/70",
+    bar: "bg-amber-400/80",
+  },
+  dev: {
+    badge: "border-sky-500/40 bg-sky-500/15 text-sky-700 dark:text-sky-200",
+    dot: "bg-sky-400",
+    label: "text-sky-700 dark:text-sky-200",
+    count: "text-sky-600/80 dark:text-sky-200/70",
+    bar: "bg-sky-400/80",
+  },
+  text: {
+    badge: "border-indigo-500/40 bg-indigo-500/15 text-indigo-700 dark:text-indigo-200",
+    dot: "bg-indigo-400",
+    label: "text-indigo-700 dark:text-indigo-200",
+    count: "text-indigo-600/80 dark:text-indigo-200/70",
+    bar: "bg-indigo-400/80",
+  },
+  data: {
+    badge: "border-emerald-500/40 bg-emerald-500/15 text-emerald-700 dark:text-emerald-200",
+    dot: "bg-emerald-400",
+    label: "text-emerald-700 dark:text-emerald-200",
+    count: "text-emerald-600/80 dark:text-emerald-200/70",
+    bar: "bg-emerald-400/80",
+  },
+  image: {
+    badge: "border-cyan-500/40 bg-cyan-500/15 text-cyan-700 dark:text-cyan-200",
+    dot: "bg-cyan-400",
+    label: "text-cyan-700 dark:text-cyan-200",
+    count: "text-cyan-600/80 dark:text-cyan-200/70",
+    bar: "bg-cyan-400/80",
+  },
+  color: {
+    badge: "border-orange-500/40 bg-orange-500/15 text-orange-700 dark:text-orange-200",
+    dot: "bg-orange-400",
+    label: "text-orange-700 dark:text-orange-200",
+    count: "text-orange-600/80 dark:text-orange-200/70",
+    bar: "bg-orange-400/80",
+  },
+  utility: {
+    badge: "border-slate-500/40 bg-slate-500/15 text-slate-700 dark:text-slate-200",
+    dot: "bg-slate-400",
+    label: "text-slate-700 dark:text-slate-200",
+    count: "text-slate-600/80 dark:text-slate-200/70",
+    bar: "bg-slate-400/80",
+  },
+  fun: {
+    badge: "border-pink-500/40 bg-pink-500/15 text-pink-700 dark:text-pink-200",
+    dot: "bg-pink-400",
+    label: "text-pink-700 dark:text-pink-200",
+    count: "text-pink-600/80 dark:text-pink-200/70",
+    bar: "bg-pink-400/80",
+  },
+  other: {
+    badge: "border-gray-400/40 bg-gray-400/10 text-gray-600 dark:text-gray-300",
+    dot: "bg-gray-400",
+    label: "text-gray-600 dark:text-gray-300",
+    count: "text-gray-500/80 dark:text-gray-300/70",
+    bar: "bg-gray-400/70",
+  },
+};
+
 function pickGroup(tags?: string[]): GroupKey {
   if (!tags?.length) return "other";
   for (const g of GROUP_ORDER) {
@@ -33,6 +102,13 @@ function labelForGroup(g: GroupKey) {
     other: "Other",
   };
   return map[g];
+}
+
+function styleForTag(tag: string) {
+  if (GROUP_ORDER.includes(tag as any)) {
+    return GROUP_STYLES[tag as GroupKey];
+  }
+  return GROUP_STYLES.other;
 }
 
 function stableShuffle<T>(arr: T[], seed: number) {
@@ -239,6 +315,7 @@ export default function ToolsPageClient() {
         {sortMode === "grouped"
           ? grouped.map((group) => {
               const isCollapsed = collapsedGroups[group.key];
+              const groupStyle = GROUP_STYLES[group.key] ?? GROUP_STYLES.other;
               return (
                 <div key={group.key} className="contents">
                   <div className="sm:col-span-2 lg:col-span-3">
@@ -252,10 +329,15 @@ export default function ToolsPageClient() {
                           isCollapsed ? "-rotate-90" : "rotate-0"
                         }`}
                       />
-                      <div className="text-xs font-semibold uppercase tracking-widest text-white/50">
+                      <span className={`h-2 w-2 rounded-full ${groupStyle.dot}`} />
+                      <div
+                        className={`text-xs font-semibold uppercase tracking-widest ${groupStyle.label}`}
+                      >
                         {group.label}
                       </div>
-                      <div className="text-xs text-white/40">{group.tools.length}</div>
+                      <div className={`text-xs ${groupStyle.count}`}>
+                        {group.tools.length}
+                      </div>
                       <div className="h-px flex-1 bg-white/10" />
                     </button>
                   </div>
@@ -265,8 +347,11 @@ export default function ToolsPageClient() {
                         <Link
                           key={t.slug}
                           href={`/tools/${t.slug}`}
-                          className="group rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
+                          className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 pl-6 transition-colors hover:bg-white/10`}
                         >
+                          <span
+                            className={`absolute left-0 top-0 h-full w-1 ${GROUP_STYLES[pickGroup(t.tags)].bar}`}
+                          />
                           <div className="flex items-start justify-between gap-3">
                             <div>
                               <div className="text-lg font-semibold">{t.title}</div>
@@ -279,14 +364,17 @@ export default function ToolsPageClient() {
 
                           {t.tags?.length ? (
                             <div className="mt-4 flex flex-wrap gap-2">
-                              {t.tags.map((x) => (
-                                <span
-                                  key={x}
-                                  className="rounded-full border border-white/10 bg-black/20 px-2 py-0.5 text-xs text-white/70"
-                                >
-                                  {x}
-                                </span>
-                              ))}
+                              {t.tags.map((x) => {
+                                const style = styleForTag(x);
+                                return (
+                                  <span
+                                    key={x}
+                                    className={`rounded-full border px-2 py-0.5 text-xs ${style.badge}`}
+                                  >
+                                    {x}
+                                  </span>
+                                );
+                              })}
                             </div>
                           ) : null}
                         </Link>
@@ -299,8 +387,11 @@ export default function ToolsPageClient() {
               <Link
                 key={t.slug}
                 href={`/tools/${t.slug}`}
-                className="group rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 pl-6 transition-colors hover:bg-white/10"
               >
+                <span
+                  className={`absolute left-0 top-0 h-full w-1 ${GROUP_STYLES[pickGroup(t.tags)].bar}`}
+                />
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-lg font-semibold">{t.title}</div>
@@ -311,14 +402,17 @@ export default function ToolsPageClient() {
 
                 {t.tags?.length ? (
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {t.tags.map((x) => (
-                      <span
-                        key={x}
-                        className="rounded-full border border-white/10 bg-black/20 px-2 py-0.5 text-xs text-white/70"
-                      >
-                        {x}
-                      </span>
-                    ))}
+                    {t.tags.map((x) => {
+                      const style = styleForTag(x);
+                      return (
+                        <span
+                          key={x}
+                          className={`rounded-full border px-2 py-0.5 text-xs ${style.badge}`}
+                        >
+                          {x}
+                        </span>
+                      );
+                    })}
                   </div>
                 ) : null}
               </Link>

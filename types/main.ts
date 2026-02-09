@@ -22,6 +22,7 @@ type skill = {
     startDate: string;
     endDate: string;
     desc: string[];
+    logo?: string;
   };
   
   type education = {
@@ -29,6 +30,7 @@ type skill = {
     degree: string;
     startDate: string;
     endDate: string;
+    logo?: string;
   };
   
   type main = {
