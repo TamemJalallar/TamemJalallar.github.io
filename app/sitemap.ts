@@ -4,6 +4,8 @@ import { TOOL_SLUGS } from "./tools/tools.data";
 const SITE_URL = "https://www.tomfromit.com";
 const UPDATED = new Date();
 
+export const dynamic = "force-static";
+
 const GAME_SLUGS = [
   "wordle",
   "pocket-golf",
