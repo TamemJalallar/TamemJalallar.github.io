@@ -8,12 +8,12 @@ import { FiArrowUpRight, FiChevronDown, FiSearch } from "react-icons/fi";
 type SortMode = "title" | "category" | "random" | "grouped";
 
 // Change this order to whatever you want.
-const GROUP_ORDER = ["pdf", "dev", "text", "data", "image", "color", "utility", "fun"] as const;
+const GROUP_ORDER = ["studio", "utility", "fun"] as const;
 
 type GroupKey = (typeof GROUP_ORDER)[number] | "other";
 
 const GROUP_STYLES: Record<
-  GroupKey,
+  string,
   { badge: string; dot: string; label: string; count: string; bar: string }
 > = {
   pdf: {
@@ -51,6 +51,13 @@ const GROUP_STYLES: Record<
     count: "text-cyan-600/80 dark:text-cyan-200/70",
     bar: "bg-cyan-400/80",
   },
+  video: {
+    badge: "border-rose-500/40 bg-rose-500/15 text-rose-700 dark:text-rose-200",
+    dot: "bg-rose-400",
+    label: "text-rose-700 dark:text-rose-200",
+    count: "text-rose-600/80 dark:text-rose-200/70",
+    bar: "bg-rose-400/80",
+  },
   color: {
     badge: "border-orange-500/40 bg-orange-500/15 text-orange-700 dark:text-orange-200",
     dot: "bg-orange-400",
@@ -79,6 +86,13 @@ const GROUP_STYLES: Record<
     count: "text-gray-500/80 dark:text-gray-300/70",
     bar: "bg-gray-400/70",
   },
+  studio: {
+    badge: "border-teal-500/40 bg-teal-500/15 text-teal-700 dark:text-teal-200",
+    dot: "bg-teal-400",
+    label: "text-teal-700 dark:text-teal-200",
+    count: "text-teal-600/80 dark:text-teal-200/70",
+    bar: "bg-teal-400/80",
+  },
 };
 
 function pickGroup(tags?: string[]): GroupKey {
@@ -90,18 +104,20 @@ function pickGroup(tags?: string[]): GroupKey {
 }
 
 function labelForGroup(g: GroupKey) {
-  const map: Record<GroupKey, string> = {
+  const map: Record<string, string> = {
+    studio: "Studios",
     pdf: "PDF",
     dev: "Developer",
     text: "Text",
     data: "Data",
     image: "Image",
+    video: "Video",
     color: "Color",
     utility: "Utility",
     fun: "Fun",
     other: "Other",
   };
-  return map[g];
+  return map[g] ?? "Other";
 }
 
 function styleForTag(tag: string) {
@@ -129,25 +145,39 @@ function stableShuffle<T>(arr: T[], seed: number) {
   return out;
 }
 
+const LIST_TAGS = new Set(["studio", "utility", "fun"]);
+
+function shouldShowTool(t: (typeof TOOL_META)[number]) {
+  return (t.tags ?? []).some((tag) => LIST_TAGS.has(tag));
+}
+
 export default function ToolsPageClient() {
   const [q, setQ] = useState("");
   const [tag, setTag] = useState<string>("all");
   const [sortMode, setSortMode] = useState<SortMode>("grouped");
   const [shuffleSeed, setShuffleSeed] = useState<number>(() => Date.now());
-  const [collapsedGroups, setCollapsedGroups] = useState<Partial<Record<GroupKey, boolean>>>({});
+  const [collapsedGroups, setCollapsedGroups] = useState<Partial<Record<GroupKey, boolean>>>(() => {
+    const next: Partial<Record<GroupKey, boolean>> = {};
+    [...GROUP_ORDER, "other"].forEach((key) => {
+      next[key] = key !== "studio";
+    });
+    return next;
+  });
 
   const groupKeys = useMemo<GroupKey[]>(() => [...GROUP_ORDER, "other"], []);
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
-    TOOL_META.forEach((t) => (t.tags ?? []).forEach((x) => set.add(x)));
+    TOOL_META.filter(shouldShowTool).forEach((t) =>
+      (t.tags ?? []).forEach((x) => set.add(x)),
+    );
     return ["all", ...Array.from(set).sort((a, b) => a.localeCompare(b))];
   }, []);
 
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
 
-    return TOOL_META.filter((t) => {
+    return TOOL_META.filter(shouldShowTool).filter((t) => {
       const matchesQuery =
         !query ||
         t.title.toLowerCase().includes(query) ||

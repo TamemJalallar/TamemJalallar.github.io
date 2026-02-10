@@ -1,13 +1,3 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/games/color-circuit/page": "app/games/color-circuit/page.js",
-  "/games/echo-memory/page": "app/games/echo-memory/page.js",
-  "/games/page": "app/games/page.js",
-  "/games/pocket-golf/page": "app/games/pocket-golf/page.js",
-  "/games/signal-shift/page": "app/games/signal-shift/page.js",
-  "/games/stack-logic/page": "app/games/stack-logic/page.js",
-  "/games/wordle/page": "app/games/wordle/page.js",
-  "/page": "app/page.js",
-  "/tools/[slug]/page": "app/tools/[slug]/page.js",
   "/tools/page": "app/tools/page.js"
 }

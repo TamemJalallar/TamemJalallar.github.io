@@ -11,9 +11,57 @@ __turbopack_context__.s([
 const TOOL_META = [
     // Images
     {
+        slug: "image-studio",
+        title: "Image Studio",
+        description: "All image tools in one workspace.",
+        tags: [
+            "studio"
+        ]
+    },
+    {
         slug: "image-resizer",
         title: "Image Resizer",
         description: "Resize images and download PNG.",
+        tags: [
+            "image"
+        ]
+    },
+    {
+        slug: "background-remover",
+        title: "Background Remover",
+        description: "Remove backgrounds with color-keying.",
+        tags: [
+            "image"
+        ]
+    },
+    {
+        slug: "image-color-picker",
+        title: "Image Color Picker",
+        description: "Pick multiple colors and export a palette.",
+        tags: [
+            "image"
+        ]
+    },
+    {
+        slug: "logo-background-tester",
+        title: "Logo Background Tester",
+        description: "Preview logos on multiple backgrounds.",
+        tags: [
+            "image"
+        ]
+    },
+    {
+        slug: "brand-mockup-generator",
+        title: "Brand Mockup Generator",
+        description: "Generate social banners from brand assets.",
+        tags: [
+            "image"
+        ]
+    },
+    {
+        slug: "ocr-pro",
+        title: "OCR Pro",
+        description: "Extract text from images locally.",
         tags: [
             "image"
         ]
@@ -59,6 +107,14 @@ const TOOL_META = [
         ]
     },
     {
+        slug: "icon-pack-previewer",
+        title: "Icon Pack Previewer",
+        description: "Preview SVG/PNG icon packs.",
+        tags: [
+            "image"
+        ]
+    },
+    {
         slug: "image-metadata",
         title: "Image Metadata Viewer",
         description: "View EXIF image metadata.",
@@ -69,7 +125,119 @@ const TOOL_META = [
     {
         slug: "image-format-converter",
         title: "Image Format Converter",
-        description: "Convert images to WebP or AVIF.",
+        description: "Convert images to JPG, PNG, WebP, or AVIF.",
+        tags: [
+            "image"
+        ]
+    },
+    {
+        slug: "video-studio",
+        title: "Video Studio",
+        description: "Edit, extract, and convert videos locally.",
+        tags: [
+            "studio"
+        ]
+    },
+    {
+        slug: "video-storyboard",
+        title: "Video Storyboard",
+        description: "Create a timestamped storyboard grid.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "video-to-images",
+        title: "Video to Images",
+        description: "Extract video frames into images.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "images-to-video",
+        title: "Images to Video",
+        description: "Combine images into a WebM video.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "video-trimmer",
+        title: "Video Trimmer",
+        description: "Trim video clips in your browser.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "video-speed-changer",
+        title: "Video Speed Changer",
+        description: "Change playback speed with FFmpeg.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "video-thumbnailer",
+        title: "Video Thumbnailer",
+        description: "Create a video contact sheet.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "video-audio-extractor",
+        title: "Video Audio Extractor",
+        description: "Extract audio from a video.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "video-subtitle-burner",
+        title: "Video Subtitle Burner",
+        description: "Burn SRT subtitles into a video.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "video-color-lut",
+        title: "Video Color LUT Preview",
+        description: "Apply cinematic color presets.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "video-to-gif",
+        title: "Video to GIF",
+        description: "Convert a video clip into a GIF.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "video-to-mp4",
+        title: "Video to MP4",
+        description: "Re-encode a video to MP4.",
+        tags: [
+            "video"
+        ]
+    },
+    {
+        slug: "images-to-gif",
+        title: "Images to GIF",
+        description: "Create an animated GIF from images.",
+        tags: [
+            "image"
+        ]
+    },
+    {
+        slug: "gif-optimizer",
+        title: "GIF Optimizer",
+        description: "Reduce GIF size by lowering FPS/scale.",
         tags: [
             "image"
         ]
@@ -91,6 +259,14 @@ const TOOL_META = [
         ]
     },
     // PDF
+    {
+        slug: "pdf-studio",
+        title: "PDF Studio",
+        description: "All-in-one PDF workspace.",
+        tags: [
+            "studio"
+        ]
+    },
     {
         slug: "merge-pdfs",
         title: "Merge PDFs",
@@ -119,6 +295,46 @@ const TOOL_META = [
         slug: "pdf-to-images",
         title: "PDF to Images",
         description: "Convert each PDF page to PNG.",
+        tags: [
+            "pdf"
+        ]
+    },
+    {
+        slug: "pdf-to-jpg",
+        title: "PDF to JPG",
+        description: "Convert each PDF page to JPG.",
+        tags: [
+            "pdf"
+        ]
+    },
+    {
+        slug: "pdf-thumbnailer",
+        title: "PDF Thumbnailer",
+        description: "Generate page thumbnails.",
+        tags: [
+            "pdf"
+        ]
+    },
+    {
+        slug: "pdf-thumbnail-zip",
+        title: "PDF Thumbnails ZIP",
+        description: "Download thumbnails as a ZIP.",
+        tags: [
+            "pdf"
+        ]
+    },
+    {
+        slug: "pdf-page-extractor",
+        title: "PDF Page Extractor",
+        description: "Extract a single page as PDF/PNG/JPG.",
+        tags: [
+            "pdf"
+        ]
+    },
+    {
+        slug: "pdf-file-analyzer",
+        title: "PDF File Size Analyzer",
+        description: "Inspect page sizes and largest images.",
         tags: [
             "pdf"
         ]
@@ -236,6 +452,14 @@ const TOOL_META = [
         ]
     },
     {
+        slug: "pdf-watermark-designer",
+        title: "PDF Watermark Designer",
+        description: "Drag and design watermarks.",
+        tags: [
+            "pdf"
+        ]
+    },
+    {
         slug: "pdf-page-numbers",
         title: "PDF Page Numbers",
         description: "Add page numbers to each page.",
@@ -284,6 +508,14 @@ const TOOL_META = [
         ]
     },
     {
+        slug: "pdf-redact-by-color",
+        title: "PDF Redact by Color",
+        description: "Redact areas by color matching.",
+        tags: [
+            "pdf"
+        ]
+    },
+    {
         slug: "sign-pdf",
         title: "Sign PDF",
         description: "Add a visual signature.",
@@ -291,7 +523,31 @@ const TOOL_META = [
             "pdf"
         ]
     },
+    {
+        slug: "pdf-split-bookmarks",
+        title: "PDF Split by Bookmarks",
+        description: "Split by bookmark outline.",
+        tags: [
+            "pdf"
+        ]
+    },
+    {
+        slug: "pdf-split-blank",
+        title: "Smart PDF Split (Blank Pages)",
+        description: "Split using blank pages.",
+        tags: [
+            "pdf"
+        ]
+    },
     // Encode / Data
+    {
+        slug: "dev-studio",
+        title: "Developer Studio",
+        description: "All developer utilities in one workspace.",
+        tags: [
+            "studio"
+        ]
+    },
     {
         slug: "base64",
         title: "Base64 Encoder/Decoder",
@@ -349,6 +605,14 @@ const TOOL_META = [
         ]
     },
     {
+        slug: "json-diff-patch",
+        title: "JSON Diff & Patch",
+        description: "Compare JSON and generate patch ops.",
+        tags: [
+            "dev"
+        ]
+    },
+    {
         slug: "uuid-ulid-generator",
         title: "UUID / ULID Generator",
         description: "Generate UUID v4 and ULID values.",
@@ -364,7 +628,31 @@ const TOOL_META = [
             "dev"
         ]
     },
+    {
+        slug: "env-var-validator",
+        title: "Env Var Validator",
+        description: "Validate .env files for issues.",
+        tags: [
+            "dev"
+        ]
+    },
+    {
+        slug: "api-request-builder",
+        title: "API Request Builder",
+        description: "Build requests and export curl.",
+        tags: [
+            "dev"
+        ]
+    },
     // Text
+    {
+        slug: "text-studio",
+        title: "Text Studio",
+        description: "Transform, analyze, and generate text.",
+        tags: [
+            "studio"
+        ]
+    },
     {
         slug: "case-converter",
         title: "Case Converter",
@@ -447,6 +735,14 @@ const TOOL_META = [
     },
     // Color
     {
+        slug: "color-studio",
+        title: "Color Studio",
+        description: "Build palettes, gradients, and brand tokens.",
+        tags: [
+            "studio"
+        ]
+    },
+    {
         slug: "color-picker",
         title: "Color Picker",
         description: "Pick a color and copy hex.",
@@ -470,11 +766,131 @@ const TOOL_META = [
             "color"
         ]
     },
+    {
+        slug: "gradient-builder",
+        title: "Gradient Builder",
+        description: "Build CSS gradients visually.",
+        tags: [
+            "color"
+        ]
+    },
+    {
+        slug: "color-harmony-generator",
+        title: "Color Harmony Generator",
+        description: "Complementary and triadic palettes.",
+        tags: [
+            "color"
+        ]
+    },
+    {
+        slug: "gradient-gallery",
+        title: "Gradient Gallery",
+        description: "Generate a gradient preset gallery.",
+        tags: [
+            "color"
+        ]
+    },
+    {
+        slug: "brand-color-tokens",
+        title: "Brand Color Tokens",
+        description: "Generate CSS/JSON color tokens.",
+        tags: [
+            "color"
+        ]
+    },
+    {
+        slug: "type-scale-builder",
+        title: "Type Scale Builder",
+        description: "Build modular typography scales.",
+        tags: [
+            "text"
+        ]
+    },
     // Conversions
     {
         slug: "unit-converter",
         title: "Unit Converter",
         description: "Length/weight/temp conversions.",
+        tags: [
+            "utility"
+        ]
+    },
+    {
+        slug: "audio-studio",
+        title: "Audio Studio",
+        description: "Clean, analyze, and convert audio files locally.",
+        tags: [
+            "studio"
+        ]
+    },
+    {
+        slug: "audio-waveform-generator",
+        title: "Audio Waveform Generator",
+        description: "Generate a waveform image from audio.",
+        tags: [
+            "utility"
+        ]
+    },
+    {
+        slug: "waveform-preset-exporter",
+        title: "Waveform Preset Exporter",
+        description: "Export waveform presets.",
+        tags: [
+            "utility"
+        ]
+    },
+    {
+        slug: "audio-normalizer",
+        title: "Audio Normalizer",
+        description: "Normalize loudness with LUFS target.",
+        tags: [
+            "utility"
+        ]
+    },
+    {
+        slug: "voice-cleaner",
+        title: "AI-Free Voice Cleaner",
+        description: "Noise gate + EQ presets for speech.",
+        tags: [
+            "utility"
+        ]
+    },
+    {
+        slug: "audio-segmenter",
+        title: "Audio Segmenter",
+        description: "Split audio on silence into clips.",
+        tags: [
+            "utility"
+        ]
+    },
+    {
+        slug: "audio-to-wav",
+        title: "Audio to WAV",
+        description: "Convert audio or video files into WAV.",
+        tags: [
+            "utility"
+        ]
+    },
+    {
+        slug: "audio-to-ogg",
+        title: "Audio to OGG",
+        description: "Re-encode media to Opus (OGG/WebM).",
+        tags: [
+            "utility"
+        ]
+    },
+    {
+        slug: "audio-to-mp3",
+        title: "Audio to MP3",
+        description: "Convert media files into MP3 audio.",
+        tags: [
+            "utility"
+        ]
+    },
+    {
+        slug: "media-metadata",
+        title: "Media Metadata Viewer",
+        description: "Inspect audio/video metadata locally.",
         tags: [
             "utility"
         ]
@@ -513,9 +929,25 @@ const TOOL_META = [
         ]
     },
     {
+        slug: "data-studio",
+        title: "Data Studio",
+        description: "Convert and explore data files locally.",
+        tags: [
+            "studio"
+        ]
+    },
+    {
         slug: "csv-to-json",
         title: "CSV → JSON",
         description: "Convert CSV into JSON.",
+        tags: [
+            "data"
+        ]
+    },
+    {
+        slug: "csv-profiler",
+        title: "CSV Profiler",
+        description: "Profile columns for types and outliers.",
         tags: [
             "data"
         ]
@@ -824,12 +1256,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$ico
 ;
 // Change this order to whatever you want.
 const GROUP_ORDER = [
-    "pdf",
-    "dev",
-    "text",
-    "data",
-    "image",
-    "color",
+    "studio",
     "utility",
     "fun"
 ];
@@ -869,6 +1296,13 @@ const GROUP_STYLES = {
         count: "text-cyan-600/80 dark:text-cyan-200/70",
         bar: "bg-cyan-400/80"
     },
+    video: {
+        badge: "border-rose-500/40 bg-rose-500/15 text-rose-700 dark:text-rose-200",
+        dot: "bg-rose-400",
+        label: "text-rose-700 dark:text-rose-200",
+        count: "text-rose-600/80 dark:text-rose-200/70",
+        bar: "bg-rose-400/80"
+    },
     color: {
         badge: "border-orange-500/40 bg-orange-500/15 text-orange-700 dark:text-orange-200",
         dot: "bg-orange-400",
@@ -896,6 +1330,13 @@ const GROUP_STYLES = {
         label: "text-gray-600 dark:text-gray-300",
         count: "text-gray-500/80 dark:text-gray-300/70",
         bar: "bg-gray-400/70"
+    },
+    studio: {
+        badge: "border-teal-500/40 bg-teal-500/15 text-teal-700 dark:text-teal-200",
+        dot: "bg-teal-400",
+        label: "text-teal-700 dark:text-teal-200",
+        count: "text-teal-600/80 dark:text-teal-200/70",
+        bar: "bg-teal-400/80"
     }
 };
 function pickGroup(tags) {
@@ -907,17 +1348,19 @@ function pickGroup(tags) {
 }
 function labelForGroup(g) {
     const map = {
+        studio: "Studios",
         pdf: "PDF",
         dev: "Developer",
         text: "Text",
         data: "Data",
         image: "Image",
+        video: "Video",
         color: "Color",
         utility: "Utility",
         fun: "Fun",
         other: "Other"
     };
-    return map[g];
+    return map[g] ?? "Other";
 }
 function styleForTag(tag) {
     if (GROUP_ORDER.includes(tag)) {
@@ -945,19 +1388,36 @@ function stableShuffle(arr, seed) {
     }
     return out;
 }
+const LIST_TAGS = new Set([
+    "studio",
+    "utility",
+    "fun"
+]);
+function shouldShowTool(t) {
+    return (t.tags ?? []).some((tag)=>LIST_TAGS.has(tag));
+}
 function ToolsPageClient() {
     const [q, setQ] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const [tag, setTag] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("all");
     const [sortMode, setSortMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("grouped");
     const [shuffleSeed, setShuffleSeed] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(()=>Date.now());
-    const [collapsedGroups, setCollapsedGroups] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({});
+    const [collapsedGroups, setCollapsedGroups] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(()=>{
+        const next = {};
+        [
+            ...GROUP_ORDER,
+            "other"
+        ].forEach((key)=>{
+            next[key] = key !== "studio";
+        });
+        return next;
+    });
     const groupKeys = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>[
             ...GROUP_ORDER,
             "other"
         ], []);
     const allTags = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
         const set = new Set();
-        __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$tools$2f$tools$2e$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TOOL_META"].forEach((t)=>(t.tags ?? []).forEach((x)=>set.add(x)));
+        __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$tools$2f$tools$2e$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TOOL_META"].filter(shouldShowTool).forEach((t)=>(t.tags ?? []).forEach((x)=>set.add(x)));
         return [
             "all",
             ...Array.from(set).sort((a, b)=>a.localeCompare(b))
@@ -965,7 +1425,7 @@ function ToolsPageClient() {
     }, []);
     const filtered = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
         const query = q.trim().toLowerCase();
-        return __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$tools$2f$tools$2e$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TOOL_META"].filter((t)=>{
+        return __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$tools$2f$tools$2e$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TOOL_META"].filter(shouldShowTool).filter((t)=>{
             const matchesQuery = !query || t.title.toLowerCase().includes(query) || t.description.toLowerCase().includes(query) || (t.tags ?? []).some((x)=>x.toLowerCase().includes(query));
             const matchesTag = tag === "all" || (t.tags ?? []).includes(tag);
             return matchesQuery && matchesTag;
@@ -1069,7 +1529,7 @@ function ToolsPageClient() {
                                 className: "opacity-60"
                             }, void 0, false, {
                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                lineNumber: 248,
+                                lineNumber: 278,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1079,13 +1539,13 @@ function ToolsPageClient() {
                                 className: "w-full bg-transparent text-sm outline-none placeholder:text-white/40"
                             }, void 0, false, {
                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                lineNumber: 249,
+                                lineNumber: 279,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                        lineNumber: 247,
+                        lineNumber: 277,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1100,12 +1560,12 @@ function ToolsPageClient() {
                                         children: t
                                     }, t, false, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 264,
+                                        lineNumber: 294,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                lineNumber: 258,
+                                lineNumber: 288,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1121,7 +1581,7 @@ function ToolsPageClient() {
                                                 children: "Sort: Grouped"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 276,
+                                                lineNumber: 306,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1129,7 +1589,7 @@ function ToolsPageClient() {
                                                 children: "Sort: Title"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 277,
+                                                lineNumber: 307,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1137,7 +1597,7 @@ function ToolsPageClient() {
                                                 children: "Sort: Category"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 278,
+                                                lineNumber: 308,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1145,13 +1605,13 @@ function ToolsPageClient() {
                                                 children: "Sort: Random"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 279,
+                                                lineNumber: 309,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 271,
+                                        lineNumber: 301,
                                         columnNumber: 13
                                     }, this),
                                     sortMode === "random" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1161,7 +1621,7 @@ function ToolsPageClient() {
                                         children: "Shuffle"
                                     }, void 0, false, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 283,
+                                        lineNumber: 313,
                                         columnNumber: 15
                                     }, this) : null,
                                     sortMode === "grouped" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1174,7 +1634,7 @@ function ToolsPageClient() {
                                                 children: "Collapse all"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 294,
+                                                lineNumber: 324,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1184,31 +1644,31 @@ function ToolsPageClient() {
                                                 children: "Expand all"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 301,
+                                                lineNumber: 331,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 293,
+                                        lineNumber: 323,
                                         columnNumber: 15
                                     }, this) : null
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                lineNumber: 270,
+                                lineNumber: 300,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                        lineNumber: 257,
+                        lineNumber: 287,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                lineNumber: 246,
+                lineNumber: 276,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1231,14 +1691,14 @@ function ToolsPageClient() {
                                                 className: `text-white/60 transition-transform ${isCollapsed ? "-rotate-90" : "rotate-0"}`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 327,
+                                                lineNumber: 357,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: `h-2 w-2 rounded-full ${groupStyle.dot}`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 332,
+                                                lineNumber: 362,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1246,7 +1706,7 @@ function ToolsPageClient() {
                                                 children: group.label
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 333,
+                                                lineNumber: 363,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1254,25 +1714,25 @@ function ToolsPageClient() {
                                                 children: group.tools.length
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 338,
+                                                lineNumber: 368,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "h-px flex-1 bg-white/10"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 341,
+                                                lineNumber: 371,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 322,
+                                        lineNumber: 352,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                    lineNumber: 321,
+                                    lineNumber: 351,
                                     columnNumber: 19
                                 }, this),
                                 !isCollapsed ? group.tools.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1283,7 +1743,7 @@ function ToolsPageClient() {
                                                 className: `absolute left-0 top-0 h-full w-1 ${GROUP_STYLES[pickGroup(t.tags)].bar}`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 352,
+                                                lineNumber: 382,
                                                 columnNumber: 27
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1296,7 +1756,7 @@ function ToolsPageClient() {
                                                                 children: t.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                                lineNumber: 357,
+                                                                lineNumber: 387,
                                                                 columnNumber: 31
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1304,26 +1764,26 @@ function ToolsPageClient() {
                                                                 children: t.description
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                                lineNumber: 358,
+                                                                lineNumber: 388,
                                                                 columnNumber: 31
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                        lineNumber: 356,
+                                                        lineNumber: 386,
                                                         columnNumber: 29
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fi$2f$index$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FiArrowUpRight"], {
                                                         className: "mt-1 opacity-50 transition-opacity group-hover:opacity-100"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                        lineNumber: 362,
+                                                        lineNumber: 392,
                                                         columnNumber: 29
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 355,
+                                                lineNumber: 385,
                                                 columnNumber: 27
                                             }, this),
                                             t.tags?.length ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1335,25 +1795,25 @@ function ToolsPageClient() {
                                                         children: x
                                                     }, x, false, {
                                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                        lineNumber: 370,
+                                                        lineNumber: 400,
                                                         columnNumber: 35
                                                     }, this);
                                                 })
                                             }, void 0, false, {
                                                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                lineNumber: 366,
+                                                lineNumber: 396,
                                                 columnNumber: 29
                                             }, this) : null
                                         ]
                                     }, t.slug, true, {
                                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                                        lineNumber: 347,
+                                        lineNumber: 377,
                                         columnNumber: 25
                                     }, this)) : null
                             ]
                         }, group.key, true, {
                             fileName: "[project]/app/tools/tools-page-client.tsx",
-                            lineNumber: 320,
+                            lineNumber: 350,
                             columnNumber: 17
                         }, this);
                     }) : flatSorted.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1364,7 +1824,7 @@ function ToolsPageClient() {
                                     className: `absolute left-0 top-0 h-full w-1 ${GROUP_STYLES[pickGroup(t.tags)].bar}`
                                 }, void 0, false, {
                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                    lineNumber: 392,
+                                    lineNumber: 422,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1377,7 +1837,7 @@ function ToolsPageClient() {
                                                     children: t.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                    lineNumber: 397,
+                                                    lineNumber: 427,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1385,26 +1845,26 @@ function ToolsPageClient() {
                                                     children: t.description
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                                    lineNumber: 398,
+                                                    lineNumber: 428,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/tools/tools-page-client.tsx",
-                                            lineNumber: 396,
+                                            lineNumber: 426,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fi$2f$index$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FiArrowUpRight"], {
                                             className: "mt-1 opacity-50 transition-opacity group-hover:opacity-100"
                                         }, void 0, false, {
                                             fileName: "[project]/app/tools/tools-page-client.tsx",
-                                            lineNumber: 400,
+                                            lineNumber: 430,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                    lineNumber: 395,
+                                    lineNumber: 425,
                                     columnNumber: 17
                                 }, this),
                                 t.tags?.length ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1416,19 +1876,19 @@ function ToolsPageClient() {
                                             children: x
                                         }, x, false, {
                                             fileName: "[project]/app/tools/tools-page-client.tsx",
-                                            lineNumber: 408,
+                                            lineNumber: 438,
                                             columnNumber: 25
                                         }, this);
                                     })
                                 }, void 0, false, {
                                     fileName: "[project]/app/tools/tools-page-client.tsx",
-                                    lineNumber: 404,
+                                    lineNumber: 434,
                                     columnNumber: 19
                                 }, this) : null
                             ]
                         }, t.slug, true, {
                             fileName: "[project]/app/tools/tools-page-client.tsx",
-                            lineNumber: 387,
+                            lineNumber: 417,
                             columnNumber: 15
                         }, this)),
                     (sortMode === "grouped" ? grouped.length === 0 : flatSorted.length === 0) ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1436,19 +1896,19 @@ function ToolsPageClient() {
                         children: "No tools match your search."
                     }, void 0, false, {
                         fileName: "[project]/app/tools/tools-page-client.tsx",
-                        lineNumber: 422,
+                        lineNumber: 452,
                         columnNumber: 11
                     }, this) : null
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/tools/tools-page-client.tsx",
-                lineNumber: 314,
+                lineNumber: 344,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/tools/tools-page-client.tsx",
-        lineNumber: 245,
+        lineNumber: 275,
         columnNumber: 5
     }, this);
 }

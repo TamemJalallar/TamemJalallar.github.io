@@ -44,6 +44,90 @@
       "link": "mailto:tjalallar@att.net"
     }
   ],
+  "assistant": {
+    "title": "AI-Style Assistant",
+    "subtitle": "Fast answers from a curated knowledge base (no data leaves your browser).",
+    "faqs": [
+      {
+        "question": "What do you specialize in?",
+        "answer": "Identity and access management, modern endpoint management, automation, and executive support across Windows and macOS.",
+        "tags": [
+          "identity",
+          "endpoint",
+          "automation"
+        ]
+      },
+      {
+        "question": "Which platforms do you work with most?",
+        "answer": "Okta, Microsoft Entra ID, Intune, Kandji, Jamf, Apple Business Manager, and PowerShell automation.",
+        "tags": [
+          "identity",
+          "endpoint",
+          "automation"
+        ]
+      },
+      {
+        "question": "Do you support executives and leadership teams?",
+        "answer": "Yes. I provide 24/7 support coverage for C-suite and executive members.",
+        "tags": [
+          "executive",
+          "support"
+        ]
+      },
+      {
+        "question": "Do you handle AV and live events?",
+        "answer": "Yes. I support high-visibility AV sessions, hybrid meetings, and live events with white-glove execution.",
+        "tags": [
+          "av",
+          "events"
+        ]
+      },
+      {
+        "question": "Are the tools on this site private?",
+        "answer": "Yes. Tools run locally in your browser. No file uploads or server processing.",
+        "tags": [
+          "tools",
+          "privacy"
+        ]
+      },
+      {
+        "question": "Can I request access to the private stream?",
+        "answer": "Yes. Use the request access form on the stream page for invited guests.",
+        "tags": [
+          "stream",
+          "access"
+        ]
+      },
+      {
+        "question": "Do you take on new roles or consulting?",
+        "answer": "Yes. I am open to new opportunities and contract work depending on scope.",
+        "tags": [
+          "availability"
+        ]
+      },
+      {
+        "question": "Where are you based?",
+        "answer": "Parsippany, NJ, with experience supporting remote and hybrid teams.",
+        "tags": [
+          "location"
+        ]
+      },
+      {
+        "question": "What kind of automation do you build?",
+        "answer": "PowerShell workflows for onboarding, access reviews, reporting, and compliance checks.",
+        "tags": [
+          "automation"
+        ]
+      },
+      {
+        "question": "What’s the quickest way to reach you?",
+        "answer": "Email is fastest, or use the booking link in the Contact section.",
+        "tags": [
+          "contact"
+        ]
+      }
+    ]
+  },
   "skills": [
     {
       "name": "Active Directory",
@@ -388,16 +472,17 @@
       "endDate": "Present",
       "logo": "/wpp_logo.png",
       "desc": [
-        "Networking \u2014 Maintain reliable connectivity across office and endpoint environments to support day-to-day operations.",
-        "Identity \u2014 Administer access systems and lifecycle workflows to keep accounts aligned with security standards.",
-        "Endpoint \u2014 Manage device provisioning, compliance, and updates to ensure stable performance.",
-        "Automation \u2014 Build lightweight scripts and repeatable workflows to reduce manual effort.",
-        "Operations \u2014 Coordinate incident response and escalations with clear stakeholder communication.",
-        "Documentation \u2014 Produce runbooks and checklists to keep processes consistent and scalable.",
-        "Monitoring \u2014 Track health and trends to proactively address recurring issues.",
-        "Executive Support \u2014 Provide 24/7 support for C-suite and executive members.",
-        "Project Delivery \u2014 Partner with cross-functional teams to plan and execute initiatives.",
-        "Security \u2014 Enforce policies and best practices that protect users and data."
+        "Networking - Keep office and endpoint connectivity stable; jump on outages quickly.",
+        "Identity - Manage access lifecycles and ensure least-privilege is the default.",
+        "Endpoint - Provision devices, push updates, and keep fleets compliant and healthy.",
+        "Automation - Write scripts that cut busywork and improve reporting.",
+        "Operations - Own incidents and escalations with steady, clear communication.",
+        "Documentation - Maintain practical runbooks and KBs that teams actually use.",
+        "Monitoring - Track health signals and trends to prevent repeat issues.",
+        "Executive Support - Provide 24/7 support for C-suite and executive members.",
+        "Project Delivery - Help plan and ship improvements, migrations, and rollouts.",
+        "Security - Apply hardening and policy standards across users and devices.",
+        "Knowledge Base - Build and maintain the knowledge base powering the in-house AI used for IT support."
       ]
     },
     {
@@ -407,16 +492,16 @@
       "endDate": "Present",
       "logo": "/Ogilvy_logo.png",
       "desc": [
-        "Audio Visual \u2014 Deliver white-glove AV support for leadership and high-visibility events.",
-        "Live Events \u2014 Coordinate in-room and hybrid setups to ensure smooth execution.",
-        "Executive Support \u2014 Provide 24/7 support for C-suite and executive members.",
-        "Conference Rooms \u2014 Maintain room readiness, standards, and rapid turnaround.",
-        "Troubleshooting \u2014 Resolve time-sensitive issues with clear communication.",
-        "Vendor Coordination \u2014 Liaise with external partners for complex event needs.",
-        "Documentation \u2014 Create concise runbooks for recurring event workflows.",
-        "User Experience \u2014 Optimize meeting flows and presenter experience.",
-        "Equipment \u2014 Manage AV gear, testing, and readiness checks.",
-        "Collaboration \u2014 Partner with internal teams to improve AV processes."
+        "Audio Visual - Run white-glove AV support for leadership and key events.",
+        "Live Events - Set up and test in-room + hybrid meetings so they run clean.",
+        "Executive Support - Provide 24/7 support for C-suite and executive members.",
+        "Conference Rooms - Keep rooms ready, consistent, and quick to reset.",
+        "Troubleshooting - Jump in fast when issues hit during live sessions.",
+        "Vendor Coordination - Work with external partners for special setups.",
+        "Documentation - Build short checklists and runbooks for repeatable events.",
+        "User Experience - Focus on presenter flow and audience experience.",
+        "Equipment - Manage gear, spares, testing, and readiness.",
+        "Collaboration - Partner with IT/AV teams to refine standards and workflows."
       ]
     }
   ]

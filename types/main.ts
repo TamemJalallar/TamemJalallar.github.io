@@ -49,6 +49,18 @@ type skill = {
     resumeUrl?: string;
     callUrl?: string;
   };
+
+  type assistantFaq = {
+    question: string;
+    answer: string;
+    tags?: string[];
+  };
+
+  type assistant = {
+    title?: string;
+    subtitle?: string;
+    faqs: assistantFaq[];
+  };
   
   type social = {
     name: string;
@@ -64,6 +76,7 @@ type skill = {
     experiences?: experience[];
     educations?: education[];
     socials?: social[];
+    assistant?: assistant;
   };
   
   export type {
@@ -75,4 +88,6 @@ type skill = {
     experience,
     education,
     social,
+    assistant,
+    assistantFaq,
   };

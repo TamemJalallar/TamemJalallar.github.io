@@ -8,9 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.6",
+    "@ffmpeg/util": "^0.12.2",
+    "@radix-ui/react-slider": "^1.2.3",
+    "@radix-ui/react-tooltip": "^1.1.6",
     "axios": "^1.13.2",
     "fast-average-color": "^9.5.0",
     "framer-motion": "^12.23.26",
+    "jszip": "^3.10.1",
     "jsbarcode": "^3.12.3",
     "marked": "^17.0.1",
     "next": "^16.1.6",
@@ -26,6 +31,7 @@
     "react-intersection-observer": "^10.0.0",
     "react-scroll": "^1.9.0",
     "react-toastify": "^11.0.5",
+    "tesseract.js": "^5.1.0",
     "turndown": "^7.2.2",
     "typewriter-effect": "^2.21.0"
   },
