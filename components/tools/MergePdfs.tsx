@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { pdfBytesToBlob } from "./_pdfBlob";
 import ToolShell from "./_ToolShell";
 
 export default function MergePdfs() {
@@ -23,7 +24,7 @@ export default function MergePdfs() {
       }
 
       const mergedBytes: Uint8Array = await outDoc.save();
-      const blob = new Blob([mergedBytes as unknown as BlobPart], { type: "application/pdf" });
+      const blob = pdfBytesToBlob(mergedBytes);
 
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");

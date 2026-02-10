@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, downloadUrl } from "./tool-utils";
+import { pdfBytesToBlob } from "./_pdfBlob";
 import { PDFDocument } from "pdf-lib";
 
 type OutputType = "pdf" | "png" | "jpg";
@@ -66,8 +67,7 @@ export default function PdfPageExtractor() {
         const pages = await newDoc.copyPages(source, [pageNumber - 1]);
         pages.forEach((page) => newDoc.addPage(page));
         const bytes = await newDoc.save();
-        const safeBytes = new Uint8Array(bytes);
-        const blob = new Blob([safeBytes.buffer], { type: "application/pdf" });
+        const blob = pdfBytesToBlob(bytes);
         downloadBlob(blob, `page-${pageNumber}.pdf`);
         return;
       }

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { downloadBlob, loadScript, readFileAsArrayBuffer, sanitizeFilename } from "./tool-utils";
+import { pdfBytesToBlob } from "./_pdfBlob";
 
 const PDF_LIB_URL = "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js";
 
@@ -47,7 +48,7 @@ export default function ImagesToPdf() {
       }
 
       const pdfBytes = await doc.save();
-      setResult(new Blob([uint8ToBuffer(pdfBytes)], { type: "application/pdf" }));
+      setResult(pdfBytesToBlob(uint8ToBuffer(pdfBytes)));
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Failed to create PDF from images.");
       setResult(null);

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, sanitizeFilename } from "./tool-utils";
+import { pdfBytesToBlob } from "./_pdfBlob";
 import { PDFDocument } from "pdf-lib";
 
 type SplitResult = {
@@ -107,7 +108,7 @@ export default function PdfSplitByBookmarks() {
           title: unique[i]?.title || `Section ${i + 1}`,
           start,
           end,
-          blob: new Blob([bytes], { type: "application/pdf" }),
+          blob: pdfBytesToBlob(bytes),
         });
       }
 

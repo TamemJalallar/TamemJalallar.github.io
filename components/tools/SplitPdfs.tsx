@@ -8,6 +8,7 @@ import {
   readFileAsArrayBuffer,
   sanitizeFilename,
 } from "./tool-utils";
+import { pdfBytesToBlob } from "./_pdfBlob";
 
 const PDF_LIB_URL = "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js";
 
@@ -68,7 +69,7 @@ export default function SplitPdfs() {
         const [page] = await newDoc.copyPages(source, [pageIndex]);
         newDoc.addPage(page);
         const newBytes = await newDoc.save();
-        const blob = new Blob([uint8ToBuffer(newBytes)], { type: "application/pdf" });
+        const blob = pdfBytesToBlob(uint8ToBuffer(newBytes));
         splitPages.push({ pageNumber: pageIndex + 1, blob });
       }
 

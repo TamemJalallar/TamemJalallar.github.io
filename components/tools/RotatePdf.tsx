@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { downloadBlob, loadScript, readFileAsArrayBuffer, sanitizeFilename } from "./tool-utils";
+import { pdfBytesToBlob } from "./_pdfBlob";
 
 const PDF_LIB_URL = "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js";
 
@@ -44,7 +45,7 @@ export default function RotatePdf() {
       }
 
       const outBytes = await doc.save();
-      const blob = new Blob([outBytes], { type: "application/pdf" });
+      const blob = pdfBytesToBlob(outBytes);
       downloadBlob(blob, `${sanitizeFilename(file.name)}-rotated.pdf`);
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Failed to rotate PDF.");

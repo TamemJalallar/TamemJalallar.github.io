@@ -48,6 +48,7 @@ export function fileDataToUint8Array(data: FfmpegFileData) {
 
 export function fileDataToBlob(data: FfmpegFileData, mime: string) {
   const bytes = fileDataToUint8Array(data);
-  const safeBytes = new Uint8Array(bytes);
+  const safeBytes = new Uint8Array(bytes.length);
+  safeBytes.set(bytes);
   return new Blob([safeBytes.buffer], { type: mime });
 }

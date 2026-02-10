@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { canvasToBlob, downloadBlob, loadScript, sanitizeFilename } from "./tool-utils";
+import { pdfBytesToBlob } from "./_pdfBlob";
 
 const PDF_LIB_URL = "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js";
 
@@ -73,7 +74,7 @@ export default function PdfGrayscale() {
       }
 
       const outBytes = await outDoc.save();
-      const outBlob = new Blob([outBytes], { type: "application/pdf" });
+      const outBlob = pdfBytesToBlob(outBytes);
       downloadBlob(outBlob, `${sanitizeFilename(file.name)}-grayscale.pdf`);
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Failed to convert PDF.");

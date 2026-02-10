@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob } from "./tool-utils";
+import { pdfBytesToBlob } from "./_pdfBlob";
 import { PDFDocument, rgb, degrees, StandardFonts } from "pdf-lib";
 
 const clamp = (value: number, min: number, max: number) =>
@@ -129,7 +130,7 @@ export default function PdfWatermarkDesigner() {
       });
 
       const outBytes = await pdfDoc.save();
-      const blob = new Blob([outBytes], { type: "application/pdf" });
+      const blob = pdfBytesToBlob(outBytes);
       downloadBlob(blob, "watermarked.pdf");
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Failed to apply watermark.");

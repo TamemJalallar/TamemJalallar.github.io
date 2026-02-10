@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob } from "./tool-utils";
+import { pdfBytesToBlob } from "./_pdfBlob";
 import { PDFDocument } from "pdf-lib";
 
 const isBlankPage = (pixels: Uint8ClampedArray, threshold: number) => {
@@ -86,7 +87,7 @@ export default function PdfSplitByBlankPages() {
         );
         pages.forEach((page) => newDoc.addPage(page));
         const bytes = await newDoc.save();
-        results.push({ start: range.start, end: range.end, blob: new Blob([bytes], { type: "application/pdf" }) });
+        results.push({ start: range.start, end: range.end, blob: pdfBytesToBlob(bytes) });
       }
 
       setSplits(results);

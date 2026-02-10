@@ -8,6 +8,7 @@ import {
   readFileAsArrayBuffer,
   sanitizeFilename,
 } from "./tool-utils";
+import { pdfBytesToBlob } from "./_pdfBlob";
 
 const PDF_LIB_URL = "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js";
 
@@ -42,7 +43,7 @@ export default function CompressPdf() {
       const bytes = await readFileAsArrayBuffer(file);
       const doc = await window.PDFLib.PDFDocument.load(bytes);
       const compressedBytes = await doc.save();
-      const blob = new Blob([compressedBytes], { type: "application/pdf" });
+      const blob = pdfBytesToBlob(compressedBytes);
       setResult(blob);
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Failed to compress PDF.");

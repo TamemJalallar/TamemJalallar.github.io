@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob } from "./tool-utils";
+import { pdfBytesToBlob } from "./_pdfBlob";
 import { PDFDocument } from "pdf-lib";
 
 const clamp = (value: number, min: number, max: number) =>
@@ -94,7 +95,7 @@ export default function PdfRedactByColor() {
       }
 
       const outBytes = await outPdf.save();
-      const blob = new Blob([outBytes], { type: "application/pdf" });
+      const blob = pdfBytesToBlob(outBytes);
       downloadBlob(blob, "redacted.pdf");
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Failed to redact PDF.");
