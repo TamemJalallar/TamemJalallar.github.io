@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, formatBytes, sanitizeFilename } from "./tool-utils";
-import { getFfmpeg, toUint8Array } from "./_ffmpeg";
+import { fileDataToBlob, getFfmpeg, toUint8Array } from "./_ffmpeg";
 
 type Preset = { id: string; label: string; filter: string };
 
@@ -74,7 +74,7 @@ export default function VideoColorLutPreview() {
       ]);
 
       const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([data], { type: "video/mp4" });
+      const blob = fileDataToBlob(data, "video/mp4");
       const url = URL.createObjectURL(blob);
 
       setResult({

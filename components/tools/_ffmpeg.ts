@@ -33,3 +33,21 @@ export async function toUint8Array(blob: Blob) {
   const buffer = await blob.arrayBuffer();
   return new Uint8Array(buffer);
 }
+
+export type FfmpegFileData = string | Uint8Array | ArrayBuffer | ArrayBufferLike;
+
+export function fileDataToUint8Array(data: FfmpegFileData) {
+  if (typeof data === "string") {
+    return new TextEncoder().encode(data);
+  }
+  if (data instanceof Uint8Array) {
+    return new Uint8Array(data);
+  }
+  return new Uint8Array(data as ArrayBufferLike);
+}
+
+export function fileDataToBlob(data: FfmpegFileData, mime: string) {
+  const bytes = fileDataToUint8Array(data);
+  const safeBytes = new Uint8Array(bytes);
+  return new Blob([safeBytes.buffer], { type: mime });
+}

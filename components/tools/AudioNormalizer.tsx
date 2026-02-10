@@ -3,7 +3,7 @@
 import { useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, formatBytes, sanitizeFilename } from "./tool-utils";
-import { getFfmpeg, toUint8Array } from "./_ffmpeg";
+import { fileDataToBlob, getFfmpeg, toUint8Array } from "./_ffmpeg";
 
 type OutputFormat = "mp3" | "wav";
 
@@ -48,15 +48,8 @@ export default function AudioNormalizer() {
 
       await ffmpeg.exec(args);
       const data = await ffmpeg.readFile(outputName);
-      const bytes =
-        typeof data === "string"
-          ? new TextEncoder().encode(data)
-          : data instanceof Uint8Array
-            ? new Uint8Array(data)
-            : new Uint8Array(data as ArrayBufferLike);
-      const safeBytes = new Uint8Array(bytes);
       const mime = format === "mp3" ? "audio/mpeg" : "audio/wav";
-      const blob = new Blob([safeBytes.buffer], { type: mime });
+      const blob = fileDataToBlob(data, mime);
 
       setResult({
         name: `${sanitizeFilename(file.name)}-normalized.${format}`,

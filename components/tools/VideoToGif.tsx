@@ -3,7 +3,7 @@
 import { useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, formatBytes, sanitizeFilename } from "./tool-utils";
-import { getFfmpeg, toUint8Array } from "./_ffmpeg";
+import { fileDataToBlob, getFfmpeg, toUint8Array } from "./_ffmpeg";
 
 const WIDTH_PRESETS = [0, 320, 480, 640, 800];
 
@@ -51,7 +51,7 @@ export default function VideoToGif() {
       ]);
 
       const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([data], { type: "image/gif" });
+      const blob = fileDataToBlob(data, "image/gif");
 
       setResult({
         name: `${sanitizeFilename(file.name)}.gif`,

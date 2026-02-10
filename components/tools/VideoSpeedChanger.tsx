@@ -3,7 +3,7 @@
 import { useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, formatBytes, sanitizeFilename } from "./tool-utils";
-import { getFfmpeg, toUint8Array } from "./_ffmpeg";
+import { fileDataToBlob, getFfmpeg, toUint8Array } from "./_ffmpeg";
 
 const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 2];
 
@@ -78,7 +78,7 @@ export default function VideoSpeedChanger() {
       await ffmpeg.exec(args);
 
       const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([data], { type: "video/mp4" });
+      const blob = fileDataToBlob(data, "video/mp4");
 
       setResult({
         name: `${sanitizeFilename(file.name)}-${speed}x.mp4`,

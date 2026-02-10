@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, formatBytes, sanitizeFilename } from "./tool-utils";
-import { getFfmpeg, toUint8Array } from "./_ffmpeg";
+import { fileDataToBlob, getFfmpeg, toUint8Array } from "./_ffmpeg";
 
 type Result = {
   name: string;
@@ -135,7 +135,7 @@ export default function VideoTrimmer() {
       ]);
 
       const mp4Data = await ffmpeg.readFile(outputNameMp4);
-      const mp4Blob = new Blob([mp4Data], { type: "video/mp4" });
+      const mp4Blob = fileDataToBlob(mp4Data, "video/mp4");
       const mp4Name = `${sanitizeFilename(file.name)}-trimmed.mp4`;
       const trimmedDuration = Math.max(0, safeEnd - safeStart);
 
@@ -161,7 +161,7 @@ export default function VideoTrimmer() {
           outputNameWebm,
         ]);
         const webmData = await ffmpeg.readFile(outputNameWebm);
-        const webmBlob = new Blob([webmData], { type: "video/webm" });
+        const webmBlob = fileDataToBlob(webmData, "video/webm");
         webmResult = {
           name: `${sanitizeFilename(file.name)}-trimmed.webm`,
           blob: webmBlob,
@@ -189,7 +189,7 @@ export default function VideoTrimmer() {
             outputNameWebm,
           ]);
           const webmData = await ffmpeg.readFile(outputNameWebm);
-          const webmBlob = new Blob([webmData], { type: "video/webm" });
+          const webmBlob = fileDataToBlob(webmData, "video/webm");
           webmResult = {
             name: `${sanitizeFilename(file.name)}-trimmed.webm`,
             blob: webmBlob,

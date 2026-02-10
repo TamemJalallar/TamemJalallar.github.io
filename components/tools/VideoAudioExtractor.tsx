@@ -3,7 +3,7 @@
 import { useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, formatBytes, sanitizeFilename } from "./tool-utils";
-import { getFfmpeg, toUint8Array } from "./_ffmpeg";
+import { fileDataToBlob, getFfmpeg, toUint8Array } from "./_ffmpeg";
 
 type Result = {
   name: string;
@@ -50,7 +50,7 @@ export default function VideoAudioExtractor() {
           outputMp3,
         ]);
         const data = await ffmpeg.readFile(outputMp3);
-        const blob = new Blob([data], { type: "audio/mpeg" });
+        const blob = fileDataToBlob(data, "audio/mpeg");
         out.push({
           name: `${sanitizeFilename(file.name)}.mp3`,
           blob,
@@ -70,7 +70,7 @@ export default function VideoAudioExtractor() {
           outputWav,
         ]);
         const data = await ffmpeg.readFile(outputWav);
-        const blob = new Blob([data], { type: "audio/wav" });
+        const blob = fileDataToBlob(data, "audio/wav");
         out.push({
           name: `${sanitizeFilename(file.name)}.wav`,
           blob,

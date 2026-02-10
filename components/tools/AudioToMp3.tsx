@@ -3,7 +3,7 @@
 import { useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, formatBytes, sanitizeFilename } from "./tool-utils";
-import { getFfmpeg, toUint8Array } from "./_ffmpeg";
+import { fileDataToBlob, getFfmpeg, toUint8Array } from "./_ffmpeg";
 
 const BITRATES = [96, 128, 160, 192, 256];
 
@@ -48,7 +48,7 @@ export default function AudioToMp3() {
       ]);
 
       const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([data], { type: "audio/mpeg" });
+      const blob = fileDataToBlob(data, "audio/mpeg");
 
       setResult({
         name: `${sanitizeFilename(file.name)}.mp3`,

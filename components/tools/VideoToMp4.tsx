@@ -3,7 +3,7 @@
 import { useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, formatBytes, sanitizeFilename } from "./tool-utils";
-import { getFfmpeg, toUint8Array } from "./_ffmpeg";
+import { fileDataToBlob, getFfmpeg, toUint8Array } from "./_ffmpeg";
 
 const QUALITY_OPTIONS = [
   { label: "High (CRF 20)", value: 20 },
@@ -85,7 +85,7 @@ export default function VideoToMp4() {
       }
 
       const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([data], { type: "video/mp4" });
+      const blob = fileDataToBlob(data, "video/mp4");
 
       setResult({
         name: `${sanitizeFilename(file.name)}.mp4`,

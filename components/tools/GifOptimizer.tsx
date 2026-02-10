@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import ToolShell from "./_ToolShell";
 import { downloadBlob, formatBytes, sanitizeFilename } from "./tool-utils";
-import { getFfmpeg, toUint8Array } from "./_ffmpeg";
+import { fileDataToBlob, getFfmpeg, toUint8Array } from "./_ffmpeg";
 
 type Result = {
   name: string;
@@ -82,7 +82,7 @@ export default function GifOptimizer() {
       ]);
 
       const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([data], { type: "image/gif" });
+      const blob = fileDataToBlob(data, "image/gif");
 
       const url = URL.createObjectURL(blob);
       setResult({
