@@ -66,7 +66,8 @@ export default function PdfPageExtractor() {
         const pages = await newDoc.copyPages(source, [pageNumber - 1]);
         pages.forEach((page) => newDoc.addPage(page));
         const bytes = await newDoc.save();
-        const blob = new Blob([bytes], { type: "application/pdf" });
+        const safeBytes = new Uint8Array(bytes);
+        const blob = new Blob([safeBytes.buffer], { type: "application/pdf" });
         downloadBlob(blob, `page-${pageNumber}.pdf`);
         return;
       }
