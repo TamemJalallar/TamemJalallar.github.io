@@ -157,8 +157,8 @@ export default function ToolsPageClient() {
   const [sortMode, setSortMode] = useState<SortMode>("grouped");
   const [shuffleSeed, setShuffleSeed] = useState<number>(() => Date.now());
   const [collapsedGroups, setCollapsedGroups] = useState<Partial<Record<GroupKey, boolean>>>(() => {
-    const next: Partial<Record<GroupKey, boolean>> = {};
-    [...GROUP_ORDER, "other"].forEach((key) => {
+    const next = {} as Partial<Record<GroupKey, boolean>>;
+    ([...GROUP_ORDER, "other"] as GroupKey[]).forEach((key) => {
       next[key] = key !== "studio";
     });
     return next;
