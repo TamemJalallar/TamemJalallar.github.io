@@ -54,8 +54,9 @@ export default function AudioNormalizer() {
           : data instanceof Uint8Array
             ? new Uint8Array(data)
             : new Uint8Array(data as ArrayBufferLike);
+      const safeBytes = new Uint8Array(bytes);
       const mime = format === "mp3" ? "audio/mpeg" : "audio/wav";
-      const blob = new Blob([bytes], { type: mime });
+      const blob = new Blob([safeBytes.buffer], { type: mime });
 
       setResult({
         name: `${sanitizeFilename(file.name)}-normalized.${format}`,
