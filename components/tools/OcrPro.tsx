@@ -51,10 +51,13 @@ export default function OcrPro() {
 
     try {
       const { createWorker } = await import("tesseract.js");
+      const createWorkerWithLogger = createWorker as unknown as (options?: {
+        logger?: (message: { status: string; progress?: number }) => void;
+      }) => Promise<any>;
       let worker = workerRef.current.worker;
 
       if (!worker) {
-        worker = await createWorker({
+        worker = await createWorkerWithLogger({
           logger: (message: { status: string; progress?: number }) => {
             if (message.status === "recognizing text" && typeof message.progress === "number") {
               setProgress(Math.round(message.progress * 100));
