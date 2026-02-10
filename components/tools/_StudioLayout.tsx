@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import ToolShell from "./_ToolShell";
 
@@ -9,7 +9,7 @@ export type StudioItem = {
   label: string;
   description: string;
   slug: string;
-  render: () => JSX.Element;
+  render: () => ReactNode;
 };
 
 export type StudioSection = {
