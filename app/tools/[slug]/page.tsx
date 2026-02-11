@@ -3,6 +3,8 @@ import { TOOL_SLUGS } from "../tools.data";
 import { TOOL_META } from "../tools.data";
 import type { Metadata } from "next";
 
+const SITE_URL = "https://www.tomfromit.com";
+
 export const dynamicParams = false;
 
 export function generateStaticParams(): Array<{ slug: string }> {
@@ -22,6 +24,9 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `/tools/${params.slug}/`,
+    },
     openGraph: {
       title,
       description,
@@ -42,5 +47,39 @@ export default async function ToolPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return <ToolDetailClient slug={slug} />;
+  const tool = TOOL_META.find((item) => item.slug === slug);
+  const jsonLd = tool
+    ? {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: tool.title,
+        description: tool.description,
+        url: `${SITE_URL}/tools/${tool.slug}/`,
+        applicationCategory: (tool.tags ?? []).join(", ") || "UtilitiesApplication",
+        operatingSystem: "Web",
+        isAccessibleForFree: true,
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "TomFromIT",
+          url: SITE_URL,
+        },
+      }
+    : null;
+
+  return (
+    <>
+      {jsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      ) : null}
+      <ToolDetailClient slug={slug} />
+    </>
+  );
 }

@@ -7,6 +7,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Pocket Golf",
   description: "Drag to aim and putt through quick mini holes.",
+  alternates: {
+    canonical: "/games/pocket-golf/",
+  },
   openGraph: {
     title: "Pocket Golf | TomFromIT",
     description: "Drag to aim and putt through quick mini holes.",
@@ -21,8 +24,23 @@ export const metadata: Metadata = {
 };
 
 export default function PocketGolfPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    name: "Pocket Golf",
+    description: "Drag to aim and putt through quick mini holes.",
+    url: "https://www.tomfromit.com/games/pocket-golf/",
+    genre: "Arcade",
+    operatingSystem: "Web",
+    isAccessibleForFree: true,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header logo="Tamem Jalallar" />
 
       <main className="mx-auto w-full max-w-5xl px-5 pb-16 pt-28">

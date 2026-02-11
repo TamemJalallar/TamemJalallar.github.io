@@ -7,6 +7,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Word Grid",
   description: "Guess the five-letter word in six tries.",
+  alternates: {
+    canonical: "/games/wordle/",
+  },
   openGraph: {
     title: "Word Grid | TomFromIT",
     description: "Guess the five-letter word in six tries.",
@@ -21,8 +24,23 @@ export const metadata: Metadata = {
 };
 
 export default function WordlePage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    name: "Word Grid",
+    description: "Guess the five-letter word in six tries.",
+    url: "https://www.tomfromit.com/games/wordle/",
+    genre: "Word",
+    operatingSystem: "Web",
+    isAccessibleForFree: true,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header logo="Tamem Jalallar" />
 
       <main className="mx-auto w-full max-w-4xl px-5 pb-16 pt-28">

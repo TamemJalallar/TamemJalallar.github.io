@@ -7,6 +7,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Signal Shift",
   description: "Shift columns to align the center row with the target.",
+  alternates: {
+    canonical: "/games/signal-shift/",
+  },
   openGraph: {
     title: "Signal Shift | TomFromIT",
     description: "Shift columns to align the center row with the target.",
@@ -21,8 +24,23 @@ export const metadata: Metadata = {
 };
 
 export default function SignalShiftPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    name: "Signal Shift",
+    description: "Shift columns to align the center row with the target.",
+    url: "https://www.tomfromit.com/games/signal-shift/",
+    genre: "Word",
+    operatingSystem: "Web",
+    isAccessibleForFree: true,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header logo="Tamem Jalallar" />
 
       <main className="mx-auto w-full max-w-4xl px-5 pb-16 pt-28">

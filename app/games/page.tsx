@@ -6,6 +6,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Games",
   description: "Quick, browser-only games inspired by daily puzzles.",
+  alternates: {
+    canonical: "/games/",
+  },
   openGraph: {
     title: "Games | TomFromIT",
     description: "Quick, browser-only games inspired by daily puzzles.",
@@ -65,8 +68,29 @@ const GAMES = [
 ];
 
 export default function GamesPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Games",
+    description: "Quick, browser-only games inspired by daily puzzles.",
+    url: "https://www.tomfromit.com/games/",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: GAMES.map((game, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: game.title,
+        url: `https://www.tomfromit.com/games/${game.slug}/`,
+      })),
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header logo="Tamem Jalallar" />
 
       <main className="mx-auto w-full max-w-6xl px-5 pb-16 pt-28">

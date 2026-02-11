@@ -7,6 +7,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Echo Memory",
   description: "Repeat the sequence as it grows.",
+  alternates: {
+    canonical: "/games/echo-memory/",
+  },
   openGraph: {
     title: "Echo Memory | TomFromIT",
     description: "Repeat the sequence as it grows.",
@@ -21,8 +24,23 @@ export const metadata: Metadata = {
 };
 
 export default function EchoMemoryPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    name: "Echo Memory",
+    description: "Repeat the sequence as it grows.",
+    url: "https://www.tomfromit.com/games/echo-memory/",
+    genre: "Memory",
+    operatingSystem: "Web",
+    isAccessibleForFree: true,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header logo="Tamem Jalallar" />
 
       <main className="mx-auto w-full max-w-4xl px-5 pb-16 pt-28">

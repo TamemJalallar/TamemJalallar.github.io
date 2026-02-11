@@ -7,6 +7,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Stack Logic",
   description: "Sort each stack so it contains one color.",
+  alternates: {
+    canonical: "/games/stack-logic/",
+  },
   openGraph: {
     title: "Stack Logic | TomFromIT",
     description: "Sort each stack so it contains one color.",
@@ -21,8 +24,23 @@ export const metadata: Metadata = {
 };
 
 export default function StackLogicPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    name: "Stack Logic",
+    description: "Sort each stack so it contains one color.",
+    url: "https://www.tomfromit.com/games/stack-logic/",
+    genre: "Logic",
+    operatingSystem: "Web",
+    isAccessibleForFree: true,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header logo="Tamem Jalallar" />
 
       <main className="mx-auto w-full max-w-5xl px-5 pb-16 pt-28">

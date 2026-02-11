@@ -7,6 +7,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Color Circuit",
   description: "Connect the dots without crossing paths.",
+  alternates: {
+    canonical: "/games/color-circuit/",
+  },
   openGraph: {
     title: "Color Circuit | TomFromIT",
     description: "Connect the dots without crossing paths.",
@@ -21,8 +24,23 @@ export const metadata: Metadata = {
 };
 
 export default function ColorCircuitPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    name: "Color Circuit",
+    description: "Connect the dots without crossing paths.",
+    url: "https://www.tomfromit.com/games/color-circuit/",
+    genre: "Puzzle",
+    operatingSystem: "Web",
+    isAccessibleForFree: true,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header logo="Tamem Jalallar" />
 
       <main className="mx-auto w-full max-w-4xl px-5 pb-16 pt-28">
