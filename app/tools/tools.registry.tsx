@@ -1,14 +1,15 @@
 "use client";
 
 import type { ReactNode } from "react";
+import dynamic from "next/dynamic";
 import { TOOL_META, type ToolMeta } from "./tools.data";
 import ComingSoon from "@/components/tools/ComingSoon";
+import ToolLoading from "@/components/tools/ToolLoading";
 
 // import your implemented tools
 import ImageResizer from "@/components/tools/ImageResizer";
 import BackgroundRemover from "@/components/tools/BackgroundRemover";
 import ImageColorPicker from "@/components/tools/ImageColorPicker";
-import OcrPro from "@/components/tools/OcrPro";
 import ImageCompressor from "@/components/tools/ImageCompressor";
 import JpgToPng from "@/components/tools/JpgToPng";
 import PngToJpg from "@/components/tools/PngToJpg";
@@ -22,16 +23,7 @@ import BrandMockupGenerator from "@/components/tools/BrandMockupGenerator";
 import VideoStoryboard from "@/components/tools/VideoStoryboard";
 import VideoToImages from "@/components/tools/VideoToImages";
 import ImagesToVideo from "@/components/tools/ImagesToVideo";
-import VideoTrimmer from "@/components/tools/VideoTrimmer";
-import VideoSpeedChanger from "@/components/tools/VideoSpeedChanger";
-import VideoSubtitleBurner from "@/components/tools/VideoSubtitleBurner";
-import VideoColorLutPreview from "@/components/tools/VideoColorLutPreview";
 import VideoThumbnailer from "@/components/tools/VideoThumbnailer";
-import VideoAudioExtractor from "@/components/tools/VideoAudioExtractor";
-import VideoToGif from "@/components/tools/VideoToGif";
-import VideoToMp4 from "@/components/tools/VideoToMp4";
-import ImagesToGif from "@/components/tools/ImagesToGif";
-import GifOptimizer from "@/components/tools/GifOptimizer";
 import SpriteSheetBuilder from "@/components/tools/SpriteSheetBuilder";
 import OcrReader from "@/components/tools/OcrReader";
 import ImageStudio from "@/components/tools/ImageStudio";
@@ -112,12 +104,10 @@ import ColorStudio from "@/components/tools/ColorStudio";
 import UnitConverter from "@/components/tools/UnitConverter";
 import AudioWaveformGenerator from "@/components/tools/AudioWaveformGenerator";
 import WaveformPresetExporter from "@/components/tools/WaveformPresetExporter";
-import AudioNormalizer from "@/components/tools/AudioNormalizer";
 import VoiceCleaner from "@/components/tools/VoiceCleaner";
 import AudioSegmenter from "@/components/tools/AudioSegmenter";
 import AudioToWav from "@/components/tools/AudioToWav";
 import AudioToOgg from "@/components/tools/AudioToOgg";
-import AudioToMp3 from "@/components/tools/AudioToMp3";
 import MediaMetadataViewer from "@/components/tools/MediaMetadataViewer";
 import UrlQueryBuilder from "@/components/tools/UrlQueryBuilder";
 import BaseNumberConverter from "@/components/tools/BaseNumberConverter";
@@ -164,6 +154,55 @@ import ComplimentGenerator from "@/components/tools/ComplimentGenerator";
 import StartupNameGenerator from "@/components/tools/StartupNameGenerator";
 
 export type ToolDefinition = ToolMeta & { component: ReactNode };
+
+const OcrPro = dynamic(() => import("@/components/tools/OcrPro"), {
+  ssr: false,
+  loading: () => <ToolLoading title="OCR Pro" />,
+});
+const VideoTrimmer = dynamic(() => import("@/components/tools/VideoTrimmer"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video Trimmer" />,
+});
+const VideoSpeedChanger = dynamic(() => import("@/components/tools/VideoSpeedChanger"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video Speed Changer" />,
+});
+const VideoSubtitleBurner = dynamic(() => import("@/components/tools/VideoSubtitleBurner"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video Subtitle Burner" />,
+});
+const VideoColorLutPreview = dynamic(() => import("@/components/tools/VideoColorLutPreview"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video Color LUT Preview" />,
+});
+const VideoAudioExtractor = dynamic(() => import("@/components/tools/VideoAudioExtractor"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video Audio Extractor" />,
+});
+const VideoToGif = dynamic(() => import("@/components/tools/VideoToGif"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video to GIF" />,
+});
+const VideoToMp4 = dynamic(() => import("@/components/tools/VideoToMp4"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video to MP4" />,
+});
+const ImagesToGif = dynamic(() => import("@/components/tools/ImagesToGif"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Images to GIF" />,
+});
+const GifOptimizer = dynamic(() => import("@/components/tools/GifOptimizer"), {
+  ssr: false,
+  loading: () => <ToolLoading title="GIF Optimizer" />,
+});
+const AudioNormalizer = dynamic(() => import("@/components/tools/AudioNormalizer"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Audio Normalizer" />,
+});
+const AudioToMp3 = dynamic(() => import("@/components/tools/AudioToMp3"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Audio to MP3" />,
+});
 
 const componentBySlug: Record<string, ReactNode> = {
   "image-resizer": <ImageResizer />,

@@ -1,17 +1,41 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import StudioLayout, { type StudioSection } from "./_StudioLayout";
-import VideoTrimmer from "./VideoTrimmer";
-import VideoSpeedChanger from "./VideoSpeedChanger";
-import VideoSubtitleBurner from "./VideoSubtitleBurner";
-import VideoColorLutPreview from "./VideoColorLutPreview";
+import ToolLoading from "./ToolLoading";
 import VideoThumbnailer from "./VideoThumbnailer";
 import VideoStoryboard from "./VideoStoryboard";
 import VideoToImages from "./VideoToImages";
-import VideoAudioExtractor from "./VideoAudioExtractor";
-import VideoToMp4 from "./VideoToMp4";
-import VideoToGif from "./VideoToGif";
 import ImagesToVideo from "./ImagesToVideo";
+
+const VideoTrimmer = dynamic(() => import("./VideoTrimmer"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video Trimmer" />,
+});
+const VideoSpeedChanger = dynamic(() => import("./VideoSpeedChanger"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video Speed Changer" />,
+});
+const VideoSubtitleBurner = dynamic(() => import("./VideoSubtitleBurner"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video Subtitle Burner" />,
+});
+const VideoColorLutPreview = dynamic(() => import("./VideoColorLutPreview"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video Color LUT Preview" />,
+});
+const VideoAudioExtractor = dynamic(() => import("./VideoAudioExtractor"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video Audio Extractor" />,
+});
+const VideoToMp4 = dynamic(() => import("./VideoToMp4"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video to MP4" />,
+});
+const VideoToGif = dynamic(() => import("./VideoToGif"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Video to GIF" />,
+});
 
 const SECTIONS: StudioSection[] = [
   {

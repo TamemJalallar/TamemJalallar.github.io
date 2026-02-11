@@ -1,15 +1,24 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import StudioLayout, { type StudioSection } from "./_StudioLayout";
+import ToolLoading from "./ToolLoading";
 import VoiceCleaner from "./VoiceCleaner";
-import AudioNormalizer from "./AudioNormalizer";
 import MediaMetadataViewer from "./MediaMetadataViewer";
 import AudioSegmenter from "./AudioSegmenter";
 import AudioWaveformGenerator from "./AudioWaveformGenerator";
 import WaveformPresetExporter from "./WaveformPresetExporter";
 import AudioToWav from "./AudioToWav";
 import AudioToOgg from "./AudioToOgg";
-import AudioToMp3 from "./AudioToMp3";
+
+const AudioNormalizer = dynamic(() => import("./AudioNormalizer"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Audio Normalizer" />,
+});
+const AudioToMp3 = dynamic(() => import("./AudioToMp3"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Audio to MP3" />,
+});
 
 const SECTIONS: StudioSection[] = [
   {

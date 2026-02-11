@@ -1,6 +1,8 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import StudioLayout, { type StudioSection } from "./_StudioLayout";
+import ToolLoading from "./ToolLoading";
 import ImageResizer from "./ImageResizer";
 import ImageCompressor from "./ImageCompressor";
 import ImageFormatConverter from "./ImageFormatConverter";
@@ -14,11 +16,21 @@ import BrandMockupGenerator from "./BrandMockupGenerator";
 import BackgroundRemover from "./BackgroundRemover";
 import ImageColorPicker from "./ImageColorPicker";
 import ImageMetadata from "./ImageMetadata";
-import OcrPro from "./OcrPro";
 import OcrReader from "./OcrReader";
-import ImagesToGif from "./ImagesToGif";
-import GifOptimizer from "./GifOptimizer";
 import SpriteSheetBuilder from "./SpriteSheetBuilder";
+
+const OcrPro = dynamic(() => import("./OcrPro"), {
+  ssr: false,
+  loading: () => <ToolLoading title="OCR Pro" />,
+});
+const ImagesToGif = dynamic(() => import("./ImagesToGif"), {
+  ssr: false,
+  loading: () => <ToolLoading title="Images to GIF" />,
+});
+const GifOptimizer = dynamic(() => import("./GifOptimizer"), {
+  ssr: false,
+  loading: () => <ToolLoading title="GIF Optimizer" />,
+});
 
 const SECTIONS: StudioSection[] = [
   {

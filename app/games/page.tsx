@@ -123,6 +123,36 @@ export default function GamesPage() {
             </Link>
           ))}
         </div>
+
+        <div className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-6">
+          <h2 className="text-xl font-semibold">Games FAQ</h2>
+          <div className="mt-4 space-y-3 text-sm text-white/70">
+            <details className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              <summary className="cursor-pointer font-semibold text-white">
+                Do I need an account to play?
+              </summary>
+              <p className="mt-2 text-white/70">
+                Nope. These games are instant-play and run entirely in your browser.
+              </p>
+            </details>
+            <details className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              <summary className="cursor-pointer font-semibold text-white">
+                Are the games mobile friendly?
+              </summary>
+              <p className="mt-2 text-white/70">
+                Yes, they are designed to work well on both desktop and mobile screens.
+              </p>
+            </details>
+            <details className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              <summary className="cursor-pointer font-semibold text-white">
+                Will you add more games?
+              </summary>
+              <p className="mt-2 text-white/70">
+                Absolutely. New games are added over time — feel free to request one.
+              </p>
+            </details>
+          </div>
+        </div>
       </main>
 
       <Footer socials={[]} name="Tamem Jalallar" />
