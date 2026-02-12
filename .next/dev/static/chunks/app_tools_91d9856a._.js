@@ -937,6 +937,14 @@ const TOOL_META = [
         ]
     },
     {
+        slug: "seo-studio",
+        title: "SEO Studio",
+        description: "Generate metadata, social tags, and schema quickly.",
+        tags: [
+            "studio"
+        ]
+    },
+    {
         slug: "csv-to-json",
         title: "CSV → JSON",
         description: "Convert CSV into JSON.",

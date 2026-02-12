@@ -78,6 +78,7 @@ import HmacSigner from "@/components/tools/HmacSigner";
 import EnvVarValidator from "@/components/tools/EnvVarValidator";
 import ApiRequestBuilder from "@/components/tools/ApiRequestBuilder";
 import DevStudio from "@/components/tools/DevStudio";
+import SeoStudio from "@/components/tools/SeoStudio";
 
 import CaseConverter from "@/components/tools/CaseConverter";
 import TextCaseConverter from "@/components/tools/TextCaseConverter";
@@ -286,6 +287,7 @@ const componentBySlug: Record<string, ReactNode> = {
   "env-var-validator": <EnvVarValidator />,
   "api-request-builder": <ApiRequestBuilder />,
   "dev-studio": <DevStudio />,
+  "seo-studio": <SeoStudio />,
 
   "case-converter": <CaseConverter />,
   "text-case-converter": <TextCaseConverter />,

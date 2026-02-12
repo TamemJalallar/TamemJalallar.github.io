@@ -5,3 +5,16 @@
 [19:56:59.437] Server  LOG     ✓ Compiled in 408ms
 [19:58:08.355] Server  LOG     ✓ Compiled in 352ms
 [19:58:33.630] Server  LOG     ✓ Compiled in 113ms
+[20:05:57.434] Server  LOG     ✓ Compiled in 278ms
+[20:07:11.940] Server  LOG     ✓ Compiled in 123ms
+[20:17:21.363] Server  WARN    Error: Route "/tools/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[20:17:21.371] Server  WARN    Error: Route "/tools/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[20:17:21.595] Server  WARN    Error: Route "/tools/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[20:17:21.602] Server  WARN    Error: Route "/tools/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[20:17:22.034] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[20:17:22.034] Browser WARN    Image with src "http://localhost:3000/nextjs.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[20:17:22.034] Browser WARN    Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[20:23:42.519] Server  LOG     ✓ Compiled in 698ms
+[20:24:38.889] Server  LOG     ✓ Compiled in 459ms
+[20:24:55.945] Server  LOG     ✓ Compiled in 124ms
+[41:14:51.287] Server  LOG     ✓ Compiled in 855ms

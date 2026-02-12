@@ -134,6 +134,7 @@ export const TOOL_META: ToolMeta[] = [
   { slug: "markdown-to-html", title: "Markdown → HTML", description: "Convert Markdown to HTML.", tags: ["text"] },
   { slug: "html-to-markdown", title: "HTML → Markdown", description: "Convert HTML to Markdown.", tags: ["text"] },
   { slug: "data-studio", title: "Data Studio", description: "Convert and explore data files locally.", tags: ["studio"] },
+  { slug: "seo-studio", title: "SEO Studio", description: "Generate metadata, social tags, and schema quickly.", tags: ["studio"] },
   { slug: "csv-to-json", title: "CSV → JSON", description: "Convert CSV into JSON.", tags: ["data"] },
   { slug: "csv-profiler", title: "CSV Profiler", description: "Profile columns for types and outliers.", tags: ["data"] },
   { slug: "json-to-csv", title: "JSON → CSV", description: "Convert JSON into CSV.", tags: ["data"] },

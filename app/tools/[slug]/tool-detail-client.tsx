@@ -78,6 +78,11 @@ const STUDIO_FAQ: Record<string, { q: string; a: string }[]> = {
     { q: "What formats are supported?", a: "CSV, JSON, YAML, and XML." },
     { q: "Can I preview data?", a: "Yes, use the table viewer and profiler." },
   ],
+  "seo-studio": [
+    { q: "Do I need a CMS to use this?", a: "No. Copy the tags into any HTML or Next.js metadata config." },
+    { q: "Is the JSON-LD valid?", a: "Yes, it generates schema-ready JSON you can paste directly." },
+    { q: "Can I export robots.txt?", a: "Yes, download or copy a ready-to-use robots.txt file." },
+  ],
 };
 
 function normalizeSlug(slug: string) {

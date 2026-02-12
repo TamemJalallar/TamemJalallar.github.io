@@ -28,6 +28,8 @@ export const dynamic = "force-static";
 
 export default function ToolsPage() {
   const studioTools = TOOL_META.filter((tool) => tool.tags?.includes("studio"));
+  const seoStudio = studioTools.find((tool) => tool.slug === "seo-studio");
+  const otherStudios = studioTools.filter((tool) => tool.slug !== "seo-studio");
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -68,8 +70,32 @@ export default function ToolsPage() {
             </span>
           </div>
 
+          {seoStudio ? (
+            <Link
+              href={`/tools/${seoStudio.slug}`}
+              className="group relative mt-6 block overflow-hidden rounded-3xl border border-emerald-400/30 bg-gradient-to-r from-emerald-500/15 via-sky-500/10 to-cyan-500/15 p-6 transition hover:border-emerald-300/60"
+            >
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-emerald-400 via-sky-400 to-cyan-400" />
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200/80">
+                    Featured Studio
+                  </div>
+                  <div className="mt-2 text-2xl font-semibold">{seoStudio.title}</div>
+                  <p className="mt-2 max-w-2xl text-sm text-white/70">
+                    {seoStudio.description} Generate tags, schema, and robots in minutes.
+                  </p>
+                </div>
+                <span className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-200">
+                  Growth + SEO
+                </span>
+              </div>
+              <div className="mt-4 text-xs text-emerald-200">Open SEO Studio →</div>
+            </Link>
+          ) : null}
+
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {studioTools.map((studio) => (
+            {otherStudios.map((studio) => (
               <Link
                 key={studio.slug}
                 href={`/tools/${studio.slug}`}
