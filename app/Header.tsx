@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 import { FiSun, FiMoon } from "react-icons/fi";
-import { FaNodeJs } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import { CgClose, CgMenuRight } from "react-icons/cg";
 import { usePathname } from "next/navigation";
 
@@ -53,7 +53,7 @@ export default function Header({ logo }: { logo?: string }) {
           className="2xl:ml-6 hover:text-sky-700 hover:dark:text-sky-400 transition-colors duration-300"
         >
           {safeLogo === "Tamem Jalallar" ? (
-            <FaNodeJs size={28} />
+            <FaHeart size={24} className="text-rose-400" />
           ) : (
             <span className="text-lg font-medium">{firstName}</span>
           )}
@@ -120,7 +120,7 @@ export default function Header({ logo }: { logo?: string }) {
           className="hover:text-sky-700 hover:dark:text-sky-400 transition-colors"
         >
           {safeLogo === "Tamem Jalallar" ? (
-            <FaNodeJs size={28} />
+            <FaHeart size={24} className="text-rose-400" />
           ) : (
             <span className="text-lg font-medium">{firstName}</span>
           )}

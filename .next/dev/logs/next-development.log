@@ -1,20 +1,13 @@
-[00:00:01.188] Server  LOG     ✓ Ready in 870ms
-[00:00:56.121] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:00.292] Server  LOG     ✓ Compiled in 73ms
-[19:37:33.466] Server  LOG     ✓ Compiled in 780ms
-[19:56:59.437] Server  LOG     ✓ Compiled in 408ms
-[19:58:08.355] Server  LOG     ✓ Compiled in 352ms
-[19:58:33.630] Server  LOG     ✓ Compiled in 113ms
-[20:05:57.434] Server  LOG     ✓ Compiled in 278ms
-[20:07:11.940] Server  LOG     ✓ Compiled in 123ms
-[20:17:21.363] Server  WARN    Error: Route "/tools/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[20:17:21.371] Server  WARN    Error: Route "/tools/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[20:17:21.595] Server  WARN    Error: Route "/tools/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[20:17:21.602] Server  WARN    Error: Route "/tools/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[20:17:22.034] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[20:17:22.034] Browser WARN    Image with src "http://localhost:3000/nextjs.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[20:17:22.034] Browser WARN    Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[20:23:42.519] Server  LOG     ✓ Compiled in 698ms
-[20:24:38.889] Server  LOG     ✓ Compiled in 459ms
-[20:24:55.945] Server  LOG     ✓ Compiled in 124ms
-[41:14:51.287] Server  LOG     ✓ Compiled in 855ms
+[00:00:02.322] Server  LOG     ✓ Ready in 1916ms
+[00:00:04.777] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:05.423] Browser WARN    Image with src "http://localhost:3000/nextjs.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:05.423] Browser WARN    Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:24.323] Server  LOG     ✓ Compiled in 1213ms
+[00:02:42.454] Server  LOG     ✓ Compiled in 238ms
+[00:02:42.592] Browser WARN    Image with src "http://localhost:3000/love/Artist.JPEG" has "fill" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.
+[00:02:42.592] Browser WARN    Image with src "http://localhost:3000/love/Chef.jpg" has "fill" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.
+[00:12:35.124] Server  LOG     ✓ Compiled in 205ms
+[00:13:49.156] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:14:11.088] Server  LOG     ✓ Compiled in 130ms
+[00:14:29.243] Server  LOG     ✓ Compiled in 83ms
+[00:15:35.396] Server  LOG     ✓ Compiled in 436ms
