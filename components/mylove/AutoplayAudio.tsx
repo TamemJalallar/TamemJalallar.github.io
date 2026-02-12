@@ -31,6 +31,29 @@ export default function AutoplayAudio({ src, label = "Play song" }: AutoplayAudi
   }, [src]);
 
   useEffect(() => {
+    if (!needsUserAction) return;
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const resumeOnFirstGesture = async () => {
+      try {
+        await audio.play();
+        setNeedsUserAction(false);
+      } catch {
+        // Still blocked, keep the button visible.
+      }
+    };
+
+    document.addEventListener("pointerdown", resumeOnFirstGesture, { once: true });
+    document.addEventListener("keydown", resumeOnFirstGesture, { once: true });
+
+    return () => {
+      document.removeEventListener("pointerdown", resumeOnFirstGesture);
+      document.removeEventListener("keydown", resumeOnFirstGesture);
+    };
+  }, [needsUserAction]);
+
+  useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
