@@ -5,18 +5,22 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lighthouse:ci": "npx @lhci/cli autorun --config=.lighthouserc.json",
+    "test:visual": "npx playwright test --config=playwright.visual.config.js",
+    "test:visual:update": "npx playwright test --config=playwright.visual.config.js --update-snapshots"
   },
   "dependencies": {
     "@ffmpeg/ffmpeg": "^0.12.6",
     "@ffmpeg/util": "^0.12.2",
+    "@huggingface/transformers": "^3.8.1",
     "@radix-ui/react-slider": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.1.6",
     "axios": "^1.13.2",
     "fast-average-color": "^9.5.0",
     "framer-motion": "^12.23.26",
-    "jszip": "^3.10.1",
     "jsbarcode": "^3.12.3",
+    "jszip": "^3.10.1",
     "marked": "^17.0.1",
     "next": "^16.1.6",
     "next-themes": "^0.2.1",

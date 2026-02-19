@@ -15,3 +15,53 @@
 [00:13:27.062] Server  LOG     ✓ Compiled in 56ms
 [00:13:33.896] Server  LOG     ✓ Compiled in 91ms
 [00:13:39.342] Server  LOG     ✓ Compiled in 103ms
+[00:26:10.643] Server  LOG     ✓ Compiled in 335ms
+[00:26:17.374] Server  LOG     ✓ Compiled in 228ms
+[00:26:36.487] Server  LOG     ✓ Compiled in 167ms
+[00:26:44.190] Server  LOG     ✓ Compiled in 100ms
+[00:27:08.702] Server  LOG     ✓ Compiled in 442ms
+[00:28:13.423] Server  LOG     ✓ Compiled in 355ms
+[00:28:26.492] Server  LOG     ✓ Compiled in 128ms
+[00:28:45.382] Server  LOG     ✓ Compiled in 203ms
+[00:29:21.326] Server  LOG     ✓ Compiled in 194ms
+[00:29:37.908] Server  LOG     ✓ Compiled in 96ms
+[00:30:12.395] Server  LOG     ✓ Compiled in 146ms
+[00:30:36.602] Server  LOG     ✓ Compiled in 415ms
+[00:30:54.047] Server  LOG     ✓ Compiled in 93ms
+[00:31:17.935] Server  LOG     ✓ Compiled in 183ms
+[00:32:19.303] Server  LOG     ✓ Compiled in 90ms
+[00:32:35.415] Server  LOG     ✓ Compiled in 61ms
+[01:01:26.694] Server  LOG     ✓ Compiled in 127ms
+[01:01:48.185] Server  LOG     ✓ Compiled in 91ms
+[01:02:48.801] Server  LOG     ✓ Compiled in 134ms
+[01:03:14.638] Server  LOG     ✓ Compiled in 197ms
+[01:03:14.764] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'services')
+[01:03:26.527] Server  ERROR   ⨯ Error: Route / with `dynamic = "error"` couldn't be rendered statically because it used `searchParams.then`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering
+[01:03:26.725] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:03:26.835] Browser ERROR   uncaughtError: Error: Route / with `dynamic = "error"` couldn't be rendered statically because it used `searchParams.then`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering
+[01:03:35.936] Server  ERROR   ⨯ Error: Route / with `dynamic = "error"` couldn't be rendered statically because it used `searchParams.then`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering
+[01:03:36.028] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:03:36.138] Browser ERROR   uncaughtError: Error: Route / with `dynamic = "error"` couldn't be rendered statically because it used `searchParams.then`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering
+[01:04:43.365] Server  LOG     ✓ Compiled in 143ms
+[01:04:43.568] Server  ERROR   ⨯ Error: Route / with `dynamic = "error"` couldn't be rendered statically because it used `searchParams.then`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering
+[01:04:43.650] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:04:43.761] Browser ERROR   uncaughtError: Error: Route / with `dynamic = "error"` couldn't be rendered statically because it used `searchParams.then`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering
+[01:04:57.236] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:04:57.273] Server  LOG     ✓ Compiled in 997ms
+[01:04:57.290] Server  ERROR   ⨯ Error: Route / with `dynamic = "error"` couldn't be rendered statically because it used `searchParams.then`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering
+[01:04:57.351] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:04:57.461] Browser ERROR   uncaughtError: Error: Route / with `dynamic = "error"` couldn't be rendered statically because it used `searchParams.then`. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering
+[01:07:50.274] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:07:50.503] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[01:25:53.712] Server  LOG     ✓ Compiled in 350ms
+[01:29:30.693] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:31:30.206] Server  LOG     ✓ Compiled in 235ms
+[01:31:37.342] Server  LOG     ✓ Compiled in 43ms
+[01:31:44.591] Server  LOG     ✓ Compiled in 10ms
+[01:31:50.636] Server  LOG     ✓ Compiled in 7ms
+[01:36:00.155] Server  LOG     ✓ Compiled in 191ms
+[02:22:09.089] Server  LOG     ✓ Compiled in 214ms
+[02:22:35.919] Server  LOG     ✓ Compiled in 119ms
+[02:22:50.560] Server  LOG     ✓ Compiled in 110ms
+[02:23:00.722] Server  LOG     ✓ Compiled in 72ms
+[02:23:29.669] Server  LOG     ✓ Compiled in 84ms

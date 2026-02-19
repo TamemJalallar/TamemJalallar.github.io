@@ -118,6 +118,7 @@ export const TOOL_META: ToolMeta[] = [
   // Conversions
   { slug: "unit-converter", title: "Unit Converter", description: "Length/weight/temp conversions.", tags: ["utility"] },
   { slug: "audio-studio", title: "Audio Studio", description: "Clean, analyze, and convert audio files locally.", tags: ["studio"] },
+  { slug: "audio-transcriber", title: "AI Audio Transcriber", description: "Transcribe audio to text with Hugging Face Whisper models.", tags: ["utility", "ai"] },
   { slug: "audio-waveform-generator", title: "Audio Waveform Generator", description: "Generate a waveform image from audio.", tags: ["utility"] },
   { slug: "waveform-preset-exporter", title: "Waveform Preset Exporter", description: "Export waveform presets.", tags: ["utility"] },
   { slug: "audio-normalizer", title: "Audio Normalizer", description: "Normalize loudness with LUFS target.", tags: ["utility"] },

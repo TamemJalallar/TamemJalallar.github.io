@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { MdSchool, MdWork } from "react-icons/md";
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, useReducedMotion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 interface ExperienceProps {
@@ -24,8 +24,9 @@ const Experience = ({
   duration,
   logo,
 }: ExperienceProps) => {
+  const reduceMotion = useReducedMotion();
   const [ref, inView] = useInView({
-    threshold: 0.5,
+    threshold: 0.2,
     triggerOnce: true,
   });
   const isShu = Boolean(
@@ -38,7 +39,11 @@ const Experience = ({
     visible: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+      transition: {
+        duration: 0.5,
+        delay: Math.min(index * 0.08, 0.45),
+        ease: [0.16, 1, 0.3, 1],
+      },
     },
   };
 
@@ -64,8 +69,8 @@ const Experience = ({
       <motion.div
         ref={ref}
         variants={cardVariants}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
+        initial={reduceMotion ? false : "hidden"}
+        animate={inView || reduceMotion ? "visible" : "hidden"}
         className="fx-glow order-1 rounded-lg w-full ml-3 md:ml-0 bg-white dark:bg-grey-800 md:w-5/12 p-3 md:px-4 md:py-4"
       >
         <div className="flex items-start gap-3">
@@ -75,6 +80,7 @@ const Experience = ({
                 src={logo}
                 alt={`${company || institute} logo`}
                 fill
+                sizes="96px"
                 className={`object-contain p-3 ${isShu ? "scale-150" : ""}`}
                 unoptimized
               />

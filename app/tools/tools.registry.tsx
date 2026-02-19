@@ -114,6 +114,7 @@ import UrlQueryBuilder from "@/components/tools/UrlQueryBuilder";
 import BaseNumberConverter from "@/components/tools/BaseNumberConverter";
 import JsonTableViewer from "@/components/tools/JsonTableViewer";
 import AudioStudio from "@/components/tools/AudioStudio";
+import AudioTranscriber from "@/components/tools/AudioTranscriber";
 import DiceRoller from "@/components/tools/DiceRoller";
 import RandomNameGenerator from "@/components/tools/RandomNameGenerator";
 import PasswordGenerator from "@/components/tools/PasswordGenerator";
@@ -321,6 +322,7 @@ const componentBySlug: Record<string, ReactNode> = {
   "audio-to-ogg": <AudioToOgg />,
   "audio-to-mp3": <AudioToMp3 />,
   "media-metadata": <MediaMetadataViewer />,
+  "audio-transcriber": <AudioTranscriber />,
   "url-query-builder": <UrlQueryBuilder />,
   "base-number-converter": <BaseNumberConverter />,
   "json-table-viewer": <JsonTableViewer />,

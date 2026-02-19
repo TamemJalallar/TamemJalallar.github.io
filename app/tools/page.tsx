@@ -116,36 +116,6 @@ export default function ToolsPage() {
           <ToolsPageClient />
         </div>
 
-        <div className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-6">
-          <h2 className="text-xl font-semibold">Tools FAQ</h2>
-          <div className="mt-4 space-y-3 text-sm text-white/70">
-            <details className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <summary className="cursor-pointer font-semibold text-white">
-                Are these tools private?
-              </summary>
-              <p className="mt-2 text-white/70">
-                Yes. Everything runs locally in your browser. Files are not uploaded or stored.
-              </p>
-            </details>
-            <details className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <summary className="cursor-pointer font-semibold text-white">
-                Why does the first run feel slower?
-              </summary>
-              <p className="mt-2 text-white/70">
-                Some studios load local engines (like FFmpeg) on demand. After the first load,
-                the tools feel much faster.
-              </p>
-            </details>
-            <details className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <summary className="cursor-pointer font-semibold text-white">
-                Can I request a new tool?
-              </summary>
-              <p className="mt-2 text-white/70">
-                Absolutely. Share the workflow and I can add it to the right studio.
-              </p>
-            </details>
-          </div>
-        </div>
       </div>
     </>
   );

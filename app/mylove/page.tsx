@@ -82,27 +82,27 @@ export default function MyLovePage() {
       <Header logo="Tamem Jalallar" />
 
       <main className="mx-auto w-full max-w-5xl px-5 pb-16 pt-28">
-        <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-rose-500/20 via-fuchsia-500/10 to-sky-500/15 p-6 sm:p-8">
+        <section className="relative overflow-hidden rounded-3xl border border-black/10 bg-gradient-to-br from-rose-500/25 via-fuchsia-500/15 to-sky-500/20 p-6 dark:border-white/10 sm:p-8">
           <div className="pointer-events-none absolute -right-12 -top-10 h-40 w-40 rounded-full bg-rose-400/20 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-16 -left-10 h-44 w-44 rounded-full bg-sky-400/20 blur-3xl" />
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/70">
+          <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/5 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-700 dark:border-white/10 dark:bg-white/10 dark:text-white/70">
             Private
           </div>
           <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
             For Yasman Mustafa (soon to be Jalallar)
           </h1>
-          <p className="mt-3 max-w-2xl text-sm text-white/70">
+          <p className="mt-3 max-w-2xl text-sm text-slate-700 dark:text-white/70">
             A small, cute corner of the internet just for you. 💕
           </p>
         </section>
 
-        <section className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+        <section className="mt-8 rounded-2xl border border-black/10 bg-white/70 p-6 dark:border-white/10 dark:bg-white/5">
           <LoveCountdown target={weddingDate} label="July 5, 2026" />
         </section>
 
-        <section className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+        <section className="mt-8 rounded-2xl border border-black/10 bg-white/70 p-6 dark:border-white/10 dark:bg-white/5">
           <h2 className="text-xl font-semibold">Love Poem</h2>
-          <div className="mt-4 rounded-xl border border-white/10 bg-black/30 p-4 text-center text-sm text-white/60">
+          <div className="mt-4 rounded-xl border border-black/10 bg-slate-100/70 p-4 text-center text-sm text-slate-700 dark:border-white/10 dark:bg-black/30 dark:text-white/60">
             <p>From the day we met</p>
             <p>I knew it would be forever</p>
             <p>From the look in your eyes</p>
@@ -167,13 +167,13 @@ export default function MyLovePage() {
             <p>My Yassie Jaanem</p>
             <p>Our first valentine’s day</p>
             <p>From Dusk til Dawn-em</p>
-            <p className="mt-4 font-semibold text-white">
+            <p className="mt-4 font-semibold text-slate-900 dark:text-white">
               I LOVE YOU FOREVER AND EVER AND EVER AND EVER
             </p>
           </div>
         </section>
 
-        <section className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+        <section className="mt-8 rounded-2xl border border-black/10 bg-white/70 p-6 dark:border-white/10 dark:bg-white/5">
           <h2 className="text-xl font-semibold">Our Timeline</h2>
 
           <ol className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -221,29 +221,29 @@ export default function MyLovePage() {
             ].map((item) => (
               <li
                 key={item.title}
-                className="rounded-lg border border-white/10 bg-black/20 p-3"
+                className="rounded-lg border border-black/10 bg-white/75 p-3 dark:border-white/10 dark:bg-black/20"
               >
-                <div className="text-[10px] uppercase tracking-[0.2em] text-white/50">
+                <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-white/50">
                   {item.date}
                 </div>
-                <div className="mt-1 text-sm font-semibold text-white">{item.title}</div>
-                <div className="mt-1 text-xs text-white/70">{item.note}</div>
+                <div className="mt-1 text-sm font-semibold text-slate-900 dark:text-white">{item.title}</div>
+                <div className="mt-1 text-xs text-slate-700 dark:text-white/70">{item.note}</div>
               </li>
             ))}
           </ol>
         </section>
 
-        <section className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+        <section className="mt-8 rounded-2xl border border-black/10 bg-white/70 p-6 dark:border-white/10 dark:bg-white/5">
           <h2 className="text-xl font-semibold">Photo Gallery</h2>
           <div className="mt-5">
             <LoveGallery images={galleryImages} />
           </div>
         </section>
 
-        <section className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+        <section className="mt-8 rounded-2xl border border-black/10 bg-white/70 p-6 dark:border-white/10 dark:bg-white/5">
           <AutoplayAudio src={audioSrc} label="Tap to play" />
-          <h3 className="text-lg font-semibold text-white">Playlist & Moments</h3>
-          <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Playlist & Moments</h3>
+          <div className="mt-4 overflow-hidden rounded-2xl border border-black/10 bg-black/5 dark:border-white/10 dark:bg-black/30">
             <iframe
               title="Spotify playlist"
               src={playlistEmbedUrl}

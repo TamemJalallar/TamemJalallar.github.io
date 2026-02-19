@@ -28,63 +28,6 @@ const AUDIO_TOOL_SLUGS = new Set([
   "media-metadata",
 ]);
 
-const STUDIO_FAQ: Record<string, { q: string; a: string }[]> = {
-  "pdf-studio": [
-    {
-      q: "Is my PDF uploaded anywhere?",
-      a: "No. All processing happens locally in your browser.",
-    },
-    {
-      q: "Which tools preserve layout best?",
-      a: "Merge, split, reorder, rotate, and watermark keep layout intact.",
-    },
-    {
-      q: "Why can some PDFs be slower?",
-      a: "Large or scanned PDFs take longer because each page is processed.",
-    },
-  ],
-  "image-studio": [
-    { q: "Does this upload my images?", a: "No. Everything runs locally." },
-    { q: "What formats are supported?", a: "JPG, PNG, WebP, AVIF, and SVG." },
-    { q: "Why is the first run slower?", a: "Some tools warm up browser APIs." },
-  ],
-  "video-studio": [
-    { q: "Is my video uploaded?", a: "No, videos stay in your browser." },
-    { q: "Why does FFmpeg take time to load?", a: "It downloads on first use." },
-    { q: "What output formats are available?", a: "MP4, WebM, GIF, and images." },
-  ],
-  "audio-studio": [
-    { q: "Does audio stay local?", a: "Yes, all processing is local." },
-    { q: "Why is first export slow?", a: "FFmpeg loads on demand." },
-    { q: "Can I export WAV and MP3?", a: "Yes, multiple output formats are supported." },
-  ],
-  "dev-studio": [
-    { q: "Are API keys stored?", a: "No, nothing is stored or sent anywhere." },
-    { q: "Do these tools work offline?", a: "Most tools work offline after first load." },
-    { q: "Can I export results?", a: "Yes, many tools provide copy or download options." },
-  ],
-  "text-studio": [
-    { q: "Is my text uploaded?", a: "No, it stays in your browser." },
-    { q: "Can I use large files?", a: "Yes, but very large files may be slower." },
-    { q: "Do you keep history?", a: "No, nothing is saved unless you copy/download." },
-  ],
-  "color-studio": [
-    { q: "Can I export palettes?", a: "Yes, many tools include export options." },
-    { q: "Are gradients CSS-ready?", a: "Yes, you can copy CSS values." },
-    { q: "Does it work offline?", a: "Yes after the first load." },
-  ],
-  "data-studio": [
-    { q: "Are my files uploaded?", a: "No, everything stays local." },
-    { q: "What formats are supported?", a: "CSV, JSON, YAML, and XML." },
-    { q: "Can I preview data?", a: "Yes, use the table viewer and profiler." },
-  ],
-  "seo-studio": [
-    { q: "Do I need a CMS to use this?", a: "No. Copy the tags into any HTML or Next.js metadata config." },
-    { q: "Is the JSON-LD valid?", a: "Yes, it generates schema-ready JSON you can paste directly." },
-    { q: "Can I export robots.txt?", a: "Yes, download or copy a ready-to-use robots.txt file." },
-  ],
-};
-
 function normalizeSlug(slug: string) {
   return String(slug || "")
     .trim()
@@ -216,24 +159,7 @@ export default function ToolDetailClient({ slug }: { slug: string }) {
 
         <div className="mt-8">{tool.component}</div>
 
-        {tool.tags?.includes("studio") ? (
-          <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h2 className="text-xl font-semibold">Studio FAQ</h2>
-            <div className="mt-4 space-y-3 text-sm text-white/70">
-              {(STUDIO_FAQ[tool.slug] ?? STUDIO_FAQ["pdf-studio"]).map((item) => (
-                <details
-                  key={item.q}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
-                >
-                  <summary className="cursor-pointer font-semibold text-white">
-                    {item.q}
-                  </summary>
-                  <p className="mt-2 text-white/70">{item.a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        ) : relatedTools.length ? (
+        {relatedTools.length ? (
           <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6">
             <h2 className="text-xl font-semibold">Related tools</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

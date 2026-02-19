@@ -15,6 +15,20 @@ export default function Contact() {
         <p className="mt-3 text-center text-black/70 dark:text-white/70">
           The fastest way to reach me is to book time directly on my calendar.
         </p>
+        <div className="fx-glow mt-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-sky-300/40 bg-sky-50/75 px-4 py-4 dark:border-sky-500/30 dark:bg-sky-500/10">
+          <p className="text-sm font-medium text-slate-700 dark:text-slate-200">
+            Available for full-time and contract opportunities.
+          </p>
+          <a
+            href={bookingsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fx-glow rounded-xl bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-700"
+            data-analytics="contact_banner_book_call"
+          >
+            Start with a 15 min call
+          </a>
+        </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:items-stretch">
           {/* Left: Booking card */}
@@ -32,6 +46,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="fx-glow inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm md:text-base bg-sky-600 hover:bg-sky-700 text-white transition shadow-soft"
+                data-analytics="contact_card_book_meeting"
               >
                 Book a meeting
               </a>
@@ -39,6 +54,7 @@ export default function Contact() {
               <a
                 href="mailto:tjalallar@att.net"
                 className="fx-glow inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm md:text-base bg-white/70 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-white/90 dark:hover:bg-white/10 transition"
+                data-analytics="contact_card_email"
               >
                 Email instead
               </a>

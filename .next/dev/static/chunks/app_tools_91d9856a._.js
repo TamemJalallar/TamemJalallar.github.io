@@ -824,6 +824,15 @@ const TOOL_META = [
         ]
     },
     {
+        slug: "audio-transcriber",
+        title: "AI Audio Transcriber",
+        description: "Transcribe audio to text with Hugging Face Whisper models.",
+        tags: [
+            "utility",
+            "ai"
+        ]
+    },
+    {
         slug: "audio-waveform-generator",
         title: "Audio Waveform Generator",
         description: "Generate a waveform image from audio.",

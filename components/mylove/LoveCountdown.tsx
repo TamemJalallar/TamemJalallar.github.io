@@ -49,13 +49,13 @@ export default function LoveCountdown({ target, label }: CountdownProps) {
   }, [state.isPast]);
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+    <div className="rounded-2xl border border-black/10 bg-white/75 p-6 dark:border-white/10 dark:bg-white/5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-xl font-semibold">Wedding Countdown</h2>
-          <p className="mt-1 text-sm text-white/70">{subtitle}</p>
+          <p className="mt-1 text-sm text-slate-700 dark:text-white/70">{subtitle}</p>
         </div>
-        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60">
+        <span className="rounded-full border border-black/10 bg-black/5 px-3 py-1 text-xs text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-white/60">
           {label}
         </span>
       </div>
@@ -69,12 +69,12 @@ export default function LoveCountdown({ target, label }: CountdownProps) {
         ].map((item) => (
           <div
             key={item.label}
-            className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-center"
+            className="rounded-xl border border-black/10 bg-white/80 px-4 py-3 text-center dark:border-white/10 dark:bg-black/30"
           >
-            <div className="text-2xl font-semibold leading-none text-white">
+            <div className="text-2xl font-semibold leading-none text-slate-900 dark:text-white">
               {pad(item.value)}
             </div>
-            <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-white/45 sm:text-[11px] sm:tracking-[0.2em] leading-snug">
+            <div className="mt-1 text-[10px] uppercase leading-snug tracking-[0.18em] text-slate-500 dark:text-white/45 sm:text-[11px] sm:tracking-[0.2em]">
               {item.label}
             </div>
           </div>

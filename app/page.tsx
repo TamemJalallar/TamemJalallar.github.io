@@ -1,9 +1,16 @@
 import HomePageClient from "./HomePageClient";
-import siteData from "../data.json";
+import { getHomeContent } from "@/lib/content/home-content";
+import { getSiteData } from "@/lib/content/site-data";
+import { getHomeDictionary, resolveLocale } from "@/lib/i18n/home";
 
 const SITE_URL = "https://www.tomfromit.com";
 
-export default function Page() {
+export default async function Page() {
+  const siteData = await getSiteData();
+  const locale = resolveLocale(process.env.NEXT_PUBLIC_DEFAULT_LOCALE);
+  const dictionary = getHomeDictionary(locale);
+  const content = await getHomeContent();
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -33,7 +40,12 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <HomePageClient data={siteData as any} />
+      <HomePageClient
+        data={siteData}
+        content={content}
+        locale={locale}
+        dictionary={dictionary}
+      />
     </>
   );
 }

@@ -24,7 +24,13 @@ export const metadata: Metadata = {
     "Executive Support",
   ],
   icons: { icon: "/favicon.ico" },
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/?lang=en",
+      es: "/?lang=es",
+    },
+  },
   openGraph: {
     type: "website",
     url: "/",
@@ -32,14 +38,33 @@ export const metadata: Metadata = {
     description:
       "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
     siteName: "TomFromIT",
-    images: ["/Hero.png"],
+    images: [
+      {
+        url: "/Hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Tamem Jalallar IT systems portfolio hero image",
+      },
+      {
+        url: "/herobg.jpg",
+        width: 1600,
+        height: 900,
+        alt: "TomFromIT background image",
+      },
+      {
+        url: "/tom.png",
+        width: 1200,
+        height: 1200,
+        alt: "Tamem Jalallar profile image",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tamem “Tom” Jalallar | IT Systems Administrator",
     description:
       "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
-    images: ["/Hero.png"],
+    images: ["/Hero.png", "/herobg.jpg"],
   },
   robots: {
     index: true,

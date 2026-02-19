@@ -72,11 +72,11 @@ export default function LoveGallery({ images }: LoveGalleryProps) {
   }, [activeIndex, closeImage, showNext, showPrev]);
 
   return (
-    <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+    <div className="rounded-xl border border-black/10 bg-white/80 p-4 dark:border-white/10 dark:bg-black/20">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-white">Photo Scroller</p>
-          <p className="text-xs text-white/60">
+          <p className="text-sm font-semibold text-slate-900 dark:text-white">Photo Scroller</p>
+          <p className="text-xs text-slate-700 dark:text-white/60">
             Swipe or use the arrows to scroll through memories.
           </p>
         </div>
@@ -84,14 +84,14 @@ export default function LoveGallery({ images }: LoveGalleryProps) {
           <button
             type="button"
             onClick={() => scrollScroller("prev")}
-            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80 transition hover:bg-white/10"
+            className="rounded-full border border-black/10 bg-black/5 px-3 py-1 text-xs text-slate-700 transition hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10"
           >
             Prev
           </button>
           <button
             type="button"
             onClick={() => scrollScroller("next")}
-            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80 transition hover:bg-white/10"
+            className="rounded-full border border-black/10 bg-black/5 px-3 py-1 text-xs text-slate-700 transition hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10"
           >
             Next
           </button>
@@ -103,7 +103,7 @@ export default function LoveGallery({ images }: LoveGalleryProps) {
             key={`${image.src}-scroller`}
             type="button"
             onClick={() => openImage(index)}
-            className="relative h-36 w-52 flex-none overflow-hidden rounded-lg border border-white/10 bg-black/30 text-left"
+            className="relative h-36 w-52 flex-none overflow-hidden rounded-lg border border-black/10 bg-black/5 text-left dark:border-white/10 dark:bg-black/30"
             aria-label={`Open ${image.alt}`}
           >
             <Image

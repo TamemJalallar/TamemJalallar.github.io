@@ -3,10 +3,17 @@
 import Image from "next/image";
 import { Link as ScrollLink } from "react-scroll";
 import Typewriter from "typewriter-effect";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { type MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import { FiMail } from "react-icons/fi";
+import { FiCalendar, FiMail } from "react-icons/fi";
 import wavingHand from "@/public/waving-hand.gif";
 import { main } from "@/types/main";
 
@@ -26,16 +33,81 @@ const Hero = ({ mainData }: HeroProps) => {
   } = mainData;
 
   const safeTitles = Array.isArray(titles) ? titles.filter(Boolean) : [];
+  const techIcons = useMemo(
+    () =>
+      Array.isArray(techStackImages)
+        ? techStackImages
+            .filter((src): src is string => typeof src === "string")
+            .map((src) => src.trim())
+            .filter(Boolean)
+            .slice(0, 10)
+        : [],
+    [techStackImages]
+  );
+  const marqueeIcons = [...techIcons, ...techIcons];
+
   const heroRef = useRef<HTMLElement | null>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
+
+  const reduceMotion = useReducedMotion();
+  const [canTilt, setCanTilt] = useState(false);
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const orbTopY = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const orbBottomY = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const patternY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 24]);
-  const cardY = useTransform(scrollYProgress, [0, 1], [0, -32]);
+
+  const orbTopY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 90]);
+  const orbBottomY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -80]);
+  const patternY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 60]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 24]);
+  const cardY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -32]);
+
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const tiltScale = useMotionValue(1);
+
+  const rotateX = useSpring(tiltX, { stiffness: 220, damping: 22, mass: 0.35 });
+  const rotateY = useSpring(tiltY, { stiffness: 220, damping: 22, mass: 0.35 });
+  const scale = useSpring(tiltScale, { stiffness: 220, damping: 22, mass: 0.35 });
+
+  const bookingsUrl =
+    "https://outlook.office.com/book/ScheduleTimewithTom@omgww.onmicrosoft.com/";
+
+  useEffect(() => {
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    const update = () => {
+      setCanTilt(media.matches && window.innerWidth >= 1024 && !reduceMotion);
+    };
+
+    update();
+    media.addEventListener("change", update);
+    window.addEventListener("resize", update);
+
+    return () => {
+      media.removeEventListener("change", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [reduceMotion]);
+
+  const handleCardMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (!canTilt || !cardRef.current) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width - 0.5;
+    const py = (event.clientY - rect.top) / rect.height - 0.5;
+
+    tiltX.set(-py * 8);
+    tiltY.set(px * 8);
+    tiltScale.set(1.01);
+  };
+
+  const resetTilt = () => {
+    tiltX.set(0);
+    tiltY.set(0);
+    tiltScale.set(1);
+  };
 
   return (
     <section
@@ -59,9 +131,8 @@ const Hero = ({ mainData }: HeroProps) => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f3f7fb] dark:to-[#0b1220]" />
       </div>
 
-      <div className="mx-auto w-full max-w-6xl px-5 min-h-[92vh] py-14 sm:py-20 flex items-center">
+      <div className="mx-auto flex min-h-[92vh] w-full max-w-6xl items-center px-5 py-14 sm:py-20">
         <div className="grid w-full gap-10 lg:grid-cols-2 lg:items-center">
-          {/* Left */}
           <motion.div
             style={{ y: contentY }}
             initial={{ opacity: 0, y: 20 }}
@@ -70,21 +141,23 @@ const Hero = ({ mainData }: HeroProps) => {
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-xl"
           >
-            <div className="fx-glow inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm bg-white/70 dark:bg-white/5 shadow-md">
-              <Image unoptimized alt="waving hand" width={18} height={18} src={wavingHand} />
+            <div className="fx-glow inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm shadow-md dark:bg-white/5">
+              <Image
+                unoptimized
+                alt="waving hand"
+                width={18}
+                height={18}
+                src={wavingHand}
+              />
               <span className="text-black/70 dark:text-white/70">
-                Hey — I'm available for new opportunities
+                Hey - I&apos;m available for new opportunities
               </span>
             </div>
 
-            <h1 className="mt-6 text-4xl sm:text-5xl font-semibold tracking-tight">
-              {name}
-            </h1>
+            <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">{name}</h1>
 
             <div className="mt-4 flex flex-wrap items-center gap-2">
-              <span className="text-base sm:text-lg text-black/70 dark:text-white/70">
-                I build
-              </span>
+              <span className="text-base text-black/70 dark:text-white/70 sm:text-lg">I build</span>
 
               {safeTitles.length ? (
                 <Typewriter
@@ -94,13 +167,12 @@ const Hero = ({ mainData }: HeroProps) => {
                     loop: true,
                     deleteSpeed: 35,
                     delay: 35,
-                    wrapperClassName:
-                      "text-base sm:text-lg font-medium text-sky-500",
+                    wrapperClassName: "text-base sm:text-lg font-medium text-sky-500",
                     cursorClassName: "text-base sm:text-lg text-sky-500",
                   }}
                 />
               ) : (
-                <span className="text-base sm:text-lg font-medium text-sky-500">
+                <span className="text-base font-medium text-sky-500 sm:text-lg">
                   secure systems
                 </span>
               )}
@@ -118,41 +190,59 @@ const Hero = ({ mainData }: HeroProps) => {
                 "Executive/VIP Support",
                 "Okta • Entra • Intune",
                 "Automation-first Operations",
-              ].map((t) => (
+              ].map((tag) => (
                 <span
-                  key={t}
-                  className="fx-glow rounded-full px-4 py-2 text-sm bg-white/70 dark:bg-white/5 shadow-md"
+                  key={tag}
+                  className="fx-glow rounded-full bg-white/70 px-4 py-2 text-sm shadow-md dark:bg-white/5"
                 >
-                  {t}
+                  {tag}
                 </span>
               ))}
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <ScrollLink
-                className="fx-glow w-fit text-sm md:text-base py-3 px-5 cursor-pointer inline-flex items-center gap-2 rounded-2xl bg-sky-600 text-white hover:bg-sky-700 transition shadow-lg dark:bg-sky-500 dark:hover:bg-sky-400"
+                className="fx-glow inline-flex w-fit cursor-pointer items-center gap-2 rounded-2xl bg-sky-600 px-5 py-3 text-sm text-white shadow-lg transition hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-400 md:text-base"
                 to="about"
                 offset={-60}
                 smooth
                 duration={500}
                 isDynamic
+                data-analytics="hero_about_me"
+                data-analytics-label="About Me"
               >
                 About Me
                 <IoIosArrowForward />
               </ScrollLink>
 
               <a
+                href={bookingsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="fx-glow inline-flex w-fit items-center gap-2 rounded-2xl bg-teal-500 px-5 py-3 text-sm text-white shadow-lg transition hover:bg-teal-600 md:text-base"
+                data-analytics="hero_book_meeting"
+                data-analytics-label="Book 15 min"
+              >
+                <FiCalendar />
+                Book 15 min
+              </a>
+
+              <a
                 href="/Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="fx-glow w-fit text-sm md:text-base py-3 px-5 inline-flex items-center gap-2 rounded-2xl bg-white/70 dark:bg-white/5 shadow-md"
+                className="fx-glow inline-flex w-fit items-center gap-2 rounded-2xl bg-white/70 px-5 py-3 text-sm shadow-md dark:bg-white/5 md:text-base"
+                data-analytics="hero_resume"
+                data-analytics-label="Resume"
               >
                 Resume
               </a>
 
               <a
                 href="mailto:tjalallar@att.net"
-                className="fx-glow w-fit text-sm md:text-base py-3 px-5 inline-flex items-center gap-2 rounded-2xl bg-white/70 dark:bg-white/5 shadow-md"
+                className="fx-glow inline-flex w-fit items-center gap-2 rounded-2xl bg-white/70 px-5 py-3 text-sm shadow-md dark:bg-white/5 md:text-base"
+                data-analytics="hero_email"
+                data-analytics-label="Email"
               >
                 <FiMail />
                 Email
@@ -160,7 +250,6 @@ const Hero = ({ mainData }: HeroProps) => {
             </div>
           </motion.div>
 
-          {/* Right */}
           <motion.div
             style={{ y: cardY }}
             initial={{ opacity: 0, y: 26 }}
@@ -169,23 +258,36 @@ const Hero = ({ mainData }: HeroProps) => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
             className="relative mx-auto lg:mx-0"
           >
-            <div className="fx-glow relative rounded-[2rem] border border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-xl p-6 sm:p-8 backdrop-blur">
+            <motion.div
+              ref={cardRef}
+              onMouseMove={handleCardMove}
+              onMouseLeave={resetTilt}
+              style={{
+                rotateX: canTilt ? rotateX : 0,
+                rotateY: canTilt ? rotateY : 0,
+                scale: canTilt ? scale : 1,
+                transformPerspective: 900,
+              }}
+              className="fx-glow relative rounded-[2rem] border border-black/5 bg-white/70 p-6 shadow-xl backdrop-blur dark:border-white/10 dark:bg-white/5 sm:p-8"
+            >
               <div className="flex items-center gap-4">
-                <div className="h-20 w-20 rounded-3xl overflow-hidden bg-black/5 dark:bg-white/10">
+                <div className="h-20 w-20 overflow-hidden rounded-3xl bg-black/5 dark:bg-white/10">
                   {heroImage?.trim() ? (
                     <Image
                       alt={name}
                       src={heroImage}
                       width={320}
                       height={320}
+                      sizes="80px"
                       className="h-full w-full object-cover"
                       unoptimized
+                      priority
                     />
                   ) : null}
                 </div>
 
                 <div>
-                  <p className="font-semibold text-lg">IT Systems Admin</p>
+                  <p className="text-lg font-semibold">IT Systems Admin</p>
                   <p className="text-sm text-black/60 dark:text-white/60">
                     Parsippany, NJ • Windows + macOS Enterprise
                   </p>
@@ -196,45 +298,54 @@ const Hero = ({ mainData }: HeroProps) => {
                 {[
                   { k: "Focus", v: "Identity, endpoint, automation" },
                   { k: "Platforms", v: "Okta, Entra ID, Intune, Kandji, Jamf" },
-                  { k: "Style", v: "Secure-by-default & scalable workflows" },
-                  { k: "Impact", v: "Automated onboarding + compliance; reduced manual effort" },
+                  { k: "Style", v: "Secure-by-default and scalable workflows" },
+                  {
+                    k: "Impact",
+                    v: "Automated onboarding and compliance; reduced manual effort",
+                  },
                   { k: "Strengths", v: "VIP support, incident leadership, AV production" },
                 ].map((row) => (
                   <div
                     key={row.k}
-                    className="flex items-start justify-between gap-6 rounded-2xl bg-white/60 dark:bg-black/20 p-4"
+                    className="flex items-start justify-between gap-6 rounded-2xl bg-white/60 p-4 dark:bg-black/20"
                   >
                     <span className="text-sm text-black/60 dark:text-white/60">{row.k}</span>
-                    <span className="text-sm font-medium text-right">{row.v}</span>
+                    <span className="text-right text-sm font-medium">{row.v}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                {Array.isArray(techStackImages) &&
-                  techStackImages
-                    .filter((s) => typeof s === "string" && s.trim())
-                    .slice(0, 8)
-                    .map((src, idx) => (
-                      <span
-                        key={`${src}-${idx}`}
-                        className="fx-glow inline-flex items-center justify-center rounded-2xl bg-white/70 dark:bg-white/5 shadow-md h-12 w-12"
-                        title={src}
-                      >
-                        <Image
-                          alt="tech"
-                          src={src}
-                          width={28}
-                          height={28}
-                          className="h-7 w-7 object-contain"
-                          unoptimized
-                        />
-                      </span>
-                    ))}
-              </div>
-            </div>
+              {techIcons.length ? (
+                <div className="mt-6">
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+                    Primary stack
+                  </p>
+                  <div className="home-marquee mt-3">
+                    <div className="home-marquee-track">
+                      {marqueeIcons.map((src, idx) => (
+                        <span
+                          key={`${src}-${idx}`}
+                          className="fx-glow inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/70 shadow-md dark:bg-white/5"
+                          title={src}
+                        >
+                          <Image
+                            alt="tech"
+                            src={src}
+                            width={28}
+                            height={28}
+                            sizes="48px"
+                            className="h-7 w-7 object-contain"
+                            unoptimized
+                          />
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+            </motion.div>
 
-            <div className="pointer-events-none absolute -inset-1 -z-10 rounded-[2rem] blur-2xl opacity-30 bg-sky-500/30" />
+            <div className="pointer-events-none absolute -inset-1 -z-10 rounded-[2rem] bg-sky-500/30 opacity-30 blur-2xl" />
           </motion.div>
         </div>
       </div>

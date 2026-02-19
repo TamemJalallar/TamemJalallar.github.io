@@ -10,6 +10,7 @@ import AudioWaveformGenerator from "./AudioWaveformGenerator";
 import WaveformPresetExporter from "./WaveformPresetExporter";
 import AudioToWav from "./AudioToWav";
 import AudioToOgg from "./AudioToOgg";
+import AudioTranscriber from "./AudioTranscriber";
 
 const AudioNormalizer = dynamic(() => import("./AudioNormalizer"), {
   ssr: false,
@@ -37,6 +38,13 @@ const SECTIONS: StudioSection[] = [
         description: "Normalize loudness with LUFS target.",
         slug: "audio-normalizer",
         render: () => <AudioNormalizer />,
+      },
+      {
+        id: "audio-transcriber",
+        label: "AI Audio Transcriber",
+        description: "Transcribe speech with Hugging Face Whisper models.",
+        slug: "audio-transcriber",
+        render: () => <AudioTranscriber />,
       },
       {
         id: "media-metadata",

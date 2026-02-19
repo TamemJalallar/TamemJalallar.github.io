@@ -73,7 +73,11 @@ const metadata = {
         icon: "/favicon.ico"
     },
     alternates: {
-        canonical: "/"
+        canonical: "/",
+        languages: {
+            "en-US": "/?lang=en",
+            es: "/?lang=es"
+        }
     },
     openGraph: {
         type: "website",
@@ -82,7 +86,24 @@ const metadata = {
         description: "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
         siteName: "TomFromIT",
         images: [
-            "/Hero.png"
+            {
+                url: "/Hero.png",
+                width: 1200,
+                height: 630,
+                alt: "Tamem Jalallar IT systems portfolio hero image"
+            },
+            {
+                url: "/herobg.jpg",
+                width: 1600,
+                height: 900,
+                alt: "TomFromIT background image"
+            },
+            {
+                url: "/tom.png",
+                width: 1200,
+                height: 1200,
+                alt: "Tamem Jalallar profile image"
+            }
         ]
     },
     twitter: {
@@ -90,7 +111,8 @@ const metadata = {
         title: "Tamem “Tom” Jalallar | IT Systems Administrator",
         description: "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
         images: [
-            "/Hero.png"
+            "/Hero.png",
+            "/herobg.jpg"
         ]
     },
     robots: {
@@ -115,17 +137,17 @@ function RootLayout({ children }) {
                 children: children
             }, void 0, false, {
                 fileName: "[project]/app/layout.tsx",
-                lineNumber: 65,
+                lineNumber: 90,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/layout.tsx",
-            lineNumber: 64,
+            lineNumber: 89,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/layout.tsx",
-        lineNumber: 63,
+        lineNumber: 88,
         columnNumber: 5
     }, this);
 }

@@ -121,6 +121,11 @@ body {
   isolation: isolate;
 }
 
+:where(a, button, input, select, textarea, [role="button"]):focus-visible {
+  outline: 2px solid rgba(14, 165, 233, 0.9);
+  outline-offset: 2px;
+}
+
 .home-fx .fx-glow {
   position: relative;
   overflow: hidden;
@@ -159,6 +164,31 @@ body {
   box-shadow: 0 14px 38px rgba(2, 6, 23, 0.56);
 }
 
+.home-marquee {
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 0.6rem;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.dark .home-marquee {
+  border-color: rgba(148, 163, 184, 0.2);
+  background: rgba(2, 6, 23, 0.25);
+}
+
+.home-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 0.75rem;
+  animation: home-marquee-move 24s linear infinite;
+}
+
+.home-marquee:hover .home-marquee-track {
+  animation-play-state: paused;
+}
+
 @keyframes home-float {
   0%,
   100% {
@@ -181,9 +211,19 @@ body {
   }
 }
 
+@keyframes home-marquee-move {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .home-ambient-orb,
-  .home-ambient-grid {
+  .home-ambient-grid,
+  .home-marquee-track {
     animation: none;
   }
 
