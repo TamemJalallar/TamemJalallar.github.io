@@ -62,7 +62,7 @@ const Experiences = ({ experienceData, educationData }: ExperiencesProps) => {
               <button
                 type="button"
                 onClick={() => setViewAll((v) => !v)}
-                className="px-5 py-3 rounded-xl bg-white dark:bg-grey-800 shadow-soft dark:shadow-ring text-sm font-medium hover:opacity-90 transition"
+                className="fx-glow px-5 py-3 rounded-xl bg-white dark:bg-grey-800 shadow-soft dark:shadow-ring text-sm font-medium hover:opacity-90 transition"
               >
                 {viewAll ? "Show less" : "View all"}
               </button>

@@ -32,7 +32,7 @@ const About = ({ aboutData, name }: Props) => {
 
       <div className="w-full lg:w-11/12 2xl:w-4/5 mt-2 lg:mt-20 mx-auto flex flex-col md:gap-4 lg:flex-row justify-between items-center">
         {aboutImage ? (
-          <div className="p-3 w-56 md:w-2/5 lg:w-72 bg-white dark:bg-grey-800 flex flex-col gap-2 items-center rounded-2xl mx-auto lg:mx-16">
+          <div className="fx-glow p-3 w-56 md:w-2/5 lg:w-72 bg-white dark:bg-grey-800 flex flex-col gap-2 items-center rounded-2xl mx-auto lg:mx-16">
             <Image
               alt="profile"
               width={1000}
@@ -67,7 +67,7 @@ const About = ({ aboutData, name }: Props) => {
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-sky-600 hover:bg-sky-700 text-white rounded-md py-2 px-6 transition"
+                className="fx-glow bg-sky-600 hover:bg-sky-700 text-white rounded-md py-2 px-6 transition"
               >
                 Resume
               </Link>
@@ -78,7 +78,7 @@ const About = ({ aboutData, name }: Props) => {
                 href={callUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sky-600 hover:text-sky-700 flex items-center gap-1 transition"
+                className="fx-glow text-sky-600 hover:text-sky-700 flex items-center gap-1 transition rounded-md px-1.5 py-1"
               >
                 Book a 1:1 call <BiLinkExternal />
               </Link>

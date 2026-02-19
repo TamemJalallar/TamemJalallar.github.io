@@ -66,7 +66,7 @@ export default function Footer({ socials, name }: { socials: social[]; name: str
                 target="_blank"
                 rel="noreferrer"
                 key={`${s.icon}-${s.link}`}
-                className="grid place-items-center p-3 rounded-full text-lg hover:bg-gray-100 hover:dark:bg-grey-900 transition-colors"
+                className="fx-glow grid place-items-center p-3 rounded-full text-lg hover:bg-gray-100 hover:dark:bg-grey-900 transition-colors"
                 aria-label={s.icon}
               >
                 <Icon />

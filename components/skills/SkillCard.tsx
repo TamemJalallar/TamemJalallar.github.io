@@ -50,7 +50,7 @@ const Skill = ({ name, image, hoverItems }: SkillCardProps) => {
     return (
         <div className="group relative flex flex-col justify-center items-center gap-2">
             <div title={name} style={{ backgroundColor: tileColor }}
-                className={"h-20 w-20 md:h-24 md:w-24 rounded-full bg-gray-100 dark:bg-grey-800 flex items-center justify-center"}>
+                className={"fx-glow h-20 w-20 md:h-24 md:w-24 rounded-full bg-gray-100 dark:bg-grey-800 flex items-center justify-center"}>
                 {safeImage && imageOk ? (
                     <Image
                         alt={`${name ?? "skill"} logo`}

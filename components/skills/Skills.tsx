@@ -83,14 +83,14 @@ const Skills = ({ skillData }: Props) => {
             <h2 className="text-4xl text-center">Tech Stack</h2>
 
             <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-start">
-                <div className="w-full lg:w-1/4 bg-white/80 dark:bg-grey-800/80 p-3 rounded-md">
+                <div className="fx-glow w-full lg:w-1/4 bg-white/80 dark:bg-grey-800/80 p-3 rounded-md">
                     <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
                         {categories.map((c: string, i: number) => (
                             <button
                                 key={i}
                                 type="button"
                                 onClick={() => setCategory(c)}
-                                className={`p-2 text-sm md:text-base w-full text-center cursor-pointer rounded-md ${category.toLowerCase() === c.toLowerCase() ? "bg-sky-600 dark:bg-sky-500 text-white" : "bg-white dark:bg-grey-800 hover:bg-sky-50 hover:dark:bg-grey-900"} transition-all capitalize`}
+                                className={`fx-glow p-2 text-sm md:text-base w-full text-center cursor-pointer rounded-md ${category.toLowerCase() === c.toLowerCase() ? "bg-sky-600 dark:bg-sky-500 text-white" : "bg-white dark:bg-grey-800 hover:bg-sky-50 hover:dark:bg-grey-900"} transition-all capitalize`}
                             >
                                 {c}
                             </button>

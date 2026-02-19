@@ -66,7 +66,7 @@ const Experience = ({
         variants={cardVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="order-1 rounded-lg w-full ml-3 md:ml-0 bg-white dark:bg-grey-800 md:w-5/12 p-3 md:px-4 md:py-4"
+        className="fx-glow order-1 rounded-lg w-full ml-3 md:ml-0 bg-white dark:bg-grey-800 md:w-5/12 p-3 md:px-4 md:py-4"
       >
         <div className="flex items-start gap-3">
           {logo ? (

@@ -35,7 +35,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       variants={cardVariants}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      className="flex flex-col gap-3 bg-white dark:bg-grey-800 rounded-lg p-4 shadow-soft"
+      className="fx-glow flex flex-col gap-3 bg-white dark:bg-grey-800 rounded-lg p-4 shadow-soft"
     >
       {/* Image */}
       <div className="relative w-full h-48 rounded-md overflow-hidden">

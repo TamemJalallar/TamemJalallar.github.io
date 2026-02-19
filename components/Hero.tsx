@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { Link as ScrollLink } from "react-scroll";
 import Typewriter from "typewriter-effect";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { FiMail } from "react-icons/fi";
 import wavingHand from "@/public/waving-hand.gif";
@@ -24,21 +26,51 @@ const Hero = ({ mainData }: HeroProps) => {
   } = mainData;
 
   const safeTitles = Array.isArray(titles) ? titles.filter(Boolean) : [];
+  const heroRef = useRef<HTMLElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const orbTopY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const orbBottomY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const patternY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 24]);
+  const cardY = useTransform(scrollYProgress, [0, 1], [0, -32]);
 
   return (
-    <section id="home" className="relative overflow-hidden bg-[#f3f7fb] dark:bg-[#0b1220]">
+    <section
+      id="home"
+      ref={heroRef}
+      className="relative overflow-hidden bg-[#f3f7fb] dark:bg-[#0b1220]"
+    >
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-sky-400/25 blur-3xl" />
-        <div className="absolute -bottom-24 right-10 h-[420px] w-[420px] rounded-full bg-teal-500/20 blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.06] dark:opacity-[0.05] bg-heropattern bg-[length:900px_900px] bg-center" />
+        <motion.div
+          style={{ y: orbTopY }}
+          className="absolute -top-24 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-sky-400/25 blur-3xl"
+        />
+        <motion.div
+          style={{ y: orbBottomY }}
+          className="absolute -bottom-24 right-10 h-[420px] w-[420px] rounded-full bg-teal-500/20 blur-3xl"
+        />
+        <motion.div
+          style={{ y: patternY }}
+          className="absolute inset-0 opacity-[0.06] dark:opacity-[0.05] bg-heropattern bg-[length:900px_900px] bg-center"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f3f7fb] dark:to-[#0b1220]" />
       </div>
 
       <div className="mx-auto w-full max-w-6xl px-5 min-h-[92vh] py-14 sm:py-20 flex items-center">
         <div className="grid w-full gap-10 lg:grid-cols-2 lg:items-center">
           {/* Left */}
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm bg-white/70 dark:bg-white/5 shadow-md">
+          <motion.div
+            style={{ y: contentY }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-xl"
+          >
+            <div className="fx-glow inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm bg-white/70 dark:bg-white/5 shadow-md">
               <Image unoptimized alt="waving hand" width={18} height={18} src={wavingHand} />
               <span className="text-black/70 dark:text-white/70">
                 Hey — I'm available for new opportunities
@@ -89,7 +121,7 @@ const Hero = ({ mainData }: HeroProps) => {
               ].map((t) => (
                 <span
                   key={t}
-                  className="rounded-full px-4 py-2 text-sm bg-white/70 dark:bg-white/5 shadow-md"
+                  className="fx-glow rounded-full px-4 py-2 text-sm bg-white/70 dark:bg-white/5 shadow-md"
                 >
                   {t}
                 </span>
@@ -98,7 +130,7 @@ const Hero = ({ mainData }: HeroProps) => {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <ScrollLink
-                className="w-fit text-sm md:text-base py-3 px-5 cursor-pointer inline-flex items-center gap-2 rounded-2xl bg-sky-600 text-white hover:bg-sky-700 transition shadow-lg dark:bg-sky-500 dark:hover:bg-sky-400"
+                className="fx-glow w-fit text-sm md:text-base py-3 px-5 cursor-pointer inline-flex items-center gap-2 rounded-2xl bg-sky-600 text-white hover:bg-sky-700 transition shadow-lg dark:bg-sky-500 dark:hover:bg-sky-400"
                 to="about"
                 offset={-60}
                 smooth
@@ -113,24 +145,31 @@ const Hero = ({ mainData }: HeroProps) => {
                 href="/Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-fit text-sm md:text-base py-3 px-5 inline-flex items-center gap-2 rounded-2xl bg-white/70 dark:bg-white/5 shadow-md"
+                className="fx-glow w-fit text-sm md:text-base py-3 px-5 inline-flex items-center gap-2 rounded-2xl bg-white/70 dark:bg-white/5 shadow-md"
               >
                 Resume
               </a>
 
               <a
                 href="mailto:tjalallar@att.net"
-                className="w-fit text-sm md:text-base py-3 px-5 inline-flex items-center gap-2 rounded-2xl bg-white/70 dark:bg-white/5 shadow-md"
+                className="fx-glow w-fit text-sm md:text-base py-3 px-5 inline-flex items-center gap-2 rounded-2xl bg-white/70 dark:bg-white/5 shadow-md"
               >
                 <FiMail />
                 Email
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right */}
-          <div className="relative mx-auto lg:mx-0">
-            <div className="relative rounded-[2rem] border border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-xl p-6 sm:p-8 backdrop-blur">
+          <motion.div
+            style={{ y: cardY }}
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
+            className="relative mx-auto lg:mx-0"
+          >
+            <div className="fx-glow relative rounded-[2rem] border border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-xl p-6 sm:p-8 backdrop-blur">
               <div className="flex items-center gap-4">
                 <div className="h-20 w-20 rounded-3xl overflow-hidden bg-black/5 dark:bg-white/10">
                   {heroImage?.trim() ? (
@@ -179,7 +218,7 @@ const Hero = ({ mainData }: HeroProps) => {
                     .map((src, idx) => (
                       <span
                         key={`${src}-${idx}`}
-                        className="inline-flex items-center justify-center rounded-2xl bg-white/70 dark:bg-white/5 shadow-md h-12 w-12"
+                        className="fx-glow inline-flex items-center justify-center rounded-2xl bg-white/70 dark:bg-white/5 shadow-md h-12 w-12"
                         title={src}
                       >
                         <Image
@@ -196,7 +235,7 @@ const Hero = ({ mainData }: HeroProps) => {
             </div>
 
             <div className="pointer-events-none absolute -inset-1 -z-10 rounded-[2rem] blur-2xl opacity-30 bg-sky-500/30" />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

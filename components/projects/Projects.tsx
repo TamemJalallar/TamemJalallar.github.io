@@ -54,7 +54,7 @@ const Projects = ({ projectsData }: ProjectsProps) => {
                     setViewAll(false);
                   }}
                   className={[
-                    "px-4 py-2 rounded-full text-sm font-medium transition",
+                    "fx-glow px-4 py-2 rounded-full text-sm font-medium transition",
                     active
                       ? "bg-sky-600 text-white dark:bg-sky-500 dark:text-white"
                       : "bg-white/70 dark:bg-white/5 shadow-soft dark:shadow-ring hover:opacity-90",
@@ -80,7 +80,7 @@ const Projects = ({ projectsData }: ProjectsProps) => {
             <button
               type="button"
               onClick={() => setViewAll((v) => !v)}
-              className="px-5 py-3 rounded-xl bg-white dark:bg-grey-800 shadow-soft dark:shadow-ring text-sm font-medium hover:opacity-90 transition"
+              className="fx-glow px-5 py-3 rounded-xl bg-white dark:bg-grey-800 shadow-soft dark:shadow-ring text-sm font-medium hover:opacity-90 transition"
             >
               {viewAll ? "Show less" : "View all"}
             </button>

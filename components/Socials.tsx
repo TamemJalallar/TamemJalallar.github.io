@@ -28,7 +28,7 @@ const Socials = ({ socials }: { socials?: social[] }) => {
             target="_blank"
             rel="noreferrer"
             key={`${iconName}-${href}-${idx}`}
-            className="grid place-items-center p-3 hover:animate-bounce rounded-full bg-sky-600 text-white"
+            className="fx-glow grid place-items-center p-3 hover:animate-bounce rounded-full bg-sky-600 text-white"
             aria-label={s?.name ?? iconName}
           >
             <Icon />
