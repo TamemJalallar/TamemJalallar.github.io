@@ -1,5 +1,6 @@
 import "./globals.css";
 import Providers from "./providers";
+import AdSenseScript from "./AdSenseScript";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -87,6 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-[#f3f7fb] text-slate-900 dark:bg-[#0b1220] dark:text-slate-100">
+        <AdSenseScript />
         <Providers>{children}</Providers>
       </body>
     </html>
