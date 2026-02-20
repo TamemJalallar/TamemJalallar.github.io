@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Link as ScrollLink } from "react-scroll";
 import Typewriter from "typewriter-effect";
 import {
   motion,
@@ -108,6 +107,19 @@ const Hero = ({ mainData }: HeroProps) => {
     tiltY.set(0);
     tiltScale.set(1);
   };
+  const handleAboutClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const section = document.getElementById("about");
+
+    if (!section) {
+      window.location.href = "/#about";
+      return;
+    }
+
+    const top = section.getBoundingClientRect().top + window.scrollY - 60;
+    window.history.replaceState(null, "", "/#about");
+    window.scrollTo({ top, behavior: "smooth" });
+  };
 
   return (
     <section
@@ -201,19 +213,16 @@ const Hero = ({ mainData }: HeroProps) => {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <ScrollLink
+              <a
+                href="/#about"
+                onClick={handleAboutClick}
                 className="fx-glow inline-flex w-fit cursor-pointer items-center gap-2 rounded-2xl bg-sky-600 px-5 py-3 text-sm text-white shadow-lg transition hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-400 md:text-base"
-                to="about"
-                offset={-60}
-                smooth
-                duration={500}
-                isDynamic
                 data-analytics="hero_about_me"
                 data-analytics-label="About Me"
               >
                 About Me
                 <IoIosArrowForward />
-              </ScrollLink>
+              </a>
 
               <a
                 href={bookingsUrl}

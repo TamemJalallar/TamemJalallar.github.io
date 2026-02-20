@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { type MouseEvent, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { Link as ScrollLink } from "react-scroll";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { FaHeart } from "react-icons/fa";
 import { CgClose, CgMenuRight } from "react-icons/cg";
@@ -72,6 +71,27 @@ export default function Header({ logo }: { logo?: string }) {
   const ThemeIcon = isDark ? FiSun : FiMoon;
 
   const toggleTheme = () => setTheme(isDark ? "light" : "dark");
+  const handleSectionLinkClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+    closeMenu = false
+  ) => {
+    if (isHome) {
+      event.preventDefault();
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const top = section.getBoundingClientRect().top + window.scrollY - 60;
+        window.history.replaceState(null, "", `/#${sectionId}`);
+        window.scrollTo({ top, behavior: "smooth" });
+      } else {
+        window.location.href = `/#${sectionId}`;
+      }
+    }
+
+    if (closeMenu) {
+      setNavCollapse(true);
+    }
+  };
 
   return (
     <header
@@ -94,31 +114,19 @@ export default function Header({ logo }: { logo?: string }) {
         <ul className="flex items-center gap-8">
           {NAV_ITEMS.map((item) => (
             <li key={item}>
-              {isHome ? (
-                <ScrollLink
-                  className={[
-                    "transition-colors capitalize cursor-pointer",
-                    activeSection === item
-                      ? "text-sky-700 dark:text-sky-400"
-                      : "hover:text-sky-700 hover:dark:text-sky-400",
-                  ].join(" ")}
-                  to={item}
-                  offset={-60}
-                  smooth
-                  duration={500}
-                  isDynamic
-                  aria-current={activeSection === item ? "page" : undefined}
-                >
-                  {item}
-                </ScrollLink>
-              ) : (
-                <Link
-                  href={`/#${item}`}
-                  className="hover:text-sky-700 hover:dark:text-sky-400 transition-colors capitalize cursor-pointer"
-                >
-                  {item}
-                </Link>
-              )}
+              <Link
+                href={`/#${item}`}
+                onClick={(event) => handleSectionLinkClick(event, item)}
+                className={[
+                  "transition-colors capitalize cursor-pointer",
+                  isHome && activeSection === item
+                    ? "text-sky-700 dark:text-sky-400"
+                    : "hover:text-sky-700 hover:dark:text-sky-400",
+                ].join(" ")}
+                aria-current={isHome && activeSection === item ? "page" : undefined}
+              >
+                {item}
+              </Link>
             </li>
           ))}
 
@@ -200,36 +208,22 @@ export default function Header({ logo }: { logo?: string }) {
           </button>
 
           <div className="flex flex-col gap-2">
-            {NAV_ITEMS.map((item) =>
-              isHome ? (
-                <ScrollLink
-                  key={item}
-                  to={item}
-                  offset={-60}
-                  smooth
-                  duration={450}
-                  isDynamic
-                  onClick={() => setNavCollapse(true)}
-                  className={[
-                    "rounded-xl px-3 py-2 text-base capitalize transition",
-                    activeSection === item
-                      ? "bg-sky-100 text-sky-700 dark:bg-sky-500/20 dark:text-sky-300"
-                      : "hover:bg-slate-200 dark:hover:bg-grey-800",
-                  ].join(" ")}
-                >
-                  {item}
-                </ScrollLink>
-              ) : (
-                <Link
-                  key={item}
-                  href={`/#${item}`}
-                  onClick={() => setNavCollapse(true)}
-                  className="rounded-xl px-3 py-2 text-base capitalize transition hover:bg-slate-200 dark:hover:bg-grey-800"
-                >
-                  {item}
-                </Link>
-              )
-            )}
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item}
+                href={`/#${item}`}
+                onClick={(event) => handleSectionLinkClick(event, item, true)}
+                className={[
+                  "rounded-xl px-3 py-2 text-base capitalize transition",
+                  isHome && activeSection === item
+                    ? "bg-sky-100 text-sky-700 dark:bg-sky-500/20 dark:text-sky-300"
+                    : "hover:bg-slate-200 dark:hover:bg-grey-800",
+                ].join(" ")}
+                aria-current={isHome && activeSection === item ? "page" : undefined}
+              >
+                {item}
+              </Link>
+            ))}
 
             <Link
               href="/tools/"
