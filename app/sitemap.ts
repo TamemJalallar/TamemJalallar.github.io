@@ -10,6 +10,7 @@ const GAME_SLUGS = [
   "wordle",
   "pocket-golf",
   "stack-logic",
+  "blackjack",
   "echo-memory",
   "color-circuit",
   "signal-shift",

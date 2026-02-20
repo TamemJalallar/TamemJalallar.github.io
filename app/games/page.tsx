@@ -45,6 +45,13 @@ const GAMES = [
     accent: "from-orange-500 via-sky-500 to-violet-500",
   },
   {
+    slug: "blackjack",
+    title: "Blackjack",
+    description: "Beat the dealer by getting closer to 21.",
+    tag: "Cards",
+    accent: "from-emerald-500 via-lime-400 to-amber-500",
+  },
+  {
     slug: "echo-memory",
     title: "Echo Memory",
     description: "Repeat the pattern as it grows.",
