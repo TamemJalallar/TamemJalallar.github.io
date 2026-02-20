@@ -13,7 +13,6 @@ import {
 import { type MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { FiCalendar, FiMail } from "react-icons/fi";
-import wavingHand from "@/public/waving-hand.gif";
 import { main } from "@/types/main";
 
 interface HeroProps {
@@ -154,13 +153,7 @@ const Hero = ({ mainData }: HeroProps) => {
             className="max-w-xl"
           >
             <div className="fx-glow inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm shadow-md dark:bg-white/5">
-              <Image
-                unoptimized
-                alt="waving hand"
-                width={18}
-                height={18}
-                src={wavingHand}
-              />
+              <span aria-hidden="true">👋</span>
               <span className="text-black/70 dark:text-white/70">
                 Hey - I&apos;m available for new opportunities
               </span>
