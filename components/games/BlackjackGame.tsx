@@ -31,6 +31,13 @@ type Stats = {
   pushes: number;
 };
 
+type SessionInit = {
+  game: GameState;
+  stats: Stats;
+  bankroll: number;
+  streak: number;
+};
+
 const STARTING_BANKROLL = 1000;
 const BASE_WAGER = 100;
 
@@ -102,6 +109,18 @@ function bankrollDelta(outcome: RoundOutcome, wager: number) {
   if (outcome === "win") return wager;
   if (outcome === "push") return 0;
   return -wager;
+}
+
+function nextStreakValue(previous: number, outcome: RoundOutcome) {
+  if (outcome === "push") return previous;
+  if (outcome === "win") return previous >= 0 ? previous + 1 : 1;
+  return previous <= 0 ? previous - 1 : -1;
+}
+
+function formatStreak(streak: number) {
+  if (streak > 0) return `W${streak}`;
+  if (streak < 0) return `L${Math.abs(streak)}`;
+  return "Even";
 }
 
 function formatMoney(amount: number) {
@@ -184,6 +203,39 @@ function createRound(wager: number): GameState {
     outcome: null,
     wager,
     didDouble: false,
+  };
+}
+
+function isNaturalBlackjack(hand: Card[]) {
+  return hand.length === 2 && handTotal(hand) === 21;
+}
+
+function createInitialSession(): SessionInit {
+  const firstRound = createRound(BASE_WAGER);
+  const dealerHasBlackjack = isNaturalBlackjack(firstRound.dealer);
+
+  if (!dealerHasBlackjack) {
+    return {
+      game: firstRound,
+      stats: { ...BASE_STATS },
+      bankroll: STARTING_BANKROLL,
+      streak: 0,
+    };
+  }
+
+  return {
+    game: {
+      ...firstRound,
+      phase: "round-over",
+      outcome: "loss",
+    },
+    stats: {
+      wins: 0,
+      losses: 1,
+      pushes: 0,
+    },
+    bankroll: STARTING_BANKROLL + bankrollDelta("loss", firstRound.wager),
+    streak: -1,
   };
 }
 
@@ -320,9 +372,11 @@ function HandCards({ cards, hideSecondCard }: { cards: Card[]; hideSecondCard?: 
 }
 
 export default function BlackjackGame() {
-  const [game, setGame] = useState<GameState>(() => createRound(BASE_WAGER));
-  const [stats, setStats] = useState<Stats>(BASE_STATS);
-  const [bankroll, setBankroll] = useState(STARTING_BANKROLL);
+  const [initialSession] = useState<SessionInit>(() => createInitialSession());
+  const [game, setGame] = useState<GameState>(initialSession.game);
+  const [stats, setStats] = useState<Stats>(initialSession.stats);
+  const [bankroll, setBankroll] = useState(initialSession.bankroll);
+  const [streak, setStreak] = useState(initialSession.streak);
 
   const playerScore = useMemo(() => handTotal(game.player), [game.player]);
   const dealerScore = useMemo(
@@ -339,16 +393,22 @@ export default function BlackjackGame() {
     () => recommendMove(game.player, game.dealer[0], canDoubleDown),
     [canDoubleDown, game.dealer, game.player],
   );
+  const isHitRecommended = game.phase === "player-turn" && recommendedAction === "Hit";
+  const isStandRecommended = game.phase === "player-turn" && recommendedAction === "Stand";
+  const isDoubleRecommended = game.phase === "player-turn" && recommendedAction === "Double Down";
 
   const statusMessage = useMemo(() => {
     if (game.phase === "player-turn") {
       if (playerScore === 21) return "You have 21. Stand to settle the hand.";
       return "Hit to draw a card, stand to hold, or double down for one final card.";
     }
+    if (game.outcome === "loss" && isNaturalBlackjack(game.dealer)) {
+      return "Dealer has blackjack. Hand auto-lost.";
+    }
     if (game.outcome === "win") return "You win the hand.";
     if (game.outcome === "loss") return "Dealer wins the hand.";
     return "Push. Nobody wins this round.";
-  }, [game.outcome, game.phase, playerScore]);
+  }, [game.dealer, game.outcome, game.phase, playerScore]);
 
   const updateStats = (outcome: RoundOutcome) => {
     const key = statLabel(outcome);
@@ -374,20 +434,38 @@ export default function BlackjackGame() {
     });
     updateStats(next.outcome);
     setBankroll((prev) => prev + bankrollDelta(next.outcome, next.wager));
+    setStreak((prev) => nextStreakValue(prev, next.outcome));
+  };
+
+  const startRound = () => {
+    const nextRound = createRound(BASE_WAGER);
+    if (isNaturalBlackjack(nextRound.dealer)) {
+      finishRound({
+        deck: nextRound.deck,
+        player: nextRound.player,
+        dealer: nextRound.dealer,
+        outcome: "loss",
+        wager: nextRound.wager,
+        didDouble: nextRound.didDouble,
+      });
+      return;
+    }
+    setGame(nextRound);
   };
 
   const handleNewRound = () => {
     if (!canDeal) return;
-    setGame(createRound(BASE_WAGER));
+    startRound();
   };
 
   const handleResetStats = () => {
     setStats({ ...BASE_STATS });
+    setStreak(0);
   };
 
   const handleResetBankroll = () => {
     setBankroll(STARTING_BANKROLL);
-    setGame(createRound(BASE_WAGER));
+    startRound();
   };
 
   const handleHit = () => {
@@ -514,7 +592,7 @@ export default function BlackjackGame() {
           </button>
         </div>
 
-        <div className="mt-5 grid gap-3 text-sm sm:grid-cols-5">
+        <div className="mt-5 grid gap-3 text-sm sm:grid-cols-6">
           <div className="rounded-xl border border-gray-200/70 bg-white/70 px-3 py-2 dark:border-white/10 dark:bg-grey-900/40">
             Wins: {stats.wins}
           </div>
@@ -529,6 +607,9 @@ export default function BlackjackGame() {
           </div>
           <div className="rounded-xl border border-gray-200/70 bg-white/70 px-3 py-2 dark:border-white/10 dark:bg-grey-900/40">
             Hand wager: {formatMoney(game.wager)}
+          </div>
+          <div className="rounded-xl border border-gray-200/70 bg-white/70 px-3 py-2 dark:border-white/10 dark:bg-grey-900/40">
+            Streak: {formatStreak(streak)}
           </div>
         </div>
 
@@ -563,7 +644,11 @@ export default function BlackjackGame() {
             type="button"
             onClick={handleHit}
             disabled={game.phase !== "player-turn" || playerScore >= 21}
-            className="rounded-xl border border-gray-300/80 px-4 py-2 text-sm text-black transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+            className={`rounded-xl border px-4 py-2 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
+              isHitRecommended
+                ? "border-amber-400 bg-amber-100 text-amber-900 ring-2 ring-amber-300 dark:border-amber-300 dark:bg-amber-500/20 dark:text-amber-100"
+                : "border-gray-300/80 text-black hover:bg-gray-100 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+            }`}
           >
             Hit
           </button>
@@ -571,7 +656,11 @@ export default function BlackjackGame() {
             type="button"
             onClick={handleStand}
             disabled={game.phase !== "player-turn"}
-            className="rounded-xl bg-black px-4 py-2 text-sm text-white transition-opacity disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black"
+            className={`rounded-xl px-4 py-2 text-sm transition-opacity disabled:cursor-not-allowed disabled:opacity-50 ${
+              isStandRecommended
+                ? "border border-amber-400 bg-amber-100 text-amber-900 ring-2 ring-amber-300 dark:border-amber-300 dark:bg-amber-500/20 dark:text-amber-100"
+                : "bg-black text-white dark:bg-white dark:text-black"
+            }`}
           >
             Stand
           </button>
@@ -579,7 +668,11 @@ export default function BlackjackGame() {
             type="button"
             onClick={handleDoubleDown}
             disabled={!canDoubleDown}
-            className="rounded-xl border border-gray-300/80 px-4 py-2 text-sm text-black transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+            className={`rounded-xl border px-4 py-2 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
+              isDoubleRecommended
+                ? "border-amber-400 bg-amber-100 text-amber-900 ring-2 ring-amber-300 dark:border-amber-300 dark:bg-amber-500/20 dark:text-amber-100"
+                : "border-gray-300/80 text-black hover:bg-gray-100 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+            }`}
           >
             Double Down
           </button>
