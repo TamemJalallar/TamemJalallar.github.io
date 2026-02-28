@@ -90,6 +90,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta
+          name="impact-site-verification"
+          value="fcdd303b-7551-41cf-80db-add6a665235e"
+        />
+      </head>
       <body className="bg-[#f3f7fb] text-slate-900 dark:bg-[#0b1220] dark:text-slate-100">
         <AdSenseScript />
         <Providers>{children}</Providers>
