@@ -93,7 +93,7 @@ export default function RootLayout({
       <head>
         <meta
           name="impact-site-verification"
-          value="fcdd303b-7551-41cf-80db-add6a665235e"
+          content="fcdd303b-7551-41cf-80db-add6a665235e"
         />
       </head>
       <body className="bg-[#f3f7fb] text-slate-900 dark:bg-[#0b1220] dark:text-slate-100">
