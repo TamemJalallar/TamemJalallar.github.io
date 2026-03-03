@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/`, lastModified: UPDATED },
     { url: `${SITE_URL}/tools/`, lastModified: UPDATED },
     { url: `${SITE_URL}/games/`, lastModified: UPDATED },
+    { url: `${SITE_URL}/tickets/`, lastModified: UPDATED },
     ...TOOL_SLUGS.map((slug) => ({
       url: `${SITE_URL}/tools/${slug}/`,
       lastModified: UPDATED,
