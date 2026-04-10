@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/app/Header";
 import Footer from "@/app/Footer";
 import type { Metadata } from "next";
+import { getGamesCollectionLastModified } from "@/lib/seo/lastmod";
 
 export const metadata: Metadata = {
   title: "Games",
@@ -74,13 +75,33 @@ const GAMES = [
   },
 ];
 
+const FEATURED_TOOLS = [
+  {
+    slug: "random-number-generator",
+    title: "Random Number Generator",
+    description: "Generate seeded ranges for game ideas, scores, and challenge picks.",
+  },
+  {
+    slug: "countdown-timer",
+    title: "Countdown Timer",
+    description: "Run timed puzzle rounds and practice sessions in your browser.",
+  },
+  {
+    slug: "emoji-generator",
+    title: "Emoji Generator",
+    description: "Create quick prompts and party challenges for multiplayer sessions.",
+  },
+];
+
 export default function GamesPage() {
+  const dateModified = getGamesCollectionLastModified(GAMES.map((game) => game.slug)).toISOString();
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Games",
     description: "Quick, browser-only games inspired by daily puzzles.",
     url: "https://www.tomfromit.com/games/",
+    dateModified,
     mainEntity: {
       "@type": "ItemList",
       itemListElement: GAMES.map((game, index) => ({
@@ -130,6 +151,33 @@ export default function GamesPage() {
             </Link>
           ))}
         </div>
+
+        <section className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6">
+          <h2 className="text-xl font-semibold">Game Utility Picks</h2>
+          <p className="mt-2 max-w-2xl text-sm text-black/70 dark:text-white/70">
+            Useful companion tools for timers, randomness, and challenge prompts.
+          </p>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {FEATURED_TOOLS.map((tool) => (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}/`}
+                className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-black/80 transition hover:bg-white/10 dark:text-white/80"
+              >
+                <div className="font-semibold">{tool.title}</div>
+                <p className="mt-2 text-xs text-black/60 dark:text-white/60">{tool.description}</p>
+              </Link>
+            ))}
+          </div>
+
+          <Link
+            href="/tools/"
+            className="mt-4 inline-flex items-center rounded-full border border-sky-400/40 bg-sky-500/10 px-4 py-2 text-sm font-semibold text-sky-700 transition hover:bg-sky-500/20 dark:text-sky-200"
+          >
+            Browse All Tools →
+          </Link>
+        </section>
 
       </main>
 

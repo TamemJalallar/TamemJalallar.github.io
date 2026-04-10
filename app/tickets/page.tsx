@@ -6,6 +6,10 @@ import TicketsConsole from "@/components/tickets/TicketsConsole";
 export const metadata: Metadata = {
   title: "Tickets",
   description: "ITIL ticket operations board for incidents, requests, problems, and changes.",
+  robots: {
+    index: false,
+    follow: false,
+  },
   alternates: {
     canonical: "/tickets/",
   },

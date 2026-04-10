@@ -78,9 +78,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  other: {
-    "google-adsense-account": "ca-pub-8852243900182779",
-  },
 };
 
 export default function RootLayout({
@@ -91,6 +88,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-8852243900182779"
+        />
         <meta
           name="impact-site-verification"
           content="fcdd303b-7551-41cf-80db-add6a665235e"

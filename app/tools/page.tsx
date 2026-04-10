@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ToolsPageClient from "./tools-page-client";
-import { TOOL_META } from "./tools.data";
+import { TOOL_META, TOOL_SLUGS } from "./tools.data";
+import { getToolsCollectionLastModified } from "@/lib/seo/lastmod";
 
 const SITE_URL = "https://www.tomfromit.com";
 
@@ -30,12 +31,14 @@ export default function ToolsPage() {
   const studioTools = TOOL_META.filter((tool) => tool.tags?.includes("studio"));
   const seoStudio = studioTools.find((tool) => tool.slug === "seo-studio");
   const otherStudios = studioTools.filter((tool) => tool.slug !== "seo-studio");
+  const dateModified = getToolsCollectionLastModified(TOOL_SLUGS).toISOString();
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Tools",
     description: "A growing collection of browser-based utilities for everyday tasks.",
     url: `${SITE_URL}/tools/`,
+    dateModified,
     mainEntity: {
       "@type": "ItemList",
       itemListElement: TOOL_META.map((tool, index) => ({
@@ -115,6 +118,20 @@ export default function ToolsPage() {
         <div className="mt-6">
           <ToolsPageClient />
         </div>
+
+        <section className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6">
+          <h2 className="text-xl font-semibold">Need a quick break?</h2>
+          <p className="mt-2 max-w-2xl text-sm text-white/70">
+            Switch from productivity to play with short browser games built for the same fast,
+            local-first workflow.
+          </p>
+          <Link
+            href="/games/"
+            className="mt-4 inline-flex items-center rounded-full border border-sky-400/40 bg-sky-500/10 px-4 py-2 text-sm font-semibold text-sky-200 transition hover:bg-sky-500/20"
+          >
+            Explore Games →
+          </Link>
+        </section>
 
       </div>
     </>
