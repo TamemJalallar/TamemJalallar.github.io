@@ -381,7 +381,7 @@
     },
     {
       "name": "Claude (Anthropic)",
-      "image": "/ai/claude-logo.png",
+      "image": "/ai/claude-ai-white.png",
       "category": "Automation"
     },
     {
@@ -396,7 +396,7 @@
     },
     {
       "name": "xAI (Grok)",
-      "image": "/ai/xai-logo.png",
+      "image": "/ai/xai-logo-white.png",
       "category": "Automation"
     },
     {
@@ -411,7 +411,7 @@
     },
     {
       "name": "Midjourney",
-      "image": "/ai/midjourney-emblem.svg",
+      "image": "/ai/midjourney-emblem-white.png",
       "category": "Automation"
     },
     {
@@ -421,12 +421,12 @@
     },
     {
       "name": "GitHub Copilot",
-      "image": "https://cdn.simpleicons.org/githubcopilot/000000",
+      "image": "/ai/github-copilot-white-icon.svg",
       "category": "Automation"
     },
     {
       "name": "Microsoft Copilot",
-      "image": "/ai/microsoft-copilot-logo.png",
+      "image": "/ai/microsoft-copilot-ai-logo.png",
       "category": "Automation"
     },
     {
