@@ -24,7 +24,7 @@ const Skills = ({ skillData }: Props) => {
     "Automation",
     "Operations",
     "Cloud",
-    "Application Support",
+    "Creative Application Support",
   ];
 
   const categories = [
@@ -43,7 +43,7 @@ const Skills = ({ skillData }: Props) => {
     (s: skill) => s.category.toLowerCase() === category.toLowerCase()
   );
 
-  const isAppSupport = category.toLowerCase() === "application support";
+  const isAppSupport = category.toLowerCase() === "creative application support";
   const fontNames = new Set([
     "fontagent",
     "connectfonts",

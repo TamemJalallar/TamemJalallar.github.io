@@ -6,13 +6,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.tomfromit.com"),
   title: {
-    default: "Tamem “Tom” Jalallar | IT Systems Administrator",
+    default: "Tamem “Tom” Jalallar | IT Operations Manager",
     template: "%s | TomFromIT",
   },
   description:
-    "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
+    "IT Operations Manager specializing in enterprise identity, endpoint strategy, automation, service reliability, and executive support.",
   keywords: [
-    "IT Systems Administrator",
+    "IT Operations Manager",
+    "IT Operations",
     "Identity and Access Management",
     "Okta",
     "Microsoft Entra ID",
@@ -21,6 +22,8 @@ export const metadata: Metadata = {
     "Kandji",
     "Jamf",
     "Automation",
+    "Incident Management",
+    "Service Delivery",
     "PowerShell",
     "Executive Support",
   ],
@@ -35,9 +38,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    title: "Tamem “Tom” Jalallar | IT Systems Administrator",
+    title: "Tamem “Tom” Jalallar | IT Operations Manager",
     description:
-      "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
+      "IT Operations Manager specializing in enterprise identity, endpoint strategy, automation, service reliability, and executive support.",
     siteName: "TomFromIT",
     images: [
       {
@@ -62,9 +65,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tamem “Tom” Jalallar | IT Systems Administrator",
+    title: "Tamem “Tom” Jalallar | IT Operations Manager",
     description:
-      "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
+      "IT Operations Manager specializing in enterprise identity, endpoint strategy, automation, service reliability, and executive support.",
     images: ["/Hero.png", "/herobg.jpg"],
   },
   robots: {

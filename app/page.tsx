@@ -19,7 +19,7 @@ export default async function Page() {
         name: "TomFromIT",
         url: SITE_URL,
         description:
-          "IT Systems Administrator specializing in enterprise identity, endpoint management, automation, and executive support.",
+          "IT Operations Manager specializing in enterprise identity, endpoint strategy, automation, service reliability, and executive support.",
         publisher: {
           "@type": "Person",
           name: "Tamem Jalallar",
@@ -29,7 +29,7 @@ export default async function Page() {
         "@type": "Person",
         name: "Tamem Jalallar",
         url: SITE_URL,
-        jobTitle: "IT Systems Administrator",
+        jobTitle: "IT Operations Manager",
       },
     ],
   };

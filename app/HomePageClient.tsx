@@ -18,7 +18,6 @@ import StatsStrip from "@/components/home/StatsStrip";
 import MobileStickyCta from "@/components/home/MobileStickyCta";
 import ServicesSection from "@/components/home/ServicesSection";
 import CaseStudiesSection from "@/components/home/CaseStudiesSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
 import LeadCaptureForm from "@/components/home/LeadCaptureForm";
 import AnalyticsTracker from "@/components/home/AnalyticsTracker";
 import type { HomeContent } from "@/lib/content/home-content";
@@ -58,7 +57,6 @@ export default function HomePageClient({ data, content, locale, dictionary }: Pr
           "about",
           "services",
           "case-studies",
-          "testimonials",
           "skills",
           "projects",
           "experience",
@@ -103,13 +101,6 @@ export default function HomePageClient({ data, content, locale, dictionary }: Pr
           subtitle={content.caseStudies.subtitle}
           bodyHtml={content.caseStudies.bodyHtml}
           items={content.caseStudies.items}
-        />
-
-        <TestimonialsSection
-          title={content.testimonials.title || dictionary.testimonials}
-          subtitle={content.testimonials.subtitle}
-          bodyHtml={content.testimonials.bodyHtml}
-          items={content.testimonials.items}
         />
 
         {data.skills?.length ? <Skills skillData={data.skills} /> : null}

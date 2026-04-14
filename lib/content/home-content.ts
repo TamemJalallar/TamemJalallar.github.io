@@ -28,14 +28,6 @@ export type CaseStudyItem = {
   };
 };
 
-export type TestimonialItem = {
-  id: string;
-  quote: string;
-  name: string;
-  role: string;
-  company: string;
-};
-
 type SectionEnvelope<T> = {
   title: string;
   subtitle: string;
@@ -45,7 +37,6 @@ type SectionEnvelope<T> = {
 export type HomeContent = {
   services: SectionEnvelope<ServiceItem> & { bodyHtml: string };
   caseStudies: SectionEnvelope<CaseStudyItem> & { bodyHtml: string };
-  testimonials: SectionEnvelope<TestimonialItem> & { bodyHtml: string };
 };
 
 const contentDir = path.join(process.cwd(), "content/home");
@@ -81,15 +72,13 @@ async function readSection<T>(fileName: string): Promise<SectionEnvelope<T> & { 
 }
 
 export async function getHomeContent(): Promise<HomeContent> {
-  const [services, caseStudies, testimonials] = await Promise.all([
+  const [services, caseStudies] = await Promise.all([
     readSection<ServiceItem>("services.mdx"),
     readSection<CaseStudyItem>("case-studies.mdx"),
-    readSection<TestimonialItem>("testimonials.mdx"),
   ]);
 
   return {
     services,
     caseStudies,
-    testimonials,
   };
 }

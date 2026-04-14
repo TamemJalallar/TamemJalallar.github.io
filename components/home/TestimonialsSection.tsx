@@ -1,7 +1,14 @@
 "use client";
 
 import SectionWrapper from "@/components/SectionWrapper";
-import type { TestimonialItem } from "@/lib/content/home-content";
+
+type TestimonialItem = {
+  id: string;
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+};
 
 type TestimonialsSectionProps = {
   title: string;

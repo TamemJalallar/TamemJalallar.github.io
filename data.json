@@ -1,11 +1,11 @@
 {
   "main": {
     "name": "Tamem (Tom) Jalallar",
-    "shortDesc": "IT Systems Administrator & Technical Lead focused on identity, endpoint management, and automation across Windows and macOS in enterprise environments.",
+    "shortDesc": "IT Operations Manager focused on identity, endpoint strategy, automation, and reliable service delivery across enterprise Windows and macOS environments.",
     "titles": [
-      "Identity & Access Management (Okta / Entra ID)",
-      "Endpoint Management (Intune / Kandji / Jamf / ABM)",
-      "Automation & Operational Tooling (PowerShell)"
+      "IT Operations Leadership (Service Reliability / Incident Response)",
+      "Identity & Endpoint Strategy (Okta / Entra ID / Intune / Kandji / Jamf)",
+      "Automation & Operational Excellence (PowerShell / Runbooks / Reporting)"
     ],
     "heroImage": "/tom-optimized.jpg",
     "techStackImages": [
@@ -22,8 +22,8 @@
   "about": {
     "aboutImage": "/tom-optimized.jpg",
     "aboutImageCaption": "Motivated IT Leader",
-    "title": "IT Systems Administrator / Technical Lead",
-    "about": "I'm a IT Systems Administrator and Technical Lead with 6+ years of enterprise experience supporting executive leadership, improving reliability, and building repeatable systems. I specialize in identity & access management, modern endpoint management, and automation across Windows and macOS. I care about secure-by-default solutions, clean user experiences, and operational consistency. Detailed case studies are available upon request due to confidentiality.",
+    "title": "IT Operations Manager",
+    "about": "I'm an IT Operations Manager with 6+ years of enterprise experience supporting executive leadership, improving reliability, and building repeatable systems. I specialize in identity and access management, endpoint strategy, incident response, and automation across Windows and macOS. I focus on secure-by-default operations, measurable service outcomes, and practical runbooks that teams can execute under pressure. Detailed case studies are available upon request due to confidentiality.",
     "callUrl": "mailto:tjalallar@att.net",
     "resumeUrl": "/Resume.pdf"
   },
@@ -50,7 +50,7 @@
     "faqs": [
       {
         "question": "What do you specialize in?",
-        "answer": "Identity and access management, modern endpoint management, automation, and executive support across Windows and macOS.",
+        "answer": "IT operations leadership across identity and access management, endpoint strategy, automation, incident handling, and executive support for Windows and macOS environments.",
         "tags": [
           "identity",
           "endpoint",
@@ -137,52 +137,52 @@
     {
       "name": "Adobe Acrobat",
       "image": "/acrobat.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Adobe After Effects",
       "image": "/Adobe_After_Effects.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Adobe Creative Cloud",
       "image": "/Creative_Cloud.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Adobe Fonts",
       "image": "/Adobe-Fonts.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Adobe Illustrator",
       "image": "/illustrator.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Adobe InDesign",
       "image": "/Adobe_InDesign.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Adobe Photoshop",
       "image": "/photoshop.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Adobe Premiere Pro",
       "image": "/Adobe_Premiere_Pro.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Adobe Suite Support",
       "image": "/Adobe_Help.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Adobe XD",
       "image": "/Adobe_XD.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Apple Business Manager (ABM)",
@@ -222,7 +222,7 @@
     {
       "name": "ConnectFonts",
       "image": "/connect-fonts.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Device Compliance",
@@ -232,7 +232,7 @@
     {
       "name": "Figma",
       "image": "/Figma.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "FileVault",
@@ -242,7 +242,7 @@
     {
       "name": "FontAgent",
       "image": "/FontAgent.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "GitHub Actions",
@@ -307,12 +307,12 @@
     {
       "name": "Miro",
       "image": "https://cdn.simpleicons.org/miro/FFD02F",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Monotype Fonts",
       "image": "/Monotype.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Multi-Factor Authentication (MFA)",
@@ -355,6 +355,71 @@
       "category": "Automation"
     },
     {
+      "name": "AI Agent Orchestration",
+      "image": "https://img.icons8.com/color/144/000000/robot-2.png",
+      "category": "Automation"
+    },
+    {
+      "name": "Prompt Engineering",
+      "image": "https://img.icons8.com/color/144/000000/chat.png",
+      "category": "Automation"
+    },
+    {
+      "name": "RAG Pipelines",
+      "image": "https://img.icons8.com/color/144/000000/database.png",
+      "category": "Automation"
+    },
+    {
+      "name": "LLM Evaluation & Guardrails",
+      "image": "https://img.icons8.com/color/144/000000/checked-shield.png",
+      "category": "Automation"
+    },
+    {
+      "name": "AI Workflow Automation",
+      "image": "https://img.icons8.com/color/144/000000/process.png",
+      "category": "Automation"
+    },
+    {
+      "name": "ChatGPT (OpenAI)",
+      "image": "https://cdn.simpleicons.org/openai/412991",
+      "category": "Automation"
+    },
+    {
+      "name": "Claude (Anthropic)",
+      "image": "https://cdn.simpleicons.org/anthropic/191919",
+      "category": "Automation"
+    },
+    {
+      "name": "Notion AI",
+      "image": "/notion-white.png",
+      "category": "Automation"
+    },
+    {
+      "name": "Adobe GenAI (Firefly)",
+      "image": "/Creative_Cloud.png",
+      "category": "Automation"
+    },
+    {
+      "name": "xAI (Grok)",
+      "image": "https://cdn.simpleicons.org/xai/000000",
+      "category": "Automation"
+    },
+    {
+      "name": "Meta AI",
+      "image": "https://cdn.simpleicons.org/meta/0467DF",
+      "category": "Automation"
+    },
+    {
+      "name": "Perplexity",
+      "image": "https://cdn.simpleicons.org/perplexity/20B8CD",
+      "category": "Automation"
+    },
+    {
+      "name": "Midjourney",
+      "image": "https://cdn.simpleicons.org/midjourney/000000",
+      "category": "Automation"
+    },
+    {
       "name": "Security Baselines",
       "image": "https://img.icons8.com/color/144/000000/checked-shield.png",
       "category": "Security"
@@ -372,7 +437,7 @@
     {
       "name": "Sketch",
       "image": "https://cdn.simpleicons.org/sketch/F7B500",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Slack",
@@ -382,17 +447,17 @@
     {
       "name": "Squarespace",
       "image": "https://cdn.simpleicons.org/squarespace/000000",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Suitcase Fusion",
       "image": "/Suitcase-Fusion.webp",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "TypeFace",
       "image": "/typeface.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "VMware",
@@ -407,12 +472,12 @@
     {
       "name": "Wix",
       "image": "https://cdn.simpleicons.org/wix/0C6EFC",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "WordPress",
       "image": "/Wordpress.png",
-      "category": "Application Support"
+      "category": "Creative Application Support"
     },
     {
       "name": "Zendesk",
@@ -467,7 +532,7 @@
   "experiences": [
     {
       "company": "WPP",
-      "position": "IT Systems Administrator",
+      "position": "IT Operations Manager",
       "startDate": "Sep 2018",
       "endDate": "Present",
       "logo": "/wpp_logo.png",
