@@ -420,6 +420,21 @@
       "category": "Automation"
     },
     {
+      "name": "Google Gemini",
+      "image": "https://cdn.simpleicons.org/googlegemini/4285F4",
+      "category": "Automation"
+    },
+    {
+      "name": "GitHub Copilot",
+      "image": "https://cdn.simpleicons.org/githubcopilot/000000",
+      "category": "Automation"
+    },
+    {
+      "name": "Microsoft Copilot",
+      "image": "https://cdn.simpleicons.org/microsoftcopilot/0078D4",
+      "category": "Automation"
+    },
+    {
       "name": "Security Baselines",
       "image": "https://img.icons8.com/color/144/000000/checked-shield.png",
       "category": "Security"
