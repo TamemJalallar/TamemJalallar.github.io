@@ -17,7 +17,6 @@ import ScrollProgressBar from "@/components/home/ScrollProgressBar";
 import StatsStrip from "@/components/home/StatsStrip";
 import MobileStickyCta from "@/components/home/MobileStickyCta";
 import ServicesSection from "@/components/home/ServicesSection";
-import CaseStudiesSection from "@/components/home/CaseStudiesSection";
 import LeadCaptureForm from "@/components/home/LeadCaptureForm";
 import AnalyticsTracker from "@/components/home/AnalyticsTracker";
 import type { HomeContent } from "@/lib/content/home-content";
@@ -56,7 +55,6 @@ export default function HomePageClient({ data, content, locale, dictionary }: Pr
           "home",
           "about",
           "services",
-          "case-studies",
           "skills",
           "projects",
           "experience",
@@ -94,13 +92,6 @@ export default function HomePageClient({ data, content, locale, dictionary }: Pr
           subtitle={content.services.subtitle}
           bodyHtml={content.services.bodyHtml}
           items={content.services.items}
-        />
-
-        <CaseStudiesSection
-          title={content.caseStudies.title || dictionary.caseStudies}
-          subtitle={content.caseStudies.subtitle}
-          bodyHtml={content.caseStudies.bodyHtml}
-          items={content.caseStudies.items}
         />
 
         {data.skills?.length ? <Skills skillData={data.skills} /> : null}

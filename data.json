@@ -4,7 +4,7 @@
     "shortDesc": "IT Operations Manager focused on identity, endpoint strategy, automation, and reliable service delivery across enterprise Windows and macOS environments.",
     "titles": [
       "IT Operations Leadership (Service Reliability / Incident Response)",
-      "Identity & Endpoint Strategy (Okta / Entra ID / Intune / Kandji / Jamf)",
+      "Identity & Endpoint Strategy (Okta / Entra ID / Intune / Iru / Jamf)",
       "Automation & Operational Excellence (PowerShell / Runbooks / Reporting)"
     ],
     "heroImage": "/tom-optimized.jpg",
@@ -14,7 +14,7 @@
       "https://img.icons8.com/color/144/000000/powershell.png",
       "https://img.icons8.com/?size=144&id=2XxN9DboL7yS&format=png&color=000000",
       "/AD.png",
-      "/kandji.png",
+      "/iru-logo.png",
       "/jamf.jpg",
       "/abm2.png"
     ]
@@ -23,7 +23,7 @@
     "aboutImage": "/tom-optimized.jpg",
     "aboutImageCaption": "Motivated IT Leader",
     "title": "IT Operations Manager",
-    "about": "I'm an IT Operations Manager with 6+ years of enterprise experience supporting executive leadership, improving reliability, and building repeatable systems. I specialize in identity and access management, endpoint strategy, incident response, and automation across Windows and macOS. I focus on secure-by-default operations, measurable service outcomes, and practical runbooks that teams can execute under pressure. Detailed case studies are available upon request due to confidentiality.",
+    "about": "I'm an IT Operations Manager with 6+ years of enterprise experience supporting executive leadership, improving reliability, and building repeatable systems. I specialize in identity and access management, endpoint strategy, incident response, and automation across Windows and macOS. I focus on secure-by-default operations, measurable service outcomes, and practical runbooks that teams can execute under pressure.",
     "callUrl": "mailto:tjalallar@att.net",
     "resumeUrl": "/Resume.pdf"
   },
@@ -59,7 +59,7 @@
       },
       {
         "question": "Which platforms do you work with most?",
-        "answer": "Okta, Microsoft Entra ID, Intune, Kandji, Jamf, Apple Business Manager, and PowerShell automation.",
+        "answer": "Okta, Microsoft Entra ID, Intune, Iru (formerly Kandji), Jamf, Apple Business Manager, and PowerShell automation.",
         "tags": [
           "identity",
           "endpoint",
@@ -270,8 +270,8 @@
       "category": "Operations"
     },
     {
-      "name": "Kandji",
-      "image": "/kandji.png",
+      "name": "Iru (formerly Kandji)",
+      "image": "/iru-logo.png",
       "category": "Endpoint"
     },
     {

@@ -11,23 +11,6 @@ export type ServiceItem = {
   ctaHref?: string;
 };
 
-export type CaseStudyMetric = {
-  label: string;
-  value: string;
-};
-
-export type CaseStudyItem = {
-  id: string;
-  title: string;
-  context: string;
-  approach: string[];
-  outcomes: string[];
-  metrics: CaseStudyMetric[];
-  links?: {
-    project?: string;
-  };
-};
-
 type SectionEnvelope<T> = {
   title: string;
   subtitle: string;
@@ -36,7 +19,6 @@ type SectionEnvelope<T> = {
 
 export type HomeContent = {
   services: SectionEnvelope<ServiceItem> & { bodyHtml: string };
-  caseStudies: SectionEnvelope<CaseStudyItem> & { bodyHtml: string };
 };
 
 const contentDir = path.join(process.cwd(), "content/home");
@@ -72,13 +54,9 @@ async function readSection<T>(fileName: string): Promise<SectionEnvelope<T> & { 
 }
 
 export async function getHomeContent(): Promise<HomeContent> {
-  const [services, caseStudies] = await Promise.all([
-    readSection<ServiceItem>("services.mdx"),
-    readSection<CaseStudyItem>("case-studies.mdx"),
-  ]);
+  const services = await readSection<ServiceItem>("services.mdx");
 
   return {
     services,
-    caseStudies,
   };
 }

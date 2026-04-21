@@ -299,7 +299,7 @@ const Hero = ({ mainData }: HeroProps) => {
               <div className="mt-6 grid gap-3">
                 {[
                   { k: "Focus", v: "Identity, endpoint, automation" },
-                  { k: "Platforms", v: "Okta, Entra ID, Intune, Kandji, Jamf" },
+                  { k: "Platforms", v: "Okta, Entra ID, Intune, Iru, Jamf" },
                   { k: "Style", v: "Secure-by-default and scalable workflows" },
                   {
                     k: "Impact",

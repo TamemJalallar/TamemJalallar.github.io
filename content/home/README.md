@@ -19,7 +19,5 @@ Optional markdown body text.
 
 ## Files
 - `services.mdx`
-- `case-studies.mdx`
-- `testimonials.mdx`
 
 The loader lives in `/lib/content/home-content.ts`.

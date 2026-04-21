@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Microsoft Entra ID",
     "Endpoint Management",
     "Intune",
-    "Kandji",
+    "Iru (formerly Kandji)",
     "Jamf",
     "Automation",
     "Incident Management",
