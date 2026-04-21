@@ -19,6 +19,32 @@ interface HeroProps {
   mainData?: main;
 }
 
+const PRIMARY_STACK_LABELS: Record<string, string> = {
+  "https://img.icons8.com/color/144/000000/microsoft.png": "Microsoft",
+  "https://img.icons8.com/color/144/000000/mac-os.png": "macOS",
+  "https://img.icons8.com/color/144/000000/powershell.png": "PowerShell",
+  "https://img.icons8.com/?size=144&id=2XxN9DboL7yS&format=png&color=000000": "Okta",
+  "/AD.png": "Active Directory",
+  "/iru-logo.png": "Iru",
+  "/jamf.jpg": "Jamf",
+  "/abm2.png": "Apple Business Manager",
+};
+
+function getPrimaryStackLabel(src: string) {
+  if (PRIMARY_STACK_LABELS[src]) return PRIMARY_STACK_LABELS[src];
+
+  const cleanSrc = src.split("?")[0].split("#")[0];
+  const fileName = cleanSrc.split("/").pop() ?? cleanSrc;
+  const base = fileName.replace(/\.[a-z0-9]+$/i, "");
+
+  return (
+    base
+      .replace(/[-_]+/g, " ")
+      .replace(/\b\w/g, (char) => char.toUpperCase())
+      .trim() || "Tech"
+  );
+}
+
 const Hero = ({ mainData }: HeroProps) => {
   if (!mainData) return null;
 
@@ -39,6 +65,10 @@ const Hero = ({ mainData }: HeroProps) => {
             .map((src) => src.trim())
             .filter(Boolean)
             .slice(0, 10)
+            .map((src) => ({
+              src,
+              label: getPrimaryStackLabel(src),
+            }))
         : [],
     [techStackImages]
   );
@@ -324,15 +354,16 @@ const Hero = ({ mainData }: HeroProps) => {
                   </p>
                   <div className="home-marquee mt-3">
                     <div className="home-marquee-track">
-                      {marqueeIcons.map((src, idx) => (
+                      {marqueeIcons.map((icon, idx) => (
                         <span
-                          key={`${src}-${idx}`}
+                          key={`${icon.src}-${idx}`}
                           className="fx-glow inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/70 shadow-md dark:bg-white/5"
-                          title={src}
+                          title={icon.label}
+                          aria-label={icon.label}
                         >
                           <Image
-                            alt="tech"
-                            src={src}
+                            alt={`${icon.label} logo`}
+                            src={icon.src}
                             width={28}
                             height={28}
                             sizes="48px"
