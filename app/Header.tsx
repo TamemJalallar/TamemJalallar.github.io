@@ -138,22 +138,6 @@ export default function Header({ logo }: { logo?: string }) {
               tools
             </Link>
           </li>
-          <li>
-            <Link
-              href="/games"
-              className="hover:text-sky-700 hover:dark:text-sky-400 transition-colors capitalize cursor-pointer"
-            >
-              games
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/tickets"
-              className="hover:text-sky-700 hover:dark:text-sky-400 transition-colors capitalize cursor-pointer"
-            >
-              tickets
-            </Link>
-          </li>
 
           <li>
             <button
@@ -239,20 +223,6 @@ export default function Header({ logo }: { logo?: string }) {
               className="rounded-xl px-3 py-2 text-base capitalize transition hover:bg-slate-200 dark:hover:bg-grey-800"
             >
               tools
-            </Link>
-            <Link
-              href="/games"
-              onClick={() => setNavCollapse(true)}
-              className="rounded-xl px-3 py-2 text-base capitalize transition hover:bg-slate-200 dark:hover:bg-grey-800"
-            >
-              games
-            </Link>
-            <Link
-              href="/tickets"
-              onClick={() => setNavCollapse(true)}
-              className="rounded-xl px-3 py-2 text-base capitalize transition hover:bg-slate-200 dark:hover:bg-grey-800"
-            >
-              tickets
             </Link>
           </div>
         </div>
